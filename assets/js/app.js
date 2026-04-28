@@ -1,0 +1,552 @@
+(function () {
+  const data = window.SITE_DATA;
+  const pageId = document.body.dataset.page || "home";
+  const root = document.getElementById("site-root");
+
+  if (!data || !root) {
+    return;
+  }
+
+  const localPages = new Set(data.nav.flatMap((item) => [item.page, ...(item.children || []).map((child) => child.page)]));
+
+  function isExternal(href) {
+    return /^https?:\/\//.test(href) || href.startsWith("mailto:");
+  }
+
+  function linkAttrs(href) {
+    if (isExternal(href)) {
+      return ' target="_blank" rel="noreferrer noopener"';
+    }
+    if (/\.(pdf|docx)$/i.test(href)) {
+      return ' target="_blank"';
+    }
+    return "";
+  }
+
+  function buttonLink(link, extraClass = "") {
+    const classes = ["button", link.style || "", extraClass].filter(Boolean).join(" ");
+    return `<a class="${classes}" href="${link.href}"${linkAttrs(link.href)}>${link.label}</a>`;
+  }
+
+  function image(src, alt, cls = "", eager = false) {
+    const loading = eager ? "eager" : "lazy";
+    return `<img class="${cls}" src="${src}" alt="${alt}" loading="${loading}" decoding="async">`;
+  }
+
+  function renderHeader() {
+    const nav = data.nav.map((item) => {
+      const childActive = (item.children || []).some((child) => child.page === pageId);
+      const active = item.page === pageId || childActive;
+      if (item.children) {
+        const children = item.children.map((child) => {
+          const childClass = child.page === pageId ? "active" : "";
+          return `<a class="${childClass}" href="${child.href}">${child.label}</a>`;
+        }).join("");
+        return `
+          <div class="nav-item">
+            <button class="dropdown-trigger ${active ? "active" : ""}" type="button" aria-haspopup="true">${item.label}</button>
+            <div class="dropdown-menu">${children}</div>
+          </div>
+        `;
+      }
+      return `<a class="nav-link ${active ? "active" : ""}" href="${item.href}">${item.label}</a>`;
+    }).join("");
+
+    return `
+      <header class="site-header">
+        <div class="header-inner">
+          <a class="brand" href="index.html" aria-label="Nathan Pacey home">
+            <span class="brand-mark">NP</span>
+            <span>Nathan Pacey<small>Quantum computing | Software | Design</small></span>
+          </a>
+          <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+          <nav class="site-nav" aria-label="Primary navigation">${nav}</nav>
+        </div>
+      </header>
+    `;
+  }
+
+  function renderFooter() {
+    const social = data.social.map((item) => `
+      <a href="${item.href}"${linkAttrs(item.href)} aria-label="${item.label}">
+        ${image(item.icon, item.label, "", true)}
+      </a>
+    `).join("");
+    return `
+      <footer class="site-footer">
+        <div class="footer-grid">
+          <div>
+            <h2>${data.site.name}</h2>
+            <p>&copy; 2021 by Nathan Pacey.</p>
+          </div>
+          <div class="footer-block">
+            <span>Call</span>
+            <a href="tel:+12269883313">${data.site.shortPhone}</a>
+          </div>
+          <div class="footer-block">
+            <span>Write</span>
+            <a href="mailto:${data.site.email}">${data.site.email}</a>
+          </div>
+          <div class="footer-block">
+            <span>Follow</span>
+            <div class="social-row">${social}</div>
+          </div>
+        </div>
+      </footer>
+    `;
+  }
+
+  function renderPageHero({ eyebrow, title, lede, image: heroImage }) {
+    return `
+      <section class="page-hero">
+        <div class="wrap page-hero-grid">
+          <div>
+            <p class="eyebrow">${eyebrow || ""}</p>
+            <h1 class="page-title">${title}</h1>
+            <p class="section-lede">${lede || ""}</p>
+          </div>
+          ${heroImage ? `<div class="hero-media">${image(heroImage, title, "", true)}</div>` : ""}
+        </div>
+      </section>
+    `;
+  }
+
+  function renderLinkRow(links) {
+    if (!links || !links.length) return "";
+    return `<div class="link-row">${links.map((link) => buttonLink(link, "small")).join("")}</div>`;
+  }
+
+  function renderProjectCard(project) {
+    return `
+      <article class="project-card">
+        ${image(project.image, project.title, "project-image")}
+        <div class="project-content">
+          <h3>${project.title}</h3>
+          <p>${project.text}</p>
+          ${renderLinkRow(project.links)}
+        </div>
+      </article>
+    `;
+  }
+
+  function renderHome() {
+    const home = data.home;
+    const facts = home.facts.map((fact) => `<div class="fact">${fact}</div>`).join("");
+    const logos = home.logos.map((logo) => `
+      <a class="logo-tile" href="${logo.href}"${linkAttrs(logo.href)} aria-label="${logo.label}">
+        ${image(logo.image, logo.label)}
+      </a>
+    `).join("");
+    return `
+      <section class="home-hero">
+        <div class="wrap home-grid">
+          <div class="portrait-card">
+            ${image(home.portrait, "Nathan Pacey portrait", "", true)}
+            <div class="portrait-caption">
+              <h1>${home.title}</h1>
+              <p>${home.roleLines.join("<br>")}</p>
+            </div>
+          </div>
+          <div class="hero-copy">
+            <h2>${home.intro}</h2>
+            <p class="tagline">${home.tagline}</p>
+            ${home.body.map((text) => `<p>${text}</p>`).join("")}
+            <div class="cta-row">${home.ctas.map((link) => buttonLink(link)).join("")}</div>
+            <div class="quick-facts">${facts}</div>
+            <div class="logo-strip">${logos}</div>
+          </div>
+        </div>
+      </section>
+    `;
+  }
+
+  function renderAbout() {
+    const about = data.about;
+    const cards = about.interests.map((item) => `
+      <article class="interest-card">
+        ${image(item.image, item.title, "interest-image")}
+        <div class="interest-content">
+          <h3>${item.title}</h3>
+          <p>${item.text}</p>
+        </div>
+      </article>
+    `).join("");
+    return `
+      ${renderPageHero(about)}
+      <section class="section band">
+        <div class="wrap interest-grid">${cards}</div>
+      </section>
+      <section class="section compact">
+        <div class="wrap">
+          <div class="cta-row">${about.ctas.map((link) => buttonLink(link)).join("")}</div>
+        </div>
+      </section>
+    `;
+  }
+
+  function renderProjects() {
+    const page = data.projects;
+    const cards = page.categories.map((category) => `
+      <article class="project-card category-card">
+        <a href="${category.href}" aria-label="${category.title}">${image(category.image, category.title, "project-image")}</a>
+        <div class="project-content">
+          <h3>${category.title}</h3>
+          <p>${category.text}</p>
+          <div class="link-row"><a class="button small primary" href="${category.href}">View Projects</a></div>
+        </div>
+      </article>
+    `).join("");
+    return `
+      ${renderPageHero(page)}
+      <section class="section band">
+        <div class="wrap project-grid">${cards}</div>
+      </section>
+    `;
+  }
+
+  function renderProjectPage(projectKey) {
+    const page = data.projectPages[projectKey];
+    return `
+      ${renderPageHero(page)}
+      <section class="section band">
+        <div class="wrap project-grid">${page.projects.map(renderProjectCard).join("")}</div>
+      </section>
+    `;
+  }
+
+  function renderTimeline(items) {
+    return `
+      <div class="timeline">
+        ${items.map((item) => `
+          <article class="timeline-card">
+            <div class="timeline-side">
+              <p class="period">${item.period}</p>
+              <p class="place">${item.place || item.school}</p>
+              <p class="location">${item.location}</p>
+            </div>
+            <div class="timeline-main">
+              <h3>${item.title}</h3>
+              <ul class="bullet-list">${item.bullets.map((bullet) => `<li>${bullet}</li>`).join("")}</ul>
+              ${renderLinkRow(item.links)}
+            </div>
+          </article>
+        `).join("")}
+      </div>
+    `;
+  }
+
+  function renderResume() {
+    const resume = data.resume;
+    const skillTiles = resume.skills.map((skill) => `
+      <div class="skill-tile">
+        ${image(skill.icon, skill.name, "", true)}
+        <span>${skill.name}</span>
+      </div>
+    `).join("");
+    const professional = resume.professional.map((skill) => `<span class="pill">${skill}</span>`).join("");
+    const courses = resume.courses.map((course) => `<span class="pill">${course}</span>`).join("");
+    return `
+      <section class="page-hero">
+        <div class="wrap">
+          <p class="eyebrow">${resume.eyebrow}</p>
+          <h1 class="page-title">${resume.title}</h1>
+          <div class="cta-row"><a class="button primary" href="${resume.cv}" target="_blank">DOWNLOAD CV</a></div>
+        </div>
+      </section>
+      <section class="section band">
+        <div class="wrap">
+          <h2 class="section-title">Experience</h2>
+          ${renderTimeline(resume.experience)}
+        </div>
+      </section>
+      <section class="section">
+        <div class="wrap">
+          <h2 class="section-title">Education</h2>
+          ${renderTimeline(resume.education)}
+        </div>
+      </section>
+      <section class="section band">
+        <div class="wrap two-grid">
+          <div>
+            <h2 class="section-title">Technical Skills</h2>
+            <ul class="bullet-list">${resume.technicalBullets.map((item) => `<li>${item}</li>`).join("")}</ul>
+          </div>
+          <div class="skills-grid">${skillTiles}</div>
+        </div>
+      </section>
+      <section class="section">
+        <div class="wrap two-grid">
+          <div class="card">
+            <h2 class="section-title">Professional Skillset</h2>
+            <div class="pill-grid">${professional}</div>
+          </div>
+          <div class="card">
+            <h2 class="section-title">Relevant Courses</h2>
+            <div class="pill-grid">${courses}</div>
+          </div>
+        </div>
+      </section>
+      <section class="section compact band">
+        <div class="wrap">
+          <h2 class="section-title">Personal Interests</h2>
+          <ul class="bullet-list">${resume.interests.map((item) => `<li>${item}</li>`).join("")}</ul>
+        </div>
+      </section>
+    `;
+  }
+
+  function renderVideoCard(video) {
+    return `
+      <article class="video-card ${video.featured ? "featured-video" : ""}">
+        <video controls preload="metadata" poster="${video.poster}" playsinline>
+          <source src="${video.source}" type="video/mp4">
+        </video>
+        <h3>${video.title}</h3>
+      </article>
+    `;
+  }
+
+  function renderSmartwatch() {
+    const page = data.smartwatch;
+    const heroImages = page.heroImages.map((src, index) => image(src, `${page.title} screenshot ${index + 1}`)).join("");
+    return `
+      <section class="page-hero">
+        <div class="wrap smartwatch-hero">
+          <div>
+            <p class="eyebrow">${page.eyebrow}</p>
+            <h1 class="page-title">${page.title}</h1>
+            <p class="section-lede">${page.lede}</p>
+            <div class="cta-row">${page.links.map((link) => buttonLink(link)).join("")}</div>
+          </div>
+          <div class="phone-stack">${heroImages}</div>
+        </div>
+      </section>
+      <section class="section band">
+        <div class="wrap">
+          <h2 class="section-title">Latest Version 2.0</h2>
+          <div class="video-grid featured-grid">${renderVideoCard(page.latestVideo)}</div>
+        </div>
+      </section>
+      <section class="section">
+        <div class="wrap">
+          <h2 class="section-title">${page.galleryTitle}</h2>
+          ${renderGallery(page.gallery)}
+        </div>
+      </section>
+      <section class="section band">
+        <div class="wrap">
+          <h2 class="section-title">Version 1.0 Tutorial Videos</h2>
+          <div class="video-grid">${page.videos.map(renderVideoCard).join("")}</div>
+        </div>
+      </section>
+    `;
+  }
+
+  function renderGallery(items) {
+    const thumbs = items.map((item, index) => `
+      <button class="gallery-thumb ${index === 0 ? "active" : ""}" type="button" data-gallery-index="${index}" aria-label="${item.title}">
+        ${image(item.image, item.title)}
+      </button>
+    `).join("");
+    return `
+      <div class="gallery-shell" data-gallery>
+        <div class="gallery-view">
+          <button class="gallery-image-wrap" type="button" data-gallery-open aria-label="Open gallery image">
+            ${image(items[0].image, items[0].title, "gallery-main-image")}
+          </button>
+          <div class="gallery-copy">
+            <h3 class="gallery-title">${items[0].title}</h3>
+            <p class="gallery-text">${items[0].text}</p>
+            <div class="gallery-counter"><span data-gallery-counter>1</span>/${items.length}</div>
+            <div class="gallery-actions">
+              <button class="icon-button" type="button" data-gallery-prev aria-label="Previous image">&lsaquo;</button>
+              <button class="icon-button" type="button" data-gallery-next aria-label="Next image">&rsaquo;</button>
+            </div>
+          </div>
+        </div>
+        <div class="gallery-thumbs">${thumbs}</div>
+      </div>
+    `;
+  }
+
+  function renderContact() {
+    const site = data.site;
+    const social = data.social.map((item) => `
+      <a href="${item.href}"${linkAttrs(item.href)} aria-label="${item.label}">
+        ${image(item.icon, item.label, "", true)}
+      </a>
+    `).join("");
+    return `
+      <section class="page-hero">
+        <div class="wrap">
+          <p class="eyebrow">CONTACT</p>
+          <h1 class="page-title">Let's Connect</h1>
+          <p class="section-lede">I am always interested in new opportunities, so feel free to contact me.</p>
+        </div>
+      </section>
+      <section class="section band">
+        <div class="wrap contact-grid">
+          <div class="contact-list">
+            <div class="contact-item"><span>Address</span><strong>${site.address}</strong></div>
+            <div class="contact-item"><span>Email</span><a href="mailto:${site.email}">${site.email}</a></div>
+            <div class="contact-item"><span>Phone</span><a href="tel:+12269883313">${site.phone}</a></div>
+            <div class="contact-item"><span>Social Media</span><div class="social-row">${social}</div></div>
+          </div>
+          <form class="contact-form" data-contact-form>
+            <div class="field">
+              <label for="firstName">First Name</label>
+              <input id="firstName" name="firstName" autocomplete="given-name" required>
+            </div>
+            <div class="field">
+              <label for="lastName">Last Name</label>
+              <input id="lastName" name="lastName" autocomplete="family-name" required>
+            </div>
+            <div class="field full">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" autocomplete="email" required>
+            </div>
+            <div class="field full">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" required></textarea>
+            </div>
+            <button class="button primary" type="submit">Send</button>
+            <p class="form-status" data-form-status aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+    `;
+  }
+
+  function renderLightbox() {
+    return `
+      <div class="lightbox" data-lightbox aria-hidden="true">
+        <button class="icon-button lightbox-close" type="button" data-lightbox-close aria-label="Close image">&times;</button>
+        <div class="lightbox-panel">
+          <img data-lightbox-image src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="">
+          <div class="lightbox-caption">
+            <h3 data-lightbox-title></h3>
+            <p data-lightbox-text></p>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  function renderMain() {
+    const routes = {
+      home: renderHome,
+      about: renderAbout,
+      resume: renderResume,
+      projects: renderProjects,
+      physics: () => renderProjectPage("physics"),
+      software: () => renderProjectPage("software"),
+      mechatronics: () => renderProjectPage("mechatronics"),
+      smartwatch: renderSmartwatch,
+      contact: renderContact
+    };
+    const renderer = routes[localPages.has(pageId) || pageId === "smartwatch" ? pageId : "home"] || routes.home;
+    return renderer();
+  }
+
+  function initNavigation() {
+    const toggle = document.querySelector(".nav-toggle");
+    if (!toggle) return;
+    toggle.addEventListener("click", () => {
+      const open = !document.body.classList.contains("menu-open");
+      document.body.classList.toggle("menu-open", open);
+      toggle.setAttribute("aria-expanded", String(open));
+    });
+  }
+
+  function initContactForm() {
+    const form = document.querySelector("[data-contact-form]");
+    if (!form) return;
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const formData = new FormData(form);
+      const firstName = formData.get("firstName") || "";
+      const lastName = formData.get("lastName") || "";
+      const fromEmail = formData.get("email") || "";
+      const message = formData.get("message") || "";
+      const subject = encodeURIComponent(`Portfolio Contact from ${firstName} ${lastName}`.trim());
+      const body = encodeURIComponent(`Name: ${firstName} ${lastName}\nEmail: ${fromEmail}\n\n${message}`);
+      const mailto = `mailto:${data.site.email}?subject=${subject}&body=${body}`;
+      const status = document.querySelector("[data-form-status]");
+      if (status) status.textContent = "Thanks for submitting. Your email client should open now.";
+      window.location.href = mailto;
+    });
+  }
+
+  function initGallery() {
+    const shell = document.querySelector("[data-gallery]");
+    if (!shell) return;
+    const items = data.smartwatch.gallery;
+    let index = 0;
+    const mainImage = shell.querySelector(".gallery-main-image");
+    const title = shell.querySelector(".gallery-title");
+    const text = shell.querySelector(".gallery-text");
+    const counter = shell.querySelector("[data-gallery-counter]");
+    const thumbs = Array.from(shell.querySelectorAll("[data-gallery-index]"));
+
+    function update(nextIndex) {
+      index = (nextIndex + items.length) % items.length;
+      const item = items[index];
+      mainImage.src = item.image;
+      mainImage.alt = item.title;
+      title.textContent = item.title;
+      text.textContent = item.text;
+      counter.textContent = String(index + 1);
+      thumbs.forEach((thumb, thumbIndex) => thumb.classList.toggle("active", thumbIndex === index));
+    }
+
+    shell.querySelector("[data-gallery-prev]").addEventListener("click", () => update(index - 1));
+    shell.querySelector("[data-gallery-next]").addEventListener("click", () => update(index + 1));
+    shell.querySelector("[data-gallery-open]").addEventListener("click", () => openLightbox(items[index]));
+    thumbs.forEach((thumb) => {
+      thumb.addEventListener("click", () => update(Number(thumb.dataset.galleryIndex)));
+    });
+  }
+
+  function openLightbox(item) {
+    const lightbox = document.querySelector("[data-lightbox]");
+    if (!lightbox) return;
+    lightbox.querySelector("[data-lightbox-image]").src = item.image;
+    lightbox.querySelector("[data-lightbox-image]").alt = item.title;
+    lightbox.querySelector("[data-lightbox-title]").textContent = item.title;
+    lightbox.querySelector("[data-lightbox-text]").textContent = item.text;
+    lightbox.classList.add("open");
+    lightbox.setAttribute("aria-hidden", "false");
+  }
+
+  function initLightbox() {
+    const lightbox = document.querySelector("[data-lightbox]");
+    if (!lightbox) return;
+    const close = () => {
+      lightbox.classList.remove("open");
+      lightbox.setAttribute("aria-hidden", "true");
+    };
+    lightbox.querySelector("[data-lightbox-close]").addEventListener("click", close);
+    lightbox.addEventListener("click", (event) => {
+      if (event.target === lightbox) close();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && lightbox.classList.contains("open")) close();
+    });
+  }
+
+  root.innerHTML = `
+    <div class="site-shell">
+      ${renderHeader()}
+      <main id="main-content">${renderMain()}</main>
+      ${renderFooter()}
+      ${renderLightbox()}
+    </div>
+  `;
+
+  initNavigation();
+  initContactForm();
+  initGallery();
+  initLightbox();
+})();
