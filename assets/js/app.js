@@ -50,9 +50,12 @@
           const childClass = child.page === pageId ? "active" : "";
           return `<a class="${childClass}" href="${child.href}">${child.label}</a>`;
         }).join("");
+
         return `
           <div class="nav-item">
-            <button class="dropdown-trigger ${active ? "active" : ""}" type="button" aria-haspopup="true">${item.label}</button>
+            <a href="${item.href}" class="dropdown-trigger ${active ? "active" : ""}">
+              ${item.label}
+            </a>
             <div class="dropdown-menu">${children}</div>
           </div>
         `;
