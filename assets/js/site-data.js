@@ -465,18 +465,19 @@ window.SITE_DATA = {
         {
           title: "Asteroid Belt PyGame",
           image: "assets/images/asteroid.jpg",
+          video: "assets/videos/asteroid-belt.mp4",
           text: "A first pygame project and true game in Python. Asteroid Belt Adventure is a flying scroller where the player avoids rockets in a randomized space environment.",
           links: [{ label: "GitHub Link", href: "https://github.com/NathanPaceydev/Asteriod-Belt-Adventure" }]
         },
         {
           title: "Machine Learning For Car Data",
-          image: "assets/images/knn-diagram.png",
+          image: "assets/images/car-park.jpg",
           text: "A simple K Nearest Neighbors machine learning algorithm and optimization using the UCI Machine Learning Repository. The project includes notes on the KNN idea and results after optimizing the number of neighbours.",
           links: [{ label: "GitHub Link", href: "https://github.com/NathanPaceydev/Machine-Learning-KNN-for-car-data" }]
         },
         {
           title: "Twitter Bot",
-          image: "assets/images/github-large.png",
+          image: "assets/images/knn-diagram.png",
           text: "Twitter bot using Twitter's Developer tools and the tweepy API to send automated information about Bitcoin and ETH using the Yahoo Finance API library. The repository includes walkthrough files for web scraping with BeautifulSoup and receiving/transmitting API data.",
           links: [
             { label: "Bot Profile", href: "https://twitter.com/NathanPaceyBot" },
@@ -486,19 +487,18 @@ window.SITE_DATA = {
         {
           title: "Evolutionary Algorithm",
           image: "assets/images/game-of-life.jpg",
+          video: "assets/videos/game-of-life.mp4",
           text: "A visualization based on the evolutionary algorithm described by John Conway's Game of Life. This version uses a grid with defined dimensions that impacts the evolution of clusters on border cells and was inspired by LeetCode question 289.",
           links: [{ label: "GitHub Link", href: "https://github.com/NathanPaceydev/Game-of-Life" }]
         },
-        {
-          title: "Additional GitHub Projects",
-          image: "assets/images/github-large.png",
-          text: "More repositories and coding exercises, including LeetCode profile status from the original site: Rank 836145 and Solved 185/3915.",
-          links: [
-            { label: "GitHub", href: "https://github.com/NathanPaceydev?tab=repositories" },
-            { label: "LeetCode", href: "https://leetcode.com/NathanPaceydev/" }
-          ]
-        }
-      ]
+      ],
+      codeFeature: {
+        github: "https://github.com/NathanPaceydev?tab=repositories",
+        leetcode: "https://leetcode.com/NathanPaceydev/",
+        rank: "836145",
+        solved: "185/3915",
+        progress: 4.7
+      }
     },
     mechatronics: {
       title: "Mechanical and Electrical Projects",

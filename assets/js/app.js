@@ -33,6 +33,14 @@
     return `<img class="${cls}" src="${src}" alt="${alt}" loading="${loading}" decoding="async">`;
   }
 
+  function logoSvg() {
+    return `
+      <svg class="brand-logo" preserveAspectRatio="xMidYMid meet" viewBox="34 24.55 131.9 151.05" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M100.9 24.7c-.5-.2-1.2-.2-1.7 0L37.3 52.8l-.4.2-.2.1-1.5.7c-.7.3-1.2 1.1-1.2 1.9v93.8c0 .8.5 1.5 1.2 1.9l53.3 24c.3.1.6.2.8.2.3 0 .6-.1.9-.2l74.5-33.9c.7-.3 1.2-1.1 1.2-1.9V55.7c0-.8-.5-1.5-1.2-1.9l-63.8-29.1zm-.9 4.1l57.7 26.3-20.9 9.5L100.9 47c-.6-.3-1.3-.3-1.8 0L63.6 64.8l-21.3-9.7L100 28.8zM90 138.7l-18.7-7.6 19.3-8.2 17.3 7.8-17.9 8zm-1.3-19.4l-23.2 9.9V68.4L100 51.2l12.4 6.2v25.3L90 91.6c-.8.3-1.3 1-1.3 1.8v25.9zm46-28.2l-18.2-8.2V59.3l18.2 8.9v22.9zm-41.9 5.7l18.2 8.7v22.1l-18.2-8.2V96.8zm20.9 5.4l-17.8-8.5 18.3-7.3 17.4 7.8-17.9 8zm-26.4 39.9v28.2l-49.2-22.2V57.7l23.3 10.6v62.4c0 1.1 1 1.7 2.1 2.1l23.8 9.3zm4.2 28.2v-27.7l21.8-9.8c1.2-.5 1.8-1.1 1.8-2v-24.7l22.7-10.3c.8-.5.9-1.4.9-2.1V68.2l23.1-10.5v80.5l-70.3 32.1z"></path>
+      </svg>
+    `;
+  }
+
   function renderHeader() {
     const nav = data.nav.map((item) => {
       const childActive = (item.children || []).some((child) => child.page === pageId);
@@ -56,8 +64,8 @@
       <header class="site-header">
         <div class="header-inner">
           <a class="brand" href="index.html" aria-label="Nathan Pacey home">
-            <span class="brand-mark">NP</span>
-            <span>Nathan Pacey<small>Quantum computing | Software | Design</small></span>
+            ${logoSvg()}
+            <span>Nathan Pacey</span>
           </a>
           <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
             <span></span><span></span><span></span>
@@ -78,7 +86,6 @@
       <footer class="site-footer">
         <div class="footer-grid">
           <div>
-            <h2>${data.site.name}</h2>
             <p>&copy; 2021 by Nathan Pacey.</p>
           </div>
           <div class="footer-block">
@@ -133,31 +140,128 @@
 
   function renderHome() {
     const home = data.home;
-    const facts = home.facts.map((fact) => `<div class="fact">${fact}</div>`).join("");
-    const logos = home.logos.map((logo) => `
-      <a class="logo-tile" href="${logo.href}"${linkAttrs(logo.href)} aria-label="${logo.label}">
-        ${image(logo.image, logo.label)}
+    const social = data.social.map((item) => `
+      <a href="${item.href}"${linkAttrs(item.href)} aria-label="${item.label}">
+        ${image(item.icon, item.label, "", true)}
       </a>
     `).join("");
     return `
-      <section class="home-hero">
-        <div class="wrap home-grid">
-          <div class="portrait-card">
-            ${image(home.portrait, "Nathan Pacey portrait", "", true)}
-            <div class="portrait-caption">
-              <h1>${home.title}</h1>
+      <section class="home-original">
+        <div class="home-bg-image" aria-hidden="true"></div>
+        <div class="home-original-inner">
+          <aside class="home-profile-card">
+            <div class="home-profile-main">
+              ${image(home.portrait, "Nathan Pacey portrait", "home-profile-photo", true)}
+              <h1>${home.title.replace(" ", "<br>")}</h1>
+              <div class="home-rule"></div>
               <p>${home.roleLines.join("<br>")}</p>
+              <a class="home-iqc-logo" href="${home.logos[0].href}"${linkAttrs(home.logos[0].href)}>
+                ${image(home.logos[0].image, home.logos[0].label, "", true)}
+              </a>
             </div>
-          </div>
-          <div class="hero-copy">
+            <div class="home-social-strip">${social}</div>
+          </aside>
+          <div class="home-copy-original">
             <h2>${home.intro}</h2>
             <p class="tagline">${home.tagline}</p>
-            ${home.body.map((text) => `<p>${text}</p>`).join("")}
-            <div class="cta-row">${home.ctas.map((link) => buttonLink(link)).join("")}</div>
-            <div class="quick-facts">${facts}</div>
-            <div class="logo-strip">${logos}</div>
+            <div class="cta-row">${home.ctas.slice(0, 2).map((link) => buttonLink(link)).join("")}</div>
+            <p>${home.body[0]}</p>
+            <a class="home-epfl-logo" href="${home.logos[2].href}"${linkAttrs(home.logos[2].href)}>
+              ${image(home.logos[2].image, home.logos[2].label, "", true)}
+            </a>
+            <p>${home.body[1]}</p>
+            <p>${home.body[2]}</p>
+            <p>${home.body[3]}</p>
           </div>
         </div>
+      </section>
+    `;
+  }
+
+  function renderProjectCategory(category) {
+    return `
+      <article class="category-band">
+        <a class="category-text" href="${category.href}">
+          <span class="side-accent"></span>
+          <h2>${category.title}</h2>
+          <p>${category.text}</p>
+          <p>Click the image to see my work.</p>
+        </a>
+        <a class="category-image-link" href="${category.href}" aria-label="${category.title}">
+          ${image(category.image, category.title, "category-image")}
+        </a>
+      </article>
+    `;
+  }
+
+  function renderProjects() {
+    const page = data.projects;
+    const cards = page.categories.map(renderProjectCategory).join("");
+    return `
+      <section class="projects-original">
+        <div class="wrap projects-intro">
+          <h1><span></span>${page.title}</h1>
+          <p>${page.lede}</p>
+        </div>
+        <div class="project-category-list">${cards}</div>
+      </section>
+    `;
+  }
+
+  function renderProjectRow(project, index) {
+    const reverse = index % 2 === 1 ? "reverse" : "";
+    const media = project.video
+      ? `<video class="detail-video" autoplay muted loop playsinline preload="metadata" poster="${project.image}"><source src="${project.video}" type="video/mp4"></video>`
+      : image(project.image, project.title, "detail-image");
+    return `
+      <article class="detail-row ${reverse}">
+        <div class="detail-media">${media}</div>
+        <div class="detail-copy">
+          <h2>${project.title}</h2>
+          <p>${project.text}</p>
+          ${renderLinkRow(project.links)}
+        </div>
+      </article>
+    `;
+  }
+
+  function renderCodeFeature(feature) {
+    if (!feature) return "";
+    return `
+      <section class="code-feature" aria-label="GitHub and LeetCode">
+        <div class="code-feature-inner">
+          <div class="code-link-row">
+            <img src="assets/images/github-large.png" alt="GitHub" loading="eager" decoding="async">
+            <a href="${feature.github}"${linkAttrs(feature.github)}>GitHub</a>
+          </div>
+          <div class="code-link-row">
+            <img src="assets/images/leetcode.png" alt="LeetCode" loading="eager" decoding="async">
+            <a href="${feature.leetcode}"${linkAttrs(feature.leetcode)}>LeetCode</a>
+          </div>
+          <div class="code-stats">
+            <strong>Rank: ${feature.rank}</strong>
+            <strong>Solved: ${feature.solved}</strong>
+          </div>
+          <div class="code-progress" aria-label="LeetCode solved progress">
+            <span style="width: ${feature.progress}%"></span>
+          </div>
+        </div>
+      </section>
+    `;
+  }
+
+  function renderProjectPage(projectKey) {
+    const page = data.projectPages[projectKey];
+    return `
+      <section class="project-detail-original">
+        <div class="detail-title-wrap">
+          <h1>${page.title}</h1>
+          ${page.lede ? `<p>${page.lede}</p>` : ""}
+        </div>
+        <div class="detail-list">
+          ${page.projects.map(renderProjectRow).join("")}
+        </div>
+        ${projectKey === "software" ? renderCodeFeature(page.codeFeature) : ""}
       </section>
     `;
   }
@@ -186,35 +290,6 @@
     `;
   }
 
-  function renderProjects() {
-    const page = data.projects;
-    const cards = page.categories.map((category) => `
-      <article class="project-card category-card">
-        <a href="${category.href}" aria-label="${category.title}">${image(category.image, category.title, "project-image")}</a>
-        <div class="project-content">
-          <h3>${category.title}</h3>
-          <p>${category.text}</p>
-          <div class="link-row"><a class="button small primary" href="${category.href}">View Projects</a></div>
-        </div>
-      </article>
-    `).join("");
-    return `
-      ${renderPageHero(page)}
-      <section class="section band">
-        <div class="wrap project-grid">${cards}</div>
-      </section>
-    `;
-  }
-
-  function renderProjectPage(projectKey) {
-    const page = data.projectPages[projectKey];
-    return `
-      ${renderPageHero(page)}
-      <section class="section band">
-        <div class="wrap project-grid">${page.projects.map(renderProjectCard).join("")}</div>
-      </section>
-    `;
-  }
 
   function renderTimeline(items) {
     return `
