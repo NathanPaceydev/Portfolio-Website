@@ -25,19 +25,20 @@ window.SITE_DATA = {
     { label: "CONTACT", page: "contact", href: "contact.html" }
   ],
   social: [
-    { label: "GrabCAD", href: "https://grabcad.com/nathan.pacey-1", icon: "assets/images/solidworks-icon.jpg" },
-    { label: "GitHub", href: "https://github.com/NathanPaceydev", icon: "assets/images/github-icon.png" },
-    { label: "LinkedIn", href: "https://www.linkedin.com/in/nathan-pacey/", icon: "assets/images/linkedin-icon.png" },
-    { label: "Instagram", href: "https://www.instagram.com/nathan_pacey01/", icon: "assets/images/instagram-icon.png" },
-    { label: "Facebook", href: "https://www.facebook.com/people/Nathan-Pacey/100003664877939/", icon: "assets/images/facebook-icon.png" },
-    { label: "Twitter", href: "https://twitter.com/nathanpacey01", icon: "assets/images/twitter-icon.png" }
+    { label: "GrabCAD", href: "https://grabcad.com/nathan.pacey-1", icon: "https://static.wixstatic.com/media/d291ee_d7cce8942f374f629a9b05d10fb31056~mv2.jpg" },
+    { label: "GitHub", href: "https://github.com/NathanPaceydev", icon: "https://static.wixstatic.com/media/d291ee_ceea969602824f68b70f8ffb1f677e91~mv2.png" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/nathan-pacey/", icon: "https://static.wixstatic.com/media/7528824071724d12a3e6c31eee0b40d4.png" },
+    { label: "Instagram", href: "https://www.instagram.com/nathan_pacey01/", icon: "https://static.wixstatic.com/media/81af6121f84c41a5b4391d7d37fce12a.png" },
+    { label: "Facebook", href: "https://www.facebook.com/people/Nathan-Pacey/100003664877939/", icon: "https://static.wixstatic.com/media/23fd2a2be53141ed810f4d3dcdcd01fa.png" },
+    { label: "Twitter", href: "https://twitter.com/nathanpacey01", icon: "https://static.wixstatic.com/media/01ab6619093f45388d66736ec22e5885.png" }
   ],
   home: {
-    portrait: "assets/images/nathan-portrait.jpg",
+    backgroundImage: "https://static.wixstatic.com/media/74775593da034423bfe374c4172f3351.jpg",
+    portrait: "https://static.wixstatic.com/media/d291ee_005c1be45d944c82aa2cdc08d11fca2b~mv2.jpg/v1/crop/x_317,y_0,w_1552,h_1552/fill/w_412,h_414,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/_dsc0586-2%20(1)%20(1).jpg",
     title: "Nathan Pacey",
     intro: "Hello",
     tagline: "Here's who I am & what I do",
-    roleLines: ["Research Assistant", "University of Waterloo", "Institute of Quantum Computing"],
+    roleLines: ["Research Assitant", "University of Waterloo", "Institute of Quantum Computing"],
     body: [
       "I am a Master's student in Quantum Science and Engineering at EPFL and a researcher at the Institute for Quantum Computing (IQC). My work bridges theory and simulation; from quantum error correction and noise modelling for Qiskit to optomechanical simulations aimed at fault-tolerant quantum computing.",
       "Graduated with a Bachelor's in Engineering Physics and Computing from Queen's University.",
@@ -53,48 +54,48 @@ window.SITE_DATA = {
     ctas: [
       { label: "RESUME", href: "resume.html", style: "primary" },
       { label: "PROJECTS", href: "projects.html" },
-      { label: "More About Me", href: "about.html", style: "teal" }
+      { label: "More About Me", href: "about.html", style: "primary" }
     ],
     logos: [
-      { label: "Institute for Quantum Computing", href: "https://uwaterloo.ca/institute-for-quantum-computing/", image: "assets/images/iqc-logo.png" },
-      { label: "Queen's Engineering", href: "https://engineering.queensu.ca/", image: "assets/images/queens-engineering-logo.png" },
-      { label: "EPFL", href: "https://www.epfl.ch/education/master/programs/quantum-science/", image: "assets/images/epfl-logo.png" }
+      { label: "Institute for Quantum Computing", href: "https://uwaterloo.ca/institute-for-quantum-computing/", image: "https://static.wixstatic.com/media/d291ee_3e75a8024f974d5daae29117c8206358~mv2.png" },
+      { label: "Queen's Engineering", href: "https://engineering.queensu.ca/", image: "https://static.wixstatic.com/media/d291ee_df85b4f72a6943d9b53cce5b6b333431~mv2.png" },
+      { label: "EPFL", href: "https://www.epfl.ch/schools/sections/quantum-science-and-engineering/master-program/", image: "https://static.wixstatic.com/media/d291ee_871ba9de90bb44c1bff764d099e38e74~mv2.png" }
     ]
   },
   about: {
     title: "Who is Nathan?",
     eyebrow: "ABOUT ME",
-    image: "assets/images/about-hero.jpeg",
-    lede: "I am a jack of all trades. If you know me, you understand that my interests have a far range. Some of my general interests include design, sports, music, math, and physics.",
+    image: "https://static.wixstatic.com/media/d291ee_4b2393b9b12141fca4f17641de315c9e~mv2.jpeg",
+    lede: "I am a jack of all trades. If you know me, you understand that my interests have a far range. Some of my general interests include design, sports, music, math, and physics. Below I have some examples of some of my interests.",
     interests: [
       {
         title: "Water Sports",
-        image: "assets/images/water-sports.jpg",
+        image: "https://static.wixstatic.com/media/d291ee_99af91abad294e68b8fdcb4f5ec4c895~mv2.jpg",
         text: "Water sports are a great way to enjoy the outdoors and challenge yourself by learning new tricks. I enjoy wakeboarding, waterskiing, wake surfing and windsurfing. Above is a photo of my first time flyboarding, which is a newer watersport using a jetski to propel people into the air."
       },
       {
         title: "Strings",
-        image: "assets/images/music-cello.jpg",
+        image: "https://static.wixstatic.com/media/d291ee_9e4e0705a5684537bca16223a4ef2461~mv2.jpg",
         text: "I have played the cello since I was 7 years old and have been able to perform in various countries and cities, I was even able to play with the New York Philharmonic. In high school I was the lead cello of WCI's award-winning orchestra and chamber group, winning several local competitions and even taking home National Gold at MusicFest in 2016."
       },
       {
         title: "Travel",
-        image: "assets/images/travel-castle.jpg",
+        image: "https://static.wixstatic.com/media/d291ee_d66de67ae0cb41579132b42647748ddc~mv2.jpg",
         text: "I love to travel and learn about various cultures. This really started when I lived in Germany for 4 years as a child. Since then I have been to many different countries across the globe. The image above is of one of the castles along the Rhine River in Germany."
       },
       {
         title: "Snowboarding",
-        image: "assets/images/snowboarding.png",
+        image: "https://static.wixstatic.com/media/d291ee_84e6e8b1230c4a5b82d4e30673498296~mv2.png",
         text: "I started skiing when I was just 3 years old in the German Alps and was lucky enough to continue skiing and snowboarding throughout the years. As part of my volunteer hours for high school, I was a ski instructor for youth with disabilities at Chicopee Resort."
       },
       {
         title: "Photography",
-        image: "assets/images/photography.png",
+        image: "https://static.wixstatic.com/media/d291ee_0dc51e54722e46e1abbb4813a717cee6~mv2.png",
         text: "I have developed a love for photography since I took a course in 2018. I think photography is an amazing form of expression that allows one to capture their perspective on the world and share it with others."
       },
       {
         title: "Rugby",
-        image: "assets/images/rugby.jpg",
+        image: "https://static.wixstatic.com/media/d291ee_338f34cf383e48dbad828028d34b4b99~mv2.jpg",
         text: "I started playing rugby in 2014 and really enjoyed the sport. There is a level of respect and comradery that is unmatched by any other game of its type. My high school team went on to win our local pool 4 years in a row and were finalist at our county tournament 2 of those years."
       }
     ],
@@ -111,21 +112,29 @@ window.SITE_DATA = {
     categories: [
       {
         title: "PHYSICS AND MATHEMATICS",
-        image: "assets/images/physics-cover.jpg",
+        image: "https://static.wixstatic.com/media/d291ee_70cd0a6bf54940468279469b01cff5fb~mv2.jpg",
         href: "physics.html",
         text: "Since the discovery of the Higgs Boson at CERN I have been infatuated with Physics and Mathematics. I believe that breaking down the fundamental building blocks of nature allows us to produce technology that betters the world."
       },
       {
         title: "SOFTWARE PROJECTS",
-        image: "assets/images/software-console.jpg",
+        image: "https://static.wixstatic.com/media/11062b_d7e37b8ce9c54eab810721be8973bb59~mv2.jpg",
+        icon: {
+          image: "https://static.wixstatic.com/media/d291ee_816170f0f55d46f280415283f4163f72~mv2.png",
+          href: "https://github.com/NathanPaceydev"
+        },
         href: "software.html",
-        text: "Over the past few years I have been learning programming languages such as Python, C, C++, SQL, Kotlin and Java. This collection highlights the projects I have been working on."
+        text: "Over the past few years I have been learning programming languages such as Python, C, C++, SQL, Kotlin and Java, click the image to see some of the projects I have been working on."
       },
       {
         title: "MECHATRONICS DESIGN",
-        image: "assets/images/engineering-plans.jpg",
+        image: "https://static.wixstatic.com/media/be0c8732c52445f79601e0965fa55b0e.jpg",
+        icon: {
+          image: "https://static.wixstatic.com/media/d291ee_d7cce8942f374f629a9b05d10fb31056~mv2.jpg",
+          href: "https://grabcad.com/nathan.pacey-1"
+        },
         href: "mechatronics.html",
-        text: "The fusion of mechanical and electronic design has been a large portion of my work experience. I enjoy working on internet of things devices and have showcased a few in my portfolio."
+        text: "The fusion of Mechanical and Electronic design has been a large portion of my work experience. I enjoy working on the internet of things devices and have showcased a few in my portfolio."
       }
     ]
   },
@@ -139,6 +148,7 @@ window.SITE_DATA = {
         period: "May 2024 - Current",
         place: "University of Waterloo Institute for Quantum Computing (IQC)",
         location: "Waterloo Ontario, Canada",
+        logo: "assets/images/iqc-logo.png",
         bullets: [
           "Researched fault-tolerant quantum computing with optomechanical systems, utilizing noise-biased error correction, long lifetimes, and minimal crosstalk to enhance scalability and stability.",
           "Established the theoretical framework to realize pair-cat quantum codes in a dissipative system across two mechanical modes by deriving reduced master equations with Schrieffer-Wolff transforms and adiabatic elimination.",
@@ -151,6 +161,7 @@ window.SITE_DATA = {
         period: "June 2023 - September 2023",
         place: "CERN openlab",
         location: "Geneva Switzerland",
+        logo: "assets/images/cern-openlab-logo.png",
         bullets: [
           "Selected as one of 30 worldwide CERN Openlab students, leading the aggregation of computing resources from industry leaders like IBM, Nvidia, and Intel for cutting-edge physics research.",
           "Demonstrated full-stack development expertise, crafting a Flask-based web portal for data collection and visualization with Jinja, JavaScript, HTML, and CSS.",
@@ -169,6 +180,7 @@ window.SITE_DATA = {
         period: "January 2022 - September 2022",
         place: "Lockheed Martin CMS 330",
         location: "Halifax Nova Scotia, Canada",
+        logo: "assets/images/lockheed-logo.png",
         bullets: [
           "Enhanced Linux server installations with Kickstart file updates for 30% faster file compression.",
           "Applied Agile Methodology with Docker, Jenkins, and SVN for code review and testing.",
@@ -184,6 +196,7 @@ window.SITE_DATA = {
         period: "May 2021 - January 2022",
         place: "Magna Mechatronics, New Technology and Innovation",
         location: "Newmarket Ontario, Canada",
+        logo: "assets/images/magna-logo.png",
         bullets: [
           "Developed UV laser animations and CAD models for a Quantum Dot lighting project.",
           "Created an Android Smartwatch app in Java, Kotlin and XML to open and close trunk and doors using sliders or voice activation in 3 different languages.",
@@ -200,6 +213,7 @@ window.SITE_DATA = {
         period: "November 2020 - March 2021",
         place: "Heyyoka",
         location: "Waterloo Ontario, Canada",
+        logo: "assets/images/heyyoka-logo.png",
         bullets: [
           "Created a SolidWorks design of a wall mount and a Smart Home Hub used for commercial application in rental units.",
           "Utilized simulation tools such as Plastics to aid in mould design.",
@@ -216,6 +230,7 @@ window.SITE_DATA = {
         period: "March 2020 - September 2020",
         place: "Vision Spatial Technologies",
         location: "Waterloo Ontario, Canada",
+        logo: "assets/images/vision-spatial-logo.png",
         bullets: [
           "Designed and built a battery system meant to operate at -30 &deg;C, for an outdoor traffic light that uses computer vision to monitor dangerous zones at ski hills.",
           "Used AutoCAD software to create a compliance mechanism ensuring internal parts of the battery system could withstand major impacts and harsh environmental conditions.",
@@ -231,6 +246,7 @@ window.SITE_DATA = {
         period: "May 2019 - September 2019",
         place: "Encircle Inc.",
         location: "Kitchener Ontario, Canada",
+        logo: "assets/images/encircle-logo.png",
         bullets: [
           "Developed dynamic insurance and restoration forms to reduce clients' documentation time.",
           "Managed weekly documentation with reports and pivot tables for accounts receivable and sales funnel on major insurance and restoration companies.",
@@ -244,6 +260,7 @@ window.SITE_DATA = {
         period: "June 2017 - February 2019",
         place: "Minute School Inc.",
         location: "Waterloo Ontario, Canada",
+        logo: "assets/images/minuteschool-logo.png",
         bullets: [
           "Created and revised several online university courses such as Introductory Physics, Microeconomics, Calculus, and General Chemistry.",
           "Developed the front end of the Customer Care and FAQ pages using HTML, CSS, and JavaScript.",
@@ -258,6 +275,7 @@ window.SITE_DATA = {
         school: "Ecole Polytechnique Federale de Lausanne",
         period: "Graduating Class of 2026",
         location: "Lausanne, Switzerland",
+        logo: "https://static.wixstatic.com/media/d291ee_871ba9de90bb44c1bff764d099e38e74~mv2.png",
         bullets: [
           "Specialization in Quantum Information and Computation.",
           "Honours Academic GPA of 5.03 /6.",
@@ -273,6 +291,7 @@ window.SITE_DATA = {
         school: "Queen's University",
         period: "Graduated May of 2024 with First Class Honours",
         location: "Kingston Ontario, Canada",
+        logo: "https://static.wixstatic.com/media/d291ee_df85b4f72a6943d9b53cce5b6b333431~mv2.png",
         bullets: [
           "Stockdale, P. Excellence Award in Physics | 2023.",
           "Dean's Scholar Recipient | 2019 - Current.",
@@ -495,6 +514,8 @@ window.SITE_DATA = {
       codeFeature: {
         github: "https://github.com/NathanPaceydev?tab=repositories",
         leetcode: "https://leetcode.com/NathanPaceydev/",
+        githubIcon: "https://static.wixstatic.com/media/d291ee_ceea969602824f68b70f8ffb1f677e91~mv2.png",
+        leetcodeIcon: "https://static.wixstatic.com/media/d291ee_55edffcd2da545f4a7dcb4061e1eb1f7~mv2.png",
         rank: "836145",
         solved: "185/3915",
         progress: 4.7

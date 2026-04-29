@@ -1,3 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+
+@font-face {
+  font-family: "WixAvenirHeavy";
+  font-style: normal;
+  font-weight: 700;
+  src: url("https://static.parastorage.com/fonts/v2/74290729-59ae-4129-87d0-2eec3974dce1/v1/avenir-lt-w01_85-heavy1475544.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "WixAvenirLight";
+  font-style: normal;
+  font-weight: 400;
+  src: url("https://static.parastorage.com/fonts/v2/af36905f-3c92-4ef9-b0c1-f91432f16ac1/v1/avenir-lt-w01_35-light1475496.woff2") format("woff2");
+  font-display: swap;
+}
+
 :root {
   --ink: #14161f;
   --muted: #616b7a;
@@ -1809,4 +1827,739 @@ body {
   .code-stats strong {
     font-size: 32px;
   }
+}
+
+/* Source-matching refinement pass */
+body {
+  font-family: "WixAvenirLight", "Poppins", "Avenir Next", Avenir, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.brand,
+.home-profile-main h1,
+.home-copy-original h2,
+.projects-intro h1,
+.category-text h2,
+.detail-title-wrap h1,
+.detail-copy h2,
+.about-copy-block h1,
+.about-interest-header h3,
+.resume-hero-inner h1,
+.resume-entry-brand h3,
+.resume-panel h3,
+.code-link-row a,
+.code-stats strong {
+  font-family: "WixAvenirHeavy", "Poppins", sans-serif;
+  font-weight: 700;
+}
+
+.brand {
+  font-weight: 700;
+}
+
+.nav-link,
+.dropdown-trigger,
+.resume-subtitle,
+.resume-stage-inner > h2,
+.resume-panel h2 {
+  font-family: "WixAvenirLight", "Poppins", sans-serif;
+}
+
+.home-bg-image {
+  width: min(44.9vw, 812px);
+  background: var(--home-bg-image) center center / cover no-repeat;
+}
+
+.home-original::after {
+  inset: 0 0 0 min(44.9vw, 812px);
+}
+
+.home-original-inner {
+  width: 980px;
+  grid-template-columns: 376px minmax(0, 488px);
+  column-gap: 32px;
+  gap: 32px;
+  padding: 110px 0 68px 34px;
+}
+
+.home-profile-main {
+  min-height: 741px;
+  padding: 53px 30px 0;
+}
+
+.home-profile-main h1 {
+  margin: 50px 0 20px;
+  font-size: 27px;
+}
+
+.home-iqc-logo {
+  margin-top: 54px;
+}
+
+.home-iqc-logo img {
+  width: 171px;
+}
+
+.home-social-strip {
+  min-height: 60px;
+  gap: 22px;
+}
+
+.home-copy-original {
+  padding-top: 66px;
+}
+
+.home-copy-original h2 {
+  font-size: clamp(6rem, 8vw, 100px);
+  line-height: 0.95;
+}
+
+.home-copy-original .tagline {
+  font-size: 25px;
+}
+
+.home-copy-original .cta-row {
+  margin-bottom: 95px;
+}
+
+.home-copy-original .button,
+.home-footer-cta .button,
+.about-cta-row .button,
+.resume-hero-inner .button {
+  border-radius: 999px;
+  box-shadow: none;
+  letter-spacing: 0;
+  font-family: "WixAvenirHeavy", "Poppins", sans-serif;
+  font-weight: 700;
+}
+
+.home-copy-original .button {
+  border: 1px solid rgba(197, 208, 217, 0.9);
+}
+
+.home-copy-original p {
+  max-width: 488px;
+  margin: 0 0 30px;
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.home-epfl-logo {
+  width: 180px;
+  margin: 12px auto 34px;
+}
+
+.home-queens-logo {
+  display: block;
+  width: 322px;
+  margin: 10px auto 30px;
+}
+
+.home-queens-logo img {
+  width: 100%;
+  height: auto;
+}
+
+.home-footer-cta {
+  margin-top: 12px;
+}
+
+.home-footer-cta .button {
+  width: 178px;
+}
+
+.projects-intro h1,
+.detail-title-wrap h1,
+.detail-copy h2 {
+  font-weight: 700;
+}
+
+.category-text h2 {
+  font-weight: 700;
+}
+
+.category-icon {
+  display: block;
+  margin: -38px 0 26px;
+}
+
+.category-icon a,
+.category-icon img {
+  display: block;
+}
+
+.category-icon img {
+  width: 108px;
+  height: 108px;
+  object-fit: contain;
+}
+
+.code-link-row a {
+  font-weight: 700;
+}
+
+.about-original {
+  background: var(--wix-bg);
+  color: var(--wix-text);
+  padding-bottom: 92px;
+}
+
+.about-top-band {
+  width: 980px;
+  max-width: calc(100% - 32px);
+  height: 362px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 618px) minmax(0, 362px);
+}
+
+.about-top-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-top-fill {
+  background: var(--wix-bg);
+}
+
+.about-top-copy {
+  padding: 54px 0 72px;
+}
+
+.about-top-copy-inner {
+  width: 980px;
+  max-width: calc(100% - 32px);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 618px) minmax(0, 362px);
+}
+
+.about-copy-block {
+  text-align: center;
+}
+
+.about-copy-block h1 {
+  margin: 0 0 44px;
+  font-size: 35px;
+  line-height: 1.2;
+}
+
+.about-copy-block p {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.47;
+}
+
+.about-interests-section {
+  padding-top: 4px;
+}
+
+.about-interests-grid {
+  width: 780px;
+  max-width: calc(100% - 32px);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 380px));
+  justify-content: center;
+  column-gap: 20px;
+  row-gap: 52px;
+}
+
+.about-interest-card {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+.about-interest-header h3 {
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.about-interest-line {
+  width: 49px;
+  height: 3px;
+  margin: 18px 0 19px;
+  background: var(--wix-blue);
+}
+
+.about-interest-image {
+  width: 100%;
+  aspect-ratio: 380 / 287;
+  object-fit: cover;
+}
+
+.about-interest-card p {
+  margin: 18px 0 0;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.about-cta-strip {
+  padding-top: 92px;
+}
+
+.about-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}
+
+.about-cta-row .button {
+  min-height: 39px;
+  border: 1px solid rgba(197, 208, 217, 0.9);
+  background: transparent;
+  color: var(--wix-text);
+}
+
+.about-cta-row .button:nth-child(1),
+.about-cta-row .button:nth-child(3) {
+  width: 130px;
+  background: var(--wix-blue);
+  border-color: var(--wix-blue);
+  color: #fff;
+}
+
+.about-cta-row .button:nth-child(2) {
+  width: 226px;
+}
+
+.resume-original {
+  background: var(--wix-bg);
+  color: var(--wix-text);
+  padding-bottom: 96px;
+}
+
+.resume-hero-original {
+  padding: 92px 0 44px;
+}
+
+.resume-hero-inner {
+  width: 980px;
+  max-width: calc(100% - 32px);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: end;
+}
+
+.resume-hero-inner .eyebrow {
+  margin: 0 0 12px;
+  font-size: 15px;
+}
+
+.resume-hero-inner h1 {
+  margin: 0 0 8px;
+  font-size: 35px;
+  line-height: 0.95;
+}
+
+.resume-subtitle {
+  margin: 0;
+  font-size: 25px;
+  line-height: 1.2;
+}
+
+.resume-hero-inner .button {
+  width: 130px;
+  min-height: 35px;
+}
+
+.resume-stage {
+  padding: 0 0 38px;
+}
+
+.resume-stage-inner {
+  width: 980px;
+  max-width: calc(100% - 32px);
+  margin: 0 auto;
+}
+
+.resume-stage-inner > h2 {
+  margin: 0 0 26px;
+  font-size: 25px;
+  line-height: 1.2;
+  font-weight: 400;
+}
+
+.resume-entry-stack {
+  display: grid;
+  gap: 26px;
+}
+
+.resume-entry-card {
+  padding: 30px 34px 28px;
+  background: var(--wix-card);
+  border: 1px solid rgba(197, 208, 217, 0.12);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.resume-entry-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 28px;
+}
+
+.resume-entry-brand {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  min-width: 0;
+}
+
+.resume-entry-logo {
+  width: 168px;
+  flex: 0 0 auto;
+}
+
+.resume-entry-logo img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.resume-entry-brand h3 {
+  margin: 0 0 10px;
+  font-size: 20px;
+  line-height: 1.25;
+}
+
+.resume-entry-place {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.resume-entry-meta {
+  min-width: 170px;
+  text-align: right;
+}
+
+.resume-entry-meta span,
+.resume-entry-meta small {
+  display: block;
+}
+
+.resume-entry-meta span {
+  font-size: 17px;
+  line-height: 1.3;
+}
+
+.resume-entry-meta small {
+  margin-top: 8px;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.resume-entry-list {
+  margin: 24px 0 0;
+  padding-left: 22px;
+  color: var(--wix-text);
+}
+
+.resume-entry-list li {
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.resume-entry-list li + li {
+  margin-top: 10px;
+}
+
+.resume-entry-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 18px;
+  margin-top: 22px;
+}
+
+.resume-entry-links .button {
+  min-height: auto;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--wix-text);
+  font-family: "WixAvenirLight", "Poppins", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  text-decoration: underline;
+  box-shadow: none;
+}
+
+.resume-entry-links .button:hover {
+  transform: none;
+  color: var(--wix-blue);
+}
+
+.resume-skills-stage {
+  display: grid;
+  grid-template-columns: minmax(0, 1.07fr) minmax(0, 0.9fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.resume-panel {
+  padding: 28px 28px 30px;
+  background: var(--wix-card);
+  border: 1px solid rgba(197, 208, 217, 0.12);
+  border-radius: 0;
+}
+
+.resume-panel h2 {
+  margin: 0 0 18px;
+  font-size: 25px;
+  line-height: 1.2;
+  font-weight: 400;
+}
+
+.resume-panel h3 {
+  margin: 28px 0 16px;
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.resume-plain-list {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--wix-text);
+}
+
+.resume-plain-list li {
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.resume-plain-list li + li {
+  margin-top: 8px;
+}
+
+.resume-panel .pill-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.resume-panel .pill {
+  min-height: 0;
+  padding: 10px 12px;
+  border: 1px solid rgba(197, 208, 217, 0.12);
+  border-radius: 0;
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--wix-text);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.resume-icons-panel .skills-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.resume-icons-panel .skill-tile {
+  min-height: 102px;
+  border-radius: 0;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(197, 208, 217, 0.12);
+  box-shadow: none;
+}
+
+.resume-icons-panel .skill-tile span {
+  color: var(--wix-text);
+}
+
+@media (max-width: 960px) {
+  .home-original::after {
+    inset: 0;
+    background: linear-gradient(180deg, rgba(11, 23, 33, 0.32), var(--wix-bg) 42%);
+  }
+
+  .home-original-inner {
+    width: min(100% - 28px, 720px);
+    grid-template-columns: 1fr;
+    padding: 44px 0 70px;
+  }
+
+  .home-copy-original {
+    padding-top: 14px;
+  }
+
+  .home-copy-original p {
+    max-width: 100%;
+  }
+
+  .home-queens-logo {
+    width: min(322px, 100%);
+  }
+
+  .about-top-band,
+  .about-top-copy-inner,
+  .resume-skills-stage {
+    grid-template-columns: 1fr;
+  }
+
+  .about-top-band,
+  .about-top-copy-inner,
+  .resume-hero-inner,
+  .resume-stage-inner {
+    width: min(100% - 32px, 980px);
+  }
+
+  .about-top-band {
+    height: auto;
+  }
+
+  .about-top-image img {
+    aspect-ratio: 16 / 10;
+  }
+
+  .about-copy-block {
+    text-align: left;
+  }
+
+  .about-interests-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .resume-hero-inner {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .resume-entry-top {
+    flex-direction: column;
+  }
+
+  .resume-entry-meta {
+    min-width: 0;
+    text-align: left;
+  }
+}
+
+@media (max-width: 640px) {
+  .home-original-inner {
+    padding: 32px 0 54px;
+  }
+
+  .home-profile-main {
+    min-height: auto;
+    padding-top: 40px;
+    padding-bottom: 38px;
+  }
+
+  .home-copy-original h2 {
+    font-size: clamp(4.4rem, 30vw, 6rem);
+  }
+
+  .home-copy-original .cta-row {
+    gap: 14px;
+  }
+
+  .home-copy-original .button,
+  .home-footer-cta .button {
+    width: 100%;
+  }
+
+  .about-top-copy {
+    padding: 36px 0 50px;
+  }
+
+  .about-copy-block h1 {
+    margin-bottom: 22px;
+    font-size: 31px;
+  }
+
+  .about-interests-grid {
+    grid-template-columns: 1fr;
+    row-gap: 40px;
+  }
+
+  .about-cta-strip {
+    padding-top: 56px;
+  }
+
+  .about-cta-row {
+    gap: 14px;
+  }
+
+  .about-cta-row .button:nth-child(1),
+  .about-cta-row .button:nth-child(2),
+  .about-cta-row .button:nth-child(3) {
+    width: min(100%, 320px);
+  }
+
+  .resume-hero-original {
+    padding-top: 62px;
+  }
+
+  .resume-entry-card,
+  .resume-panel {
+    padding: 22px 20px 24px;
+  }
+
+  .resume-entry-brand {
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .resume-entry-logo {
+    width: min(168px, 70%);
+  }
+
+  .resume-icons-panel .skills-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.category-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.category-panel-link {
+  min-height: 100%;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.category-text h2 {
+  margin: 0;
+}
+
+.category-text p {
+  max-width: 360px;
+}
+
+.category-text > p:last-child {
+  margin-top: auto;
+}
+
+.category-icon {
+  margin: 2px 0 8px;
+}
+
+.category-icon img {
+  width: 84px;
+  height: 84px;
+}
+
+.category-image-link {
+  display: block;
+  align-self: stretch;
+  min-height: 100%;
+}
+
+.category-image {
+  display: block;
 }

@@ -149,7 +149,7 @@
       </a>
     `).join("");
     return `
-      <section class="home-original">
+      <section class="home-original" style="--home-bg-image: url('${home.backgroundImage}')">
         <div class="home-bg-image" aria-hidden="true"></div>
         <div class="home-original-inner">
           <aside class="home-profile-card">
@@ -174,7 +174,11 @@
             </a>
             <p>${home.body[1]}</p>
             <p>${home.body[2]}</p>
+            <a class="home-queens-logo" href="${home.logos[1].href}"${linkAttrs(home.logos[1].href)}>
+              ${image(home.logos[1].image, home.logos[1].label, "", true)}
+            </a>
             <p>${home.body[3]}</p>
+            <div class="home-footer-cta">${buttonLink(home.ctas[2])}</div>
           </div>
         </div>
       </section>
@@ -182,14 +186,29 @@
   }
 
   function renderProjectCategory(category) {
+    const helperText = /click the image/i.test(category.text) ? "" : "<p>Click the image to see my work.</p>";
+    const iconMarkup = category.icon
+      ? `
+        <span class="category-icon">
+          ${category.icon.href
+            ? `<a href="${category.icon.href}"${linkAttrs(category.icon.href)} aria-label="${category.title} external link">
+                <img src="${category.icon.image}" alt="${category.title} icon" loading="lazy" decoding="async">
+              </a>`
+            : `<img src="${category.icon.image}" alt="${category.title} icon" loading="lazy" decoding="async">`}
+        </span>
+      `
+      : "";
     return `
       <article class="category-band">
-        <a class="category-text" href="${category.href}">
+        <div class="category-text">
           <span class="side-accent"></span>
-          <h2>${category.title}</h2>
-          <p>${category.text}</p>
-          <p>Click the image to see my work.</p>
-        </a>
+          ${iconMarkup}
+          <a class="category-panel-link" href="${category.href}">
+            <h2>${category.title}</h2>
+            <p>${category.text}</p>
+            ${helperText}
+          </a>
+        </div>
         <a class="category-image-link" href="${category.href}" aria-label="${category.title}">
           ${image(category.image, category.title, "category-image")}
         </a>
@@ -234,11 +253,11 @@
       <section class="code-feature" aria-label="GitHub and LeetCode">
         <div class="code-feature-inner">
           <div class="code-link-row">
-            <img src="assets/images/github-large.png" alt="GitHub" loading="eager" decoding="async">
+            <img src="${feature.githubIcon}" alt="GitHub" loading="eager" decoding="async">
             <a href="${feature.github}"${linkAttrs(feature.github)}>GitHub</a>
           </div>
           <div class="code-link-row">
-            <img src="assets/images/leetcode.png" alt="LeetCode" loading="eager" decoding="async">
+            <img src="${feature.leetcodeIcon}" alt="LeetCode" loading="eager" decoding="async">
             <a href="${feature.leetcode}"${linkAttrs(feature.leetcode)}>LeetCode</a>
           </div>
           <div class="code-stats">
@@ -272,51 +291,71 @@
   function renderAbout() {
     const about = data.about;
     const cards = about.interests.map((item) => `
-      <article class="interest-card">
-        ${image(item.image, item.title, "interest-image")}
-        <div class="interest-content">
+      <article class="about-interest-card">
+        <div class="about-interest-header">
           <h3>${item.title}</h3>
-          <p>${item.text}</p>
+          <div class="about-interest-line"></div>
         </div>
+        ${image(item.image, item.title, "about-interest-image")}
+        <p>${item.text}</p>
       </article>
     `).join("");
     return `
-      ${renderPageHero(about)}
-      <section class="section band">
-        <div class="wrap interest-grid">${cards}</div>
-      </section>
-      <section class="section compact">
-        <div class="wrap">
-          <div class="cta-row">${about.ctas.map((link) => buttonLink(link)).join("")}</div>
-        </div>
+      <section class="about-original">
+        <section class="about-top-band">
+          <div class="about-top-image">${image(about.image, about.title, "", true)}</div>
+          <div class="about-top-fill" aria-hidden="true"></div>
+        </section>
+        <section class="about-top-copy">
+          <div class="about-top-copy-inner">
+            <div class="about-copy-spacer" aria-hidden="true"></div>
+            <div class="about-copy-block">
+              <h1>${about.title}</h1>
+              <p>${about.lede}</p>
+            </div>
+          </div>
+        </section>
+        <section class="about-interests-section">
+          <div class="about-interests-grid">${cards}</div>
+        </section>
+        <section class="about-cta-strip">
+          <div class="about-cta-row">${about.ctas.map((link) => buttonLink(link)).join("")}</div>
+        </section>
       </section>
     `;
   }
 
 
-  function renderTimeline(items) {
+  function renderResumeEntry(item) {
     return `
-      <div class="timeline">
-        ${items.map((item) => `
-          <article class="timeline-card">
-            <div class="timeline-side">
-              <p class="period">${item.period}</p>
-              <p class="place">${item.place || item.school}</p>
-              <p class="location">${item.location}</p>
-            </div>
-            <div class="timeline-main">
+      <article class="resume-entry-card">
+        <div class="resume-entry-top">
+          <div class="resume-entry-brand">
+            ${item.logo ? `<div class="resume-entry-logo">${image(item.logo, item.place || item.title, "", true)}</div>` : ""}
+            <div>
               <h3>${item.title}</h3>
-              <ul class="bullet-list">${item.bullets.map((bullet) => `<li>${bullet}</li>`).join("")}</ul>
-              ${renderLinkRow(item.links)}
+              <p class="resume-entry-place">${item.place || item.school}</p>
             </div>
-          </article>
-        `).join("")}
-      </div>
+          </div>
+          <div class="resume-entry-meta">
+            <span>${item.period}</span>
+            <small>${item.location}</small>
+          </div>
+        </div>
+        <ul class="resume-entry-list">${item.bullets.map((bullet) => `<li>${bullet}</li>`).join("")}</ul>
+        ${item.links && item.links.length ? `
+          <div class="resume-entry-links">
+            ${item.links.map((link) => buttonLink(link, "small")).join("")}
+          </div>
+        ` : ""}
+      </article>
     `;
   }
 
   function renderResume() {
     const resume = data.resume;
+    const experienceCards = resume.experience.map(renderResumeEntry).join("");
+    const educationCards = resume.education.map(renderResumeEntry).join("");
     const skillTiles = resume.skills.map((skill) => `
       <div class="skill-tile">
         ${image(skill.icon, skill.name, "", true)}
@@ -325,52 +364,51 @@
     `).join("");
     const professional = resume.professional.map((skill) => `<span class="pill">${skill}</span>`).join("");
     const courses = resume.courses.map((course) => `<span class="pill">${course}</span>`).join("");
+    const interests = resume.interests.map((item) => `<li>${item}</li>`).join("");
+    const technical = resume.technicalBullets.map((item) => `<li>${item}</li>`).join("");
     return `
-      <section class="page-hero">
-        <div class="wrap">
-          <p class="eyebrow">${resume.eyebrow}</p>
-          <h1 class="page-title">${resume.title}</h1>
-          <div class="cta-row"><a class="button primary" href="${resume.cv}" target="_blank">DOWNLOAD CV</a></div>
-        </div>
-      </section>
-      <section class="section band">
-        <div class="wrap">
-          <h2 class="section-title">Experience</h2>
-          ${renderTimeline(resume.experience)}
-        </div>
-      </section>
-      <section class="section">
-        <div class="wrap">
-          <h2 class="section-title">Education</h2>
-          ${renderTimeline(resume.education)}
-        </div>
-      </section>
-      <section class="section band">
-        <div class="wrap two-grid">
-          <div>
-            <h2 class="section-title">Technical Skills</h2>
-            <ul class="bullet-list">${resume.technicalBullets.map((item) => `<li>${item}</li>`).join("")}</ul>
+      <section class="resume-original">
+        <section class="resume-hero-original">
+          <div class="resume-hero-inner">
+            <div>
+              <p class="eyebrow">${resume.eyebrow}</p>
+              <h1>${resume.title}</h1>
+              <p class="resume-subtitle">Experience</p>
+            </div>
+            <a class="button primary" href="${resume.cv}" target="_blank">DOWNLOAD CV</a>
           </div>
-          <div class="skills-grid">${skillTiles}</div>
-        </div>
-      </section>
-      <section class="section">
-        <div class="wrap two-grid">
-          <div class="card">
-            <h2 class="section-title">Professional Skillset</h2>
-            <div class="pill-grid">${professional}</div>
+        </section>
+        <section class="resume-stage">
+          <div class="resume-stage-inner">
+            <h2>Experience</h2>
+            <div class="resume-entry-stack">${experienceCards}</div>
           </div>
-          <div class="card">
-            <h2 class="section-title">Relevant Courses</h2>
-            <div class="pill-grid">${courses}</div>
+        </section>
+        <section class="resume-stage resume-stage-alt">
+          <div class="resume-stage-inner">
+            <h2>Education</h2>
+            <div class="resume-entry-stack">${educationCards}</div>
           </div>
-        </div>
-      </section>
-      <section class="section compact band">
-        <div class="wrap">
-          <h2 class="section-title">Personal Interests</h2>
-          <ul class="bullet-list">${resume.interests.map((item) => `<li>${item}</li>`).join("")}</ul>
-        </div>
+        </section>
+        <section class="resume-stage">
+          <div class="resume-stage-inner resume-skills-stage">
+            <div class="resume-panel resume-text-panel">
+              <h2>Technical Skills</h2>
+              <ul class="resume-plain-list">${technical}</ul>
+              <h3>Professional Skillset</h3>
+              <div class="pill-grid">${professional}</div>
+            </div>
+            <div class="resume-panel resume-icons-panel">
+              <div class="skills-grid">${skillTiles}</div>
+            </div>
+            <div class="resume-panel resume-meta-panel">
+              <h2>Relevant Courses</h2>
+              <div class="pill-grid">${courses}</div>
+              <h3>Personal Interests</h3>
+              <ul class="resume-plain-list">${interests}</ul>
+            </div>
+          </div>
+        </section>
       </section>
     `;
   }
