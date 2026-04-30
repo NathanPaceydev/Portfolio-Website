@@ -559,6 +559,190 @@ main {
   background: linear-gradient(180deg, rgba(247, 249, 251, 0.96), rgba(237, 242, 248, 0.96));
 }
 
+.playable-grid {
+  display: grid;
+  grid-template-columns: minmax(320px, 0.86fr) minmax(0, 1.14fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.playable-info-card,
+.playable-stage-card {
+  height: 100%;
+}
+
+.playable-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: rgba(127, 149, 247, 0.16);
+  color: #9fb0ff;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.playable-info-card h2,
+.playable-stage-card h2 {
+  margin: 16px 0 10px;
+  font-size: 1.22rem;
+  line-height: 1.2;
+}
+
+.playable-logo-image {
+  width: 100%;
+  border-radius: 8px;
+  aspect-ratio: 16 / 8;
+  object-fit: cover;
+}
+
+.playable-list {
+  margin: 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 10px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.playable-meta-list {
+  margin-top: 24px;
+  display: grid;
+  gap: 14px;
+}
+
+.playable-meta-item {
+  display: grid;
+  gap: 6px;
+}
+
+.playable-meta-item span,
+.playable-field span {
+  color: var(--muted);
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+
+.playable-meta-item strong {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+.playable-stage-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.playable-stage-top p {
+  margin: 8px 0 0;
+  color: var(--muted);
+}
+
+.playable-stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.playable-stats span {
+  min-height: 38px;
+  padding: 0 14px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(197, 208, 217, 0.14);
+  background: rgba(11, 19, 32, 0.62);
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+
+.playable-stats strong {
+  color: var(--wix-text);
+  font-size: 0.92rem;
+}
+
+.arcade-frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  border: 1px solid rgba(197, 208, 217, 0.14);
+  background: radial-gradient(circle at top, rgba(18, 28, 46, 0.88), rgba(5, 9, 17, 0.98));
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+}
+
+.arcade-canvas {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: #030812;
+  outline: none;
+}
+
+.life-board-shell {
+  overflow: auto;
+  border-radius: 10px;
+  border: 1px solid rgba(197, 208, 217, 0.14);
+  padding: 16px;
+  background: rgba(11, 19, 32, 0.72);
+}
+
+.life-canvas {
+  display: block;
+  margin: 0 auto;
+  background: #828282;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.24);
+}
+
+.arcade-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.playable-inline-status {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.playable-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.playable-field {
+  display: grid;
+  gap: 6px;
+}
+
+.playable-field input {
+  min-height: 44px;
+  border-radius: 8px;
+  border: 1px solid rgba(197, 208, 217, 0.16);
+  background: rgba(8, 14, 25, 0.84);
+  color: var(--wix-text);
+  padding: 0 12px;
+  font: inherit;
+}
+
+.playable-field input:focus {
+  outline: 2px solid rgba(127, 149, 247, 0.3);
+  outline-offset: 0;
+  border-color: rgba(127, 149, 247, 0.45);
+}
+
 .vpp-frame-placeholder strong {
   font-size: 1.06rem;
 }
@@ -1140,6 +1324,7 @@ main {
   .home-grid,
   .page-hero-grid,
   .vpp-launch-grid,
+  .playable-grid,
   .smartwatch-hero,
   .gallery-view,
   .contact-grid,
@@ -1161,6 +1346,22 @@ main {
 
   .skills-grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .playable-stage-top {
+    flex-direction: column;
+  }
+
+  .playable-stats {
+    justify-content: flex-start;
+  }
+
+  .playable-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .playable-inline-status {
+    width: 100%;
   }
 
   .footer-grid {

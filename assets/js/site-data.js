@@ -529,13 +529,14 @@ window.SITE_DATA = {
           links: [{ label: "GitHub Link", href: "https://github.com/NathanPaceydev/SignMate-ASL-Computer-Vision" }]
         },
         {
-          title: "Asteroid Belt PyGame",
+          title: "Asteroid Belt Adventure",
           image: "assets/images/asteroid.jpg",
           video: "assets/videos/asteroid-belt.mp4",
           paragraphs: [
             "This is my first time using the pygame library and creating a true game in python. The short clip of Asteroid Belt Adventure is a flying scroller where the player avoids the rockets flying at them in a randomized space environment."
           ],
-          links: [{ label: "GitHub Link", href: "https://github.com/NathanPaceydev/Asteriod-Belt-Adventure" }]
+          links: [{ label: "GitHub Link", href: "https://github.com/NathanPaceydev/Asteroid-Belt-Adventure" }],
+          cta: { label: "Play in Browser", href: "asteroid.html", style: "primary" }
         },
         {
           title: "Machine Learning For Car Data",
@@ -567,7 +568,8 @@ window.SITE_DATA = {
             "This is a visualization based on the evolutionary algorithm as described by the Game of Life or just Life, initially developed by John Conway in 1970.",
             "The major difference between John Conway's game and this one is that this game has a grid with defined dimensions that impacts the evolution of clusters on border cells. This version of the game was inspired by Leetcode question 289, Game of Life, and that is how I came up with the idea to make the Pygame visualization."
           ],
-          links: [{ label: "GitHub Link", href: "https://github.com/NathanPaceydev/Game-of-Life" }]
+          links: [{ label: "GitHub Link", href: "https://github.com/NathanPaceydev/Game-of-Life" }],
+          cta: { label: "Run in Browser", href: "game-of-life.html", style: "primary" }
         },
       ],
       codeFeature: {
@@ -651,6 +653,32 @@ window.SITE_DATA = {
     videoUrl: "https://www.youtube.com/watch?v=x4Zi4jsRHSM&t=1s&ab_channel=NathanPacey",
     appPath: "external/virtual-power-plant-flask/app.py",
     requirementsPath: "external/virtual-power-plant-flask/requirements.txt"
+  },
+  asteroidLaunch: {
+    title: "Asteroid Belt Adventure",
+    eyebrow: "SOFTWARE PROJECT",
+    lede: "A browser-native recreation of my original Pygame side scroller. Pilot the rocket, dodge incoming missiles, and survive the randomized asteroid field.",
+    preview: "assets/images/asteroid.jpg",
+    repoUrl: "https://github.com/NathanPaceydev/Asteroid-Belt-Adventure",
+    demoVideo: "assets/videos/asteroid-belt.mp4",
+    sourcePath: "external/asteroid-belt-adventure/Asteroid-Rocket-Game.py",
+    assetPath: "external/asteroid-belt-adventure/",
+    controls: [
+      "Arrow keys or WASD move the rocket.",
+      "Press Space to start or restart the run.",
+      "P pauses the game and resumes it."
+    ]
+  },
+  gameOfLifeLaunch: {
+    title: "Game of Life Visualization",
+    eyebrow: "SOFTWARE PROJECT",
+    lede: "A browser port of my Pygame implementation of Conway's Game of Life with the same bounded-grid rules and click-to-toggle editing flow.",
+    preview: "assets/images/game-of-life.jpg",
+    repoUrl: "https://github.com/NathanPaceydev/Game-of-Life",
+    demoVideo: "assets/videos/game-of-life.mp4",
+    sourcePath: "external/game-of-life/files/game_of_life.py",
+    startScreenPath: "external/game-of-life/files/start_screen.py",
+    logo: "external/game-of-life/files/Media/logo.JPG"
   },
   smartwatch: {
     title: "Remote Car Controller Smartwatch App",

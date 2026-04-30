@@ -18,6 +18,9 @@
   }
 
   function linkAttrs(href, link = {}) {
+    if (link.newTab) {
+      return ' target="_blank" rel="noreferrer noopener"';
+    }
     if (link.sameTab || isLocalHttp(href)) {
       return "";
     }
@@ -368,6 +371,145 @@
     `;
   }
 
+  function renderAsteroidLaunch() {
+    const page = data.asteroidLaunch;
+    return `
+      <section class="page-hero">
+        <div class="wrap page-hero-grid playable-hero-grid">
+          <div>
+            <p class="eyebrow">${page.eyebrow}</p>
+            <h1 class="page-title">${page.title}</h1>
+            <p class="section-lede">${page.lede}</p>
+            <div class="cta-row">
+              ${buttonLink({ label: "Play Now", href: "#asteroid-stage", style: "primary", sameTab: true })}
+              ${buttonLink({ label: "Watch Demo", href: page.demoVideo, newTab: true })}
+              ${buttonLink({ label: "GitHub", href: page.repoUrl })}
+            </div>
+          </div>
+          <div class="hero-media">${image(page.preview, page.title, "", true)}</div>
+        </div>
+      </section>
+      <section class="section compact">
+        <div class="wrap playable-grid">
+          <article class="card playable-info-card">
+            <span class="playable-badge">Browser Port of the Original Pygame Build</span>
+            <h2>Controls</h2>
+            <ul class="playable-list">
+              ${page.controls.map((item) => `<li>${item}</li>`).join("")}
+            </ul>
+            <div class="playable-meta-list">
+              <div class="playable-meta-item">
+                <span>Original source</span>
+                <strong>${page.sourcePath}</strong>
+              </div>
+              <div class="playable-meta-item">
+                <span>Asset folder</span>
+                <strong>${page.assetPath}</strong>
+              </div>
+            </div>
+          </article>
+          <article class="card playable-stage-card" id="asteroid-stage">
+            <div class="playable-stage-top">
+              <div>
+                <h2>Live Browser Game</h2>
+                <p>Fly the rocket through the asteroid belt and avoid incoming missiles.</p>
+              </div>
+              <div class="playable-stats">
+                <span>Score <strong data-asteroid-score>0</strong></span>
+                <span>Best <strong data-asteroid-best>0</strong></span>
+              </div>
+            </div>
+            <div class="arcade-frame">
+              <canvas class="arcade-canvas" data-asteroid-canvas width="800" height="600" tabindex="0" aria-label="Asteroid Belt Adventure browser game"></canvas>
+            </div>
+            <div class="arcade-toolbar">
+              <button class="button primary" type="button" data-asteroid-start>Start Game</button>
+              <button class="button" type="button" data-asteroid-pause>Pause</button>
+              <button class="button" type="button" data-asteroid-reset>Reset</button>
+              <span class="playable-inline-status" data-asteroid-status>Loading assets...</span>
+            </div>
+          </article>
+        </div>
+      </section>
+    `;
+  }
+
+  function renderGameOfLifeLaunch() {
+    const page = data.gameOfLifeLaunch;
+    return `
+      <section class="page-hero">
+        <div class="wrap page-hero-grid playable-hero-grid">
+          <div>
+            <p class="eyebrow">${page.eyebrow}</p>
+            <h1 class="page-title">${page.title}</h1>
+            <p class="section-lede">${page.lede}</p>
+            <div class="cta-row">
+              ${buttonLink({ label: "Open Simulator", href: "#life-stage", style: "primary", sameTab: true })}
+              ${buttonLink({ label: "Watch Demo", href: page.demoVideo, newTab: true })}
+              ${buttonLink({ label: "GitHub", href: page.repoUrl })}
+            </div>
+          </div>
+          <div class="hero-media">${image(page.preview, page.title, "", true)}</div>
+        </div>
+      </section>
+      <section class="section compact">
+        <div class="wrap playable-grid">
+          <article class="card playable-info-card">
+            <img class="playable-logo-image" src="${page.logo}" alt="${page.title}" loading="eager" decoding="async">
+            <h2>Grid Setup</h2>
+            <div class="playable-form-grid">
+              <label class="playable-field">
+                <span>Width</span>
+                <input type="number" min="4" max="45" value="20" data-life-width>
+              </label>
+              <label class="playable-field">
+                <span>Height</span>
+                <input type="number" min="4" max="30" value="16" data-life-height>
+              </label>
+              <button class="button primary" type="button" data-life-build>Build Grid</button>
+            </div>
+            <ul class="playable-list">
+              <li>Click any cell to toggle life on or off.</li>
+              <li>The rules match the original bounded-grid Pygame version.</li>
+              <li>Use Start once, then advance generation by generation with Next.</li>
+            </ul>
+            <div class="playable-meta-list">
+              <div class="playable-meta-item">
+                <span>Main source</span>
+                <strong>${page.sourcePath}</strong>
+              </div>
+              <div class="playable-meta-item">
+                <span>Start screen source</span>
+                <strong>${page.startScreenPath}</strong>
+              </div>
+            </div>
+          </article>
+          <article class="card playable-stage-card" id="life-stage">
+            <div class="playable-stage-top">
+              <div>
+                <h2>Interactive Simulation</h2>
+                <p>Set a pattern, evolve the board, and explore how clusters behave at fixed edges.</p>
+              </div>
+              <div class="playable-stats">
+                <span>Generation <strong data-life-generation>0</strong></span>
+                <span>Living <strong data-life-living>0</strong></span>
+                <span>Status <strong data-life-mode>Editing</strong></span>
+              </div>
+            </div>
+            <div class="life-board-shell">
+              <canvas class="life-canvas" data-life-canvas tabindex="0" aria-label="Game of Life board"></canvas>
+            </div>
+            <div class="arcade-toolbar">
+              <button class="button primary" type="button" data-life-step>Start</button>
+              <button class="button" type="button" data-life-clear>Clear</button>
+              <span class="playable-inline-status" data-life-status>Build a grid or click cells to start.</span>
+            </div>
+          </article>
+        </div>
+      </section>
+    `;
+  }
+
   function renderAbout() {
     const about = data.about;
     const cards = about.interests.map((item) => `
@@ -666,10 +808,12 @@
       software: () => renderProjectPage("software"),
       mechatronics: () => renderProjectPage("mechatronics"),
       vpp: renderVppLaunch,
+      asteroid: renderAsteroidLaunch,
+      life: renderGameOfLifeLaunch,
       smartwatch: renderSmartwatch,
       contact: renderContact
     };
-    const standalonePages = new Set(["smartwatch", "vpp"]);
+    const standalonePages = new Set(["smartwatch", "vpp", "asteroid", "life"]);
     const renderer = routes[localPages.has(pageId) || standalonePages.has(pageId) ? pageId : "home"] || routes.home;
     return renderer();
   }
