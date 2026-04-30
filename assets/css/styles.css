@@ -159,6 +159,8 @@ button {
 
 .nav-item {
   position: relative;
+  padding-bottom: 10px;
+  margin-bottom: -10px;
 }
 
 .nav-link,
@@ -195,10 +197,10 @@ button {
 
 .dropdown-menu {
   position: absolute;
-  top: calc(100% + 8px);
+  top: 100%;
   right: 0;
-  min-width: 250px;
-  padding: 8px;
+  min-width: 280px;
+  padding: 10px;
   background: #fff;
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -212,6 +214,7 @@ button {
 }
 
 .dropdown-menu a {
+  display: block;
   padding: 10px 12px;
   border-radius: 7px;
   color: var(--muted);
@@ -1175,10 +1178,13 @@ body {
   border: 1px solid rgba(197, 208, 217, 0.14);
   border-radius: 0;
   box-shadow: 0 12px 26px rgba(0, 0, 0, 0.28);
+  min-width: 286px;
+  padding: 12px 0;
 }
 
 .dropdown-menu a {
   color: var(--wix-text);
+  padding: 11px 19px;
 }
 
 .dropdown-menu a:hover,
@@ -1565,27 +1571,64 @@ body {
   font-weight: 500;
 }
 
-.detail-copy .link-row {
-  margin-top: 28px;
+.detail-copy p + p {
+  margin-top: 14px;
+}
+
+.detail-inline-icon {
+  display: inline-flex;
   justify-content: center;
+  margin: 0 0 22px;
+}
+
+.detail-inline-icon img {
+  width: 55px;
+  height: 56px;
+  object-fit: cover;
+}
+
+.detail-link-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.detail-link-list a {
+  color: var(--wix-text);
+  font-size: 15px;
+  line-height: 1.8;
+  text-decoration: underline;
+}
+
+.detail-link-list a:hover {
+  color: var(--wix-blue);
+}
+
+.detail-cta {
+  margin-top: 28px;
 }
 
 .detail-copy .button {
-  min-height: auto;
-  padding: 0;
+  width: 197px;
+  min-height: 56px;
   border: 0;
-  border-radius: 0;
-  background: transparent;
-  color: var(--wix-text);
-  text-decoration: underline;
-  font-size: 15px;
+  border-radius: 999px;
+  background: var(--wix-blue);
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  font-family: "WixAvenirHeavy", "Poppins", sans-serif;
+  font-weight: 700;
   box-shadow: none;
 }
 
 .detail-copy .button:hover {
   transform: none;
   box-shadow: none;
-  color: var(--wix-blue);
+  color: #fff;
+  background: #6d88e5;
 }
 
 .code-feature {
@@ -1846,7 +1889,7 @@ body {
 .about-copy-block h1,
 .about-interest-header h3,
 .resume-hero-inner h1,
-.resume-entry-brand h3,
+.resume-entry-side h3,
 .resume-panel h3,
 .code-link-row a,
 .code-stats strong {
@@ -1866,35 +1909,41 @@ body {
   font-family: "WixAvenirLight", "Poppins", sans-serif;
 }
 
+.home-original {
+  min-height: 996px;
+}
+
 .home-bg-image {
-  width: min(44.9vw, 812px);
+  width: 392px;
   background: var(--home-bg-image) center center / cover no-repeat;
 }
 
 .home-original::after {
-  inset: 0 0 0 min(44.9vw, 812px);
+  inset: 0 0 0 392px;
 }
 
 .home-original-inner {
+  box-sizing: border-box;
   width: 980px;
-  grid-template-columns: 376px minmax(0, 488px);
+  min-height: 996px;
+  grid-template-columns: 376px 488px;
   column-gap: 32px;
-  gap: 32px;
-  padding: 110px 0 68px 34px;
+  gap: 0;
+  padding: 72px 0 55px 34px;
 }
 
 .home-profile-main {
   min-height: 741px;
-  padding: 53px 30px 0;
+  padding: 43px 30px 0;
 }
 
 .home-profile-main h1 {
-  margin: 50px 0 20px;
+  margin: 38px 0 20px;
   font-size: 27px;
 }
 
 .home-iqc-logo {
-  margin-top: 54px;
+  margin-top: 39px;
 }
 
 .home-iqc-logo img {
@@ -1902,16 +1951,16 @@ body {
 }
 
 .home-social-strip {
-  min-height: 60px;
+  min-height: 52px;
   gap: 22px;
 }
 
 .home-copy-original {
-  padding-top: 66px;
+  padding-top: 22px;
 }
 
 .home-copy-original h2 {
-  font-size: clamp(6rem, 8vw, 100px);
+  font-size: min(100px, 10vw);
   line-height: 0.95;
 }
 
@@ -1920,7 +1969,7 @@ body {
 }
 
 .home-copy-original .cta-row {
-  margin-bottom: 95px;
+  margin-bottom: 80px;
 }
 
 .home-copy-original .button,
@@ -1939,21 +1988,21 @@ body {
 }
 
 .home-copy-original p {
-  max-width: 488px;
-  margin: 0 0 30px;
+  max-width: 457px;
+  margin: 0 0 24px;
   font-size: 17px;
   line-height: 1.5;
 }
 
 .home-epfl-logo {
   width: 180px;
-  margin: 12px auto 34px;
+  margin: 14px auto 38px;
 }
 
 .home-queens-logo {
   display: block;
   width: 322px;
-  margin: 10px auto 30px;
+  margin: 10px auto 28px;
 }
 
 .home-queens-logo img {
@@ -1966,7 +2015,8 @@ body {
 }
 
 .home-footer-cta .button {
-  width: 178px;
+  width: 146px;
+  min-height: 40px;
 }
 
 .projects-intro h1,
@@ -1999,6 +2049,13 @@ body {
   font-weight: 700;
 }
 
+.about-hero-stack {
+  position: relative;
+  width: 980px;
+  margin: 40px auto 0;
+  min-height: 510px;
+}
+
 .about-original {
   background: var(--wix-bg);
   color: var(--wix-text);
@@ -2007,9 +2064,8 @@ body {
 
 .about-top-band {
   width: 980px;
-  max-width: calc(100% - 32px);
+  max-width: none;
   height: 362px;
-  margin: 0 auto;
   display: grid;
   grid-template-columns: minmax(0, 618px) minmax(0, 362px);
 }
@@ -2025,46 +2081,53 @@ body {
 }
 
 .about-top-copy {
-  padding: 54px 0 72px;
+  position: absolute;
+  top: 120px;
+  left: 0;
+  width: 980px;
+  padding: 0;
 }
 
 .about-top-copy-inner {
   width: 980px;
-  max-width: calc(100% - 32px);
-  margin: 0 auto;
   display: grid;
-  grid-template-columns: minmax(0, 618px) minmax(0, 362px);
+  grid-template-columns: 362px 618px;
+  min-height: 390px;
 }
 
 .about-copy-block {
-  text-align: center;
+  width: 618px;
+  padding: 80px 0 10px 20px;
+  text-align: left;
 }
 
 .about-copy-block h1 {
-  margin: 0 0 44px;
-  font-size: 35px;
-  line-height: 1.2;
+  max-width: 599px;
+  margin: 0 0 22px;
+  font-size: 56px;
+  line-height: 1;
 }
 
 .about-copy-block p {
+  max-width: 491px;
   margin: 0;
-  font-size: 17px;
-  line-height: 1.47;
+  font-size: 16px;
+  line-height: 1.8;
 }
 
 .about-interests-section {
-  padding-top: 4px;
+  padding-top: 56px;
 }
 
 .about-interests-grid {
-  width: 780px;
+  width: 980px;
   max-width: calc(100% - 32px);
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 380px));
   justify-content: center;
-  column-gap: 20px;
-  row-gap: 52px;
+  column-gap: 37.5px;
+  row-gap: 75px;
 }
 
 .about-interest-card {
@@ -2106,26 +2169,19 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 40px;
+  gap: 57px;
 }
 
 .about-cta-row .button {
-  min-height: 39px;
-  border: 1px solid rgba(197, 208, 217, 0.9);
-  background: transparent;
-  color: var(--wix-text);
-}
-
-.about-cta-row .button:nth-child(1),
-.about-cta-row .button:nth-child(3) {
-  width: 130px;
-  background: var(--wix-blue);
-  border-color: var(--wix-blue);
+  width: 197px;
+  min-height: 56px;
+  border: 0;
+  background: #1f2b3c;
   color: #fff;
 }
 
 .about-cta-row .button:nth-child(2) {
-  width: 226px;
+  background: var(--wix-blue);
 }
 
 .resume-original {
@@ -2148,15 +2204,25 @@ body {
   align-items: end;
 }
 
-.resume-hero-inner .eyebrow {
-  margin: 0 0 12px;
-  font-size: 15px;
+.resume-hero-copy {
+  display: grid;
+  gap: 18px;
 }
 
 .resume-hero-inner h1 {
-  margin: 0 0 8px;
+  margin: 0;
   font-size: 35px;
-  line-height: 0.95;
+  line-height: 1.05;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.resume-hero-inner h1 span {
+  width: 19px;
+  height: 19px;
+  flex: 0 0 auto;
+  background: var(--wix-blue);
 }
 
 .resume-subtitle {
@@ -2166,8 +2232,8 @@ body {
 }
 
 .resume-hero-inner .button {
-  width: 130px;
-  min-height: 35px;
+  width: 154px;
+  min-height: 40px;
 }
 
 .resume-stage {
@@ -2181,7 +2247,8 @@ body {
 }
 
 .resume-stage-inner > h2 {
-  margin: 0 0 26px;
+  width: min(724px, 100%);
+  margin: 0 auto 28px;
   font-size: 25px;
   line-height: 1.2;
   font-weight: 400;
@@ -2189,57 +2256,80 @@ body {
 
 .resume-entry-stack {
   display: grid;
-  gap: 26px;
+  width: min(724px, 100%);
+  margin: 0 auto;
+  gap: 32px;
 }
 
 .resume-entry-card {
-  padding: 30px 34px 28px;
-  background: var(--wix-card);
-  border: 1px solid rgba(197, 208, 217, 0.12);
+  padding: 0 0 34px;
+  display: grid;
+  grid-template-columns: 208px minmax(0, 1fr);
+  gap: 12px 42px;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(197, 208, 217, 0.08);
   border-radius: 0;
   box-shadow: none;
 }
 
-.resume-entry-top {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 28px;
+.resume-entry-card:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.resume-entry-side {
+  padding-top: 4px;
 }
 
 .resume-entry-brand {
-  display: flex;
-  align-items: flex-start;
-  gap: 24px;
+  display: block;
   min-width: 0;
 }
 
+.resume-entry-body {
+  min-width: 0;
+}
+
+.resume-entry-logo-strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
 .resume-entry-logo {
-  width: 168px;
+  width: min(var(--logo-width, 168px), 245px);
   flex: 0 0 auto;
+  display: flex;
+  align-items: center;
 }
 
 .resume-entry-logo img {
   width: 100%;
   height: auto;
+  max-height: 78px;
   object-fit: contain;
 }
 
-.resume-entry-brand h3 {
-  margin: 0 0 10px;
-  font-size: 20px;
-  line-height: 1.25;
+.resume-entry-side h3 {
+  margin: 0 0 12px;
+  font-size: 25px;
+  line-height: 1.14;
 }
 
 .resume-entry-place {
   margin: 0;
   font-size: 14px;
-  line-height: 1.4;
+  line-height: 1.6;
+  color: rgba(197, 208, 217, 0.8);
 }
 
 .resume-entry-meta {
-  min-width: 170px;
-  text-align: right;
+  min-width: 0;
+  margin-top: 16px;
+  text-align: left;
 }
 
 .resume-entry-meta span,
@@ -2259,25 +2349,27 @@ body {
 }
 
 .resume-entry-list {
-  margin: 24px 0 0;
-  padding-left: 22px;
+  max-width: 470px;
+  margin: 0;
+  padding-left: 21px;
   color: var(--wix-text);
 }
 
 .resume-entry-list li {
-  font-size: 17px;
-  line-height: 1.5;
+  font-size: 15px;
+  line-height: 1.8;
 }
 
 .resume-entry-list li + li {
-  margin-top: 10px;
+  margin-top: 8px;
 }
 
 .resume-entry-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px 18px;
-  margin-top: 22px;
+  align-items: flex-start;
+  gap: 10px 22px;
+  margin-top: 20px;
 }
 
 .resume-entry-links .button {
@@ -2302,14 +2394,16 @@ body {
 .resume-skills-stage {
   display: grid;
   grid-template-columns: minmax(0, 1.07fr) minmax(0, 0.9fr) minmax(0, 1fr);
-  gap: 24px;
+  gap: 28px;
   align-items: start;
+  padding-top: 10px;
+  border-top: 1px solid rgba(197, 208, 217, 0.08);
 }
 
 .resume-panel {
-  padding: 28px 28px 30px;
-  background: var(--wix-card);
-  border: 1px solid rgba(197, 208, 217, 0.12);
+  padding: 0;
+  background: transparent;
+  border: 0;
   border-radius: 0;
 }
 
@@ -2383,8 +2477,13 @@ body {
 
   .home-original-inner {
     width: min(100% - 28px, 720px);
+    min-height: 0;
     grid-template-columns: 1fr;
     padding: 44px 0 70px;
+  }
+
+  .home-bg-image {
+    width: 100%;
   }
 
   .home-copy-original {
@@ -2399,21 +2498,32 @@ body {
     width: min(322px, 100%);
   }
 
-  .about-top-band,
   .about-top-copy-inner,
   .resume-skills-stage {
     grid-template-columns: 1fr;
   }
 
+  .about-hero-stack,
   .about-top-band,
+  .about-top-copy,
   .about-top-copy-inner,
   .resume-hero-inner,
   .resume-stage-inner {
     width: min(100% - 32px, 980px);
   }
 
+  .about-hero-stack {
+    min-height: 0;
+    margin-top: 32px;
+  }
+
   .about-top-band {
     height: auto;
+  }
+
+  .about-top-copy {
+    position: static;
+    padding-top: 28px;
   }
 
   .about-top-image img {
@@ -2421,7 +2531,14 @@ body {
   }
 
   .about-copy-block {
+    width: auto;
+    padding: 0;
     text-align: left;
+  }
+
+  .about-copy-block h1,
+  .about-copy-block p {
+    max-width: 100%;
   }
 
   .about-interests-grid {
@@ -2433,13 +2550,14 @@ body {
     align-items: start;
   }
 
-  .resume-entry-top {
-    flex-direction: column;
+  .resume-stage-inner > h2,
+  .resume-entry-stack {
+    width: 100%;
   }
 
-  .resume-entry-meta {
-    min-width: 0;
-    text-align: left;
+  .resume-entry-card {
+    grid-template-columns: 1fr;
+    gap: 18px;
   }
 }
 
@@ -2468,12 +2586,12 @@ body {
   }
 
   .about-top-copy {
-    padding: 36px 0 50px;
+    padding: 20px 0 0;
   }
 
   .about-copy-block h1 {
     margin-bottom: 22px;
-    font-size: 31px;
+    font-size: 34px;
   }
 
   .about-interests-grid {
@@ -2499,18 +2617,12 @@ body {
     padding-top: 62px;
   }
 
-  .resume-entry-card,
-  .resume-panel {
-    padding: 22px 20px 24px;
-  }
-
-  .resume-entry-brand {
-    flex-direction: column;
-    gap: 18px;
+  .resume-entry-card {
+    padding-bottom: 26px;
   }
 
   .resume-entry-logo {
-    width: min(168px, 70%);
+    width: min(var(--logo-width, 168px), 70vw);
   }
 
   .resume-icons-panel .skills-grid {

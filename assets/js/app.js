@@ -230,6 +230,20 @@
     `;
   }
 
+  function renderProjectParagraphs(project) {
+    const paragraphs = project.paragraphs || (project.text ? [project.text] : []);
+    return paragraphs.map((paragraph) => `<p>${paragraph}</p>`).join("");
+  }
+
+  function renderDetailLinks(links) {
+    if (!links || !links.length) return "";
+    return `
+      <div class="detail-link-list">
+        ${links.map((link) => `<a href="${link.href}"${linkAttrs(link.href)}>${link.label}</a>`).join("")}
+      </div>
+    `;
+  }
+
   function renderProjectRow(project, index) {
     const reverse = index % 2 === 1 ? "reverse" : "";
     const media = project.video
@@ -239,9 +253,15 @@
       <article class="detail-row ${reverse}">
         <div class="detail-media">${media}</div>
         <div class="detail-copy">
+          ${project.icon ? `
+            <a class="detail-inline-icon" href="${project.icon.href}"${linkAttrs(project.icon.href)} aria-label="${project.icon.alt || project.title}">
+              ${image(project.icon.image, project.icon.alt || project.title, "", true)}
+            </a>
+          ` : ""}
           <h2>${project.title}</h2>
-          <p>${project.text}</p>
-          ${renderLinkRow(project.links)}
+          ${renderProjectParagraphs(project)}
+          ${renderDetailLinks(project.links)}
+          ${project.cta ? `<div class="detail-cta">${buttonLink(project.cta)}</div>` : ""}
         </div>
       </article>
     `;
@@ -302,19 +322,21 @@
     `).join("");
     return `
       <section class="about-original">
-        <section class="about-top-band">
-          <div class="about-top-image">${image(about.image, about.title, "", true)}</div>
-          <div class="about-top-fill" aria-hidden="true"></div>
-        </section>
-        <section class="about-top-copy">
-          <div class="about-top-copy-inner">
-            <div class="about-copy-spacer" aria-hidden="true"></div>
-            <div class="about-copy-block">
-              <h1>${about.title}</h1>
-              <p>${about.lede}</p>
+        <div class="about-hero-stack">
+          <section class="about-top-band">
+            <div class="about-top-image">${image(about.image, about.title, "", true)}</div>
+            <div class="about-top-fill" aria-hidden="true"></div>
+          </section>
+          <section class="about-top-copy">
+            <div class="about-top-copy-inner">
+              <div class="about-copy-spacer" aria-hidden="true"></div>
+              <div class="about-copy-block">
+                <h1>${about.title}</h1>
+                <p>${about.lede}</p>
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </div>
         <section class="about-interests-section">
           <div class="about-interests-grid">${cards}</div>
         </section>
@@ -326,28 +348,53 @@
   }
 
 
+  function renderResumeLogos(item) {
+    const logos = item.logos || (item.logo ? [{
+      src: item.logo,
+      alt: item.place || item.school || item.title,
+      width: item.logoWidth,
+      height: item.logoHeight
+    }] : []);
+    if (!logos.length) return "";
+    return `
+      <div class="resume-entry-logo-strip">
+        ${logos.map((logo) => {
+          const vars = [
+            logo.width ? `--logo-width:${logo.width}px` : "",
+            logo.height ? `--logo-height:${logo.height}px` : ""
+          ].filter(Boolean).join(";");
+          return `
+            <div class="resume-entry-logo"${vars ? ` style="${vars}"` : ""}>
+              ${image(logo.src, logo.alt || item.place || item.school || item.title, "", true)}
+            </div>
+          `;
+        }).join("")}
+      </div>
+    `;
+  }
+
   function renderResumeEntry(item) {
     return `
       <article class="resume-entry-card">
-        <div class="resume-entry-top">
+        <div class="resume-entry-side">
           <div class="resume-entry-brand">
-            ${item.logo ? `<div class="resume-entry-logo">${image(item.logo, item.place || item.title, "", true)}</div>` : ""}
-            <div>
-              <h3>${item.title}</h3>
-              <p class="resume-entry-place">${item.place || item.school}</p>
-            </div>
+            <h3>${item.title}</h3>
+            <p class="resume-entry-place">${item.place || item.school}</p>
           </div>
           <div class="resume-entry-meta">
             <span>${item.period}</span>
             <small>${item.location}</small>
           </div>
         </div>
-        <ul class="resume-entry-list">${item.bullets.map((bullet) => `<li>${bullet}</li>`).join("")}</ul>
-        ${item.links && item.links.length ? `
-          <div class="resume-entry-links">
-            ${item.links.map((link) => buttonLink(link, "small")).join("")}
-          </div>
-        ` : ""}
+        <div class="resume-entry-body">
+          ${renderResumeLogos(item)}
+          <ul class="resume-entry-list">${item.bullets.map((bullet) => `<li>${bullet}</li>`).join("")}</ul>
+          ${item.links && item.links.length ? `
+            <div class="resume-entry-links">
+              ${item.links.map((link) => buttonLink(link, "small")).join("")}
+            </div>
+          ` : ""}
+        </div>
       </article>
     `;
   }
@@ -370,9 +417,8 @@
       <section class="resume-original">
         <section class="resume-hero-original">
           <div class="resume-hero-inner">
-            <div>
-              <p class="eyebrow">${resume.eyebrow}</p>
-              <h1>${resume.title}</h1>
+            <div class="resume-hero-copy">
+              <h1><span></span>${resume.title}</h1>
               <p class="resume-subtitle">Experience</p>
             </div>
             <a class="button primary" href="${resume.cv}" target="_blank">DOWNLOAD CV</a>
