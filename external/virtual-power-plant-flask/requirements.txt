@@ -1,0 +1,10 @@
+Flask
+matplotlib
+numpy
+openmeteo-requests
+pandas
+plotly
+requests
+requests-cache
+retry-requests
+scipy

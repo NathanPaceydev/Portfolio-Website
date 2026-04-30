@@ -13,7 +13,14 @@
     return /^https?:\/\//.test(href) || href.startsWith("mailto:");
   }
 
-  function linkAttrs(href) {
+  function isLocalHttp(href) {
+    return /^https?:\/\/(?:127\.0\.0\.1|localhost|\[::1\])(?::\d+)?(?:\/|$)/i.test(href);
+  }
+
+  function linkAttrs(href, link = {}) {
+    if (link.sameTab || isLocalHttp(href)) {
+      return "";
+    }
     if (isExternal(href)) {
       return ' target="_blank" rel="noreferrer noopener"';
     }
@@ -25,7 +32,7 @@
 
   function buttonLink(link, extraClass = "") {
     const classes = ["button", link.style || "", extraClass].filter(Boolean).join(" ");
-    return `<a class="${classes}" href="${link.href}"${linkAttrs(link.href)}>${link.label}</a>`;
+    return `<a class="${classes}" href="${link.href}"${linkAttrs(link.href, link)}>${link.label}</a>`;
   }
 
   function image(src, alt, cls = "", eager = false) {
@@ -239,7 +246,7 @@
     if (!links || !links.length) return "";
     return `
       <div class="detail-link-list">
-        ${links.map((link) => `<a href="${link.href}"${linkAttrs(link.href)}>${link.label}</a>`).join("")}
+        ${links.map((link) => `<a href="${link.href}"${linkAttrs(link.href, link)}>${link.label}</a>`).join("")}
       </div>
     `;
   }
@@ -254,7 +261,7 @@
         <div class="detail-media">${media}</div>
         <div class="detail-copy">
           ${project.icon ? `
-            <a class="detail-inline-icon" href="${project.icon.href}"${linkAttrs(project.icon.href)} aria-label="${project.icon.alt || project.title}">
+            <a class="detail-inline-icon" href="${project.icon.href}"${linkAttrs(project.icon.href, project.icon)} aria-label="${project.icon.alt || project.title}">
               ${image(project.icon.image, project.icon.alt || project.title, "", true)}
             </a>
           ` : ""}
@@ -304,6 +311,59 @@
           ${page.projects.map(renderProjectRow).join("")}
         </div>
         ${projectKey === "software" ? renderCodeFeature(page.codeFeature) : ""}
+      </section>
+    `;
+  }
+
+  function renderVppLaunch() {
+    const page = data.vppLaunch;
+    return `
+      <section class="page-hero">
+        <div class="wrap page-hero-grid vpp-launch-hero">
+          <div>
+            <p class="eyebrow">${page.eyebrow}</p>
+            <h1 class="page-title">${page.title}</h1>
+            <p class="section-lede">${page.lede}</p>
+            <div class="cta-row">
+              ${buttonLink({ label: "Open Local App", href: page.appUrl, style: "primary", sameTab: true })}
+              ${buttonLink({ label: "Video Guide", href: page.videoUrl })}
+              ${buttonLink({ label: "GitHub", href: page.repoUrl })}
+            </div>
+          </div>
+          <div class="hero-media">${image(page.preview, page.title, "", true)}</div>
+        </div>
+      </section>
+      <section class="section compact">
+        <div class="wrap vpp-launch-grid">
+          <article class="card vpp-status-card">
+            <span class="vpp-status-badge checking" data-vpp-status>Checking local app status...</span>
+            <h2>Launch the toolkit</h2>
+            <p>If the Flask app is running locally, it will load below and the open button will take you straight into the live tool.</p>
+            <div class="cta-row">
+              ${buttonLink({ label: "Open Toolkit", href: page.appUrl, style: "primary", sameTab: true }, "vpp-open-link")}
+              <button class="button" type="button" data-vpp-retry>Retry Check</button>
+            </div>
+            <div class="vpp-meta-list">
+              <div class="vpp-meta-item">
+                <span>App path</span>
+                <strong>${page.appPath}</strong>
+              </div>
+              <div class="vpp-meta-item">
+                <span>Requirements</span>
+                <strong>${page.requirementsPath}</strong>
+              </div>
+            </div>
+          </article>
+          <article class="card vpp-preview-card">
+            <div class="vpp-frame-shell" data-vpp-frame-shell>
+              <iframe data-vpp-frame title="Virtual Power Plant Toolkit" loading="lazy"></iframe>
+              <div class="vpp-frame-placeholder" data-vpp-placeholder>
+                <strong>Local toolkit preview</strong>
+                <p>Start the Flask app on port 5050 to load the live tool here.</p>
+              </div>
+            </div>
+          </article>
+        </div>
       </section>
     `;
   }
@@ -605,10 +665,12 @@
       physics: () => renderProjectPage("physics"),
       software: () => renderProjectPage("software"),
       mechatronics: () => renderProjectPage("mechatronics"),
+      vpp: renderVppLaunch,
       smartwatch: renderSmartwatch,
       contact: renderContact
     };
-    const renderer = routes[localPages.has(pageId) || pageId === "smartwatch" ? pageId : "home"] || routes.home;
+    const standalonePages = new Set(["smartwatch", "vpp"]);
+    const renderer = routes[localPages.has(pageId) || standalonePages.has(pageId) ? pageId : "home"] || routes.home;
     return renderer();
   }
 
@@ -698,6 +760,52 @@
     });
   }
 
+  function initVppLaunch() {
+    const status = document.querySelector("[data-vpp-status]");
+    const frame = document.querySelector("[data-vpp-frame]");
+    const placeholder = document.querySelector("[data-vpp-placeholder]");
+    const shell = document.querySelector("[data-vpp-frame-shell]");
+    const retry = document.querySelector("[data-vpp-retry]");
+    if (!status || !frame || !placeholder || !shell || !data.vppLaunch) return;
+
+    const { appUrl, healthUrl } = data.vppLaunch;
+
+    function setStatus(state, text) {
+      status.className = `vpp-status-badge ${state}`;
+      status.textContent = text;
+    }
+
+    function setFrameReady(ready) {
+      shell.classList.toggle("ready", ready);
+      placeholder.hidden = ready;
+      if (ready && !frame.src) {
+        frame.src = appUrl;
+      }
+      if (!ready) {
+        frame.removeAttribute("src");
+      }
+    }
+
+    async function checkHealth() {
+      setStatus("checking", "Checking local app status...");
+      try {
+        const response = await fetch(healthUrl, { mode: "cors", cache: "no-store" });
+        const body = (await response.text()).trim().toLowerCase();
+        if (!response.ok || body !== "ok") {
+          throw new Error("Health check failed");
+        }
+        setFrameReady(true);
+        setStatus("online", "Local Flask app is running");
+      } catch (error) {
+        setFrameReady(false);
+        setStatus("offline", "Local Flask app is not running yet");
+      }
+    }
+
+    retry?.addEventListener("click", checkHealth);
+    checkHealth();
+  }
+
   root.innerHTML = `
     <div class="site-shell">
       ${renderHeader()}
@@ -711,4 +819,5 @@
   initContactForm();
   initGallery();
   initLightbox();
+  initVppLaunch();
 })();

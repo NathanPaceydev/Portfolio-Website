@@ -495,7 +495,8 @@ window.SITE_DATA = {
           links: [
             { label: "Youtube Video Guides", href: "https://www.youtube.com/watch?v=x4Zi4jsRHSM&t=1s&ab_channel=NathanPacey" },
             { label: "Github Link", href: "https://github.com/NathanPaceydev/Virtual-Power-Plant" }
-          ]
+          ],
+          cta: { label: "Launch Web App", href: "vpp.html", style: "primary" }
         },
         {
           title: "Aggregating Heterogenous Computing Resources",
@@ -638,6 +639,18 @@ window.SITE_DATA = {
         }
       ]
     }
+  },
+  vppLaunch: {
+    title: "Virtual Power Plant Toolkit",
+    eyebrow: "SOFTWARE PROJECT",
+    lede: "Open the local Flask app for solar, wind, battery, pricing, and summary analysis from inside the portfolio flow.",
+    preview: "https://static.wixstatic.com/media/d291ee_483ada3291f0429a93747429e964b15c~mv2.png",
+    appUrl: "http://127.0.0.1:5050/",
+    healthUrl: "http://127.0.0.1:5050/healthz",
+    repoUrl: "https://github.com/NathanPaceydev/Virtual-Power-Plant",
+    videoUrl: "https://www.youtube.com/watch?v=x4Zi4jsRHSM&t=1s&ab_channel=NathanPacey",
+    appPath: "external/virtual-power-plant-flask/app.py",
+    requirementsPath: "external/virtual-power-plant-flask/requirements.txt"
   },
   smartwatch: {
     title: "Remote Car Controller Smartwatch App",

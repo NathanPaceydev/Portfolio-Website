@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %}Battery Data{% endblock %}
+
+{% block content %}
+    <h1>Battery Information</h1>
+    <div style="display: flex; justify-content: space-between;">
+        <!-- Solar Input Data Column -->
+        <div style="width: 48%;">
+            <h1>Battery Input Data</h1>
+            <table style="width: 100%; border-collapse: collapse;">
+                <tr style="background-color: #f2f2f2;">
+                    <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Parameter</th>
+                    <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Value</th>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #ddd; padding: 8px;">Hourly Demand (kW)  </td>
+                    <td style="border: 1px solid #ddd; padding: 8px;">{{ battery_consumption }}</td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #ddd; padding: 8px;">Islanding Runtime (Hours) </td>
+                    <td style="border: 1px solid #ddd; padding: 8px;">{{ battery_runtime }}</td>
+                </tr>
+                
+                <tr>
+                    <td style="border: 1px solid #ddd; padding: 8px;"> Final Battery Capacity % </td>
+                    <td style="border: 1px solid #ddd; padding: 8px;">{{ battery_final_percent_int }} %</td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #ddd; padding: 8px;">Maxiumum Number of cycles </td>
+                    <td style="border: 1px solid #ddd; padding: 8px;">{{ battery_max_cycles }}</td>
+                </tr>
+            </table>
+        </div>
+        <div style="width: 48%;">
+            <h1>Battery Ouput Data</h1>
+            <table style="width: 100%; border-collapse: collapse;">
+                <tr style="background-color: #f2f2f2;">
+                    <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Parameter</th>
+                    <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Value</th>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #ddd; padding: 8px;">Initial Battery Capacity Needed (kWh)  </td>
+                    <td style="border: 1px solid #ddd; padding: 8px;">{{ battery_capacity }}</td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #ddd; padding: 8px;">Total Upfront cost based on $CAD/kWh  </td>
+                    <td style="border: 1px solid #ddd; padding: 8px;">${{ total_upfront_battery_cost | round(2) }}</td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #ddd; padding: 8px;">Total Minimum Revenue over calculated battery lifetime from {{ min_profit_soc_type }} charging profile  </td>
+                    <td style="border: 1px solid #ddd; padding: 8px;">${{ min_profit | round(2) }}</td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #ddd; padding: 8px;"><b>Total Amounted Earned (Profit) from Battery System </td>
+                    <td style="border: 1px solid #ddd; padding: 8px;"><b>${{ amount_earned_min | round(2) }}</td>
+                </tr>
+             
+            </table>
+        </div>
+    </div>
+    <p>Battery Capacity Degradation Based on this study: </p>
+    <a href="https://www.researchgate.net/publication/303890624_Modeling_of_Lithium-Ion_Battery_Degradation_for_Cell_Life_Assessment" target="_blank">Modeling of Lithium-Ion Battery Degradation for Cell Life Assessment </a>
+
+    <div id="cap_plot">
+        {{ capacity_plot|safe }}
+    </div>
+    <br>
+    <div id="cap_year_plot">
+        {{ year_one_cap_plot|safe }}
+    </div>
+    <br>
+    <div id="cap_plot_all_time">
+        {{ cap_plot_all_time|safe }}
+    </div>
+    <br>
+    <h4>Total revenue over the lifetime was calculated using the HEOP hourly data extended over the lifetime of the Battery</h4>
+    <p>The peak hour of each daily price was used as the discharge and buyback price for the battery arbitrage system. For more info see the pricing data page</p>
+    <divid="profit_plot">
+        {{ profit_plot_html|safe }}
+    </div>
+
+
+{% endblock %}
