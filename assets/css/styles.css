@@ -465,80 +465,23 @@ main {
   align-items: start;
 }
 
-.vpp-download-card,
+.vpp-summary-card,
 .vpp-video-card {
   height: 100%;
 }
 
-.vpp-download-card h2,
+.vpp-summary-card h2,
 .vpp-video-card h2 {
   margin: 16px 0 10px;
   font-size: 1.22rem;
   line-height: 1.2;
 }
 
-.vpp-download-card p,
+.vpp-summary-card p,
 .vpp-video-card p {
   margin: 0;
   color: var(--muted);
   line-height: 1.7;
-}
-
-.vpp-preview-head {
-  display: grid;
-  gap: 14px;
-  margin-bottom: 18px;
-}
-
-.vpp-preview-head h2 {
-  margin: 0 0 8px;
-}
-
-.vpp-preview-head p {
-  margin: 0;
-  color: var(--muted);
-}
-
-.vpp-scenario-pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.vpp-scenario-pills span {
-  display: inline-flex;
-  align-items: center;
-  min-height: 34px;
-  padding: 0 12px;
-  border-radius: 999px;
-  background: rgba(127, 149, 247, 0.12);
-  color: #4b63d8;
-  font-size: 0.82rem;
-  font-weight: 600;
-}
-
-.vpp-meta-list {
-  margin-top: 26px;
-  display: grid;
-  gap: 14px;
-}
-
-.vpp-meta-item {
-  display: grid;
-  gap: 6px;
-}
-
-.vpp-meta-item span {
-  color: var(--muted);
-  font-size: 0.84rem;
-  font-weight: 600;
-}
-
-.vpp-meta-item strong {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 0.82rem;
-  line-height: 1.5;
-  word-break: break-word;
 }
 
 .vpp-simple-list {
@@ -567,74 +510,17 @@ main {
   display: block;
 }
 
-.vpp-overview-head {
-  margin-bottom: 18px;
-}
-
-.vpp-feature-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
-  margin-bottom: 18px;
-}
-
-.vpp-feature-card {
-  min-height: 112px;
-  display: grid;
-  align-items: center;
-}
-
-.vpp-feature-card h3 {
-  margin: 0;
-  font-size: 1.02rem;
-  line-height: 1.55;
-}
-
-.vpp-shot-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
-}
-
-.vpp-shot-card {
-  padding: 0;
-  overflow: hidden;
-}
-
-.vpp-shot-media {
-  background: #fff;
-  border-bottom: 1px solid var(--line);
-}
-
-.vpp-shot-image {
-  width: 100%;
-  aspect-ratio: 16 / 10;
-  object-fit: cover;
-  display: block;
-}
-
-.vpp-shot-copy {
-  display: grid;
-  gap: 8px;
-  padding: 18px;
-}
-
-.vpp-shot-copy span {
-  color: #8ea3ff;
-  font-size: 0.8rem;
-  font-weight: 700;
-}
-
-.vpp-shot-copy h3 {
-  margin: 0;
-  font-size: 1.08rem;
-  line-height: 1.3;
-}
-
-.vpp-shot-copy p {
-  margin: 0;
+.vpp-placeholder-note {
+  margin-top: 18px;
   color: var(--muted);
-  line-height: 1.6;
+  line-height: 1.7;
+}
+
+.button.disabled,
+.button[aria-disabled="true"] {
+  opacity: 0.58;
+  pointer-events: none;
+  cursor: default;
 }
 
 .playable-grid {
@@ -1432,10 +1318,6 @@ main {
     grid-template-columns: 1fr 1fr;
   }
 
-  .vpp-feature-grid,
-  .vpp-shot-grid {
-    grid-template-columns: 1fr;
-  }
 }
 
 @media (max-width: 640px) {

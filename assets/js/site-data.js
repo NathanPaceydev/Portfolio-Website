@@ -645,81 +645,16 @@ window.SITE_DATA = {
   vppLaunch: {
     title: "Virtual Power Plant Toolkit",
     eyebrow: "SOFTWARE PROJECT",
-    lede: "A planning toolkit for comparing solar, wind, battery storage, and long-horizon project economics. Since GitHub Pages cannot host the full Flask stack cleanly, this page focuses on the demo, the source code, and a downloadable local build.",
+    lede: "A planning toolkit for comparing solar, wind, battery storage, and long-horizon project economics. This portfolio page keeps the presentation simple while the full application moves to its own dedicated Flask hosting setup.",
     preview: "https://static.wixstatic.com/media/d291ee_483ada3291f0429a93747429e964b15c~mv2.png",
     repoUrl: "https://github.com/NathanPaceydev/Virtual-Power-Plant",
     videoUrl: "https://www.youtube.com/watch?v=x4Zi4jsRHSM&t=1s&ab_channel=NathanPacey",
     videoEmbedUrl: "https://www.youtube.com/embed/x4Zi4jsRHSM?rel=0",
-    bundleUrl: "downloads/virtual-power-plant-toolkit.zip",
-    hostedBundleUrl: "https://raw.githubusercontent.com/NathanPaceydev/Portfolio-Website/main/downloads/virtual-power-plant-toolkit.zip",
-    featureList: [
-      "Solar sizing, generation, revenue, and ROI analysis",
-      "Wind production modelling with turbine-height sensitivity",
-      "Battery degradation and arbitrage comparisons",
-      "Combined summary view for project-level economics"
-    ],
-    downloadNotes: [
-      "Includes the full Flask app, templates, static datasets, and launchers.",
-      "Works with the included run scripts for macOS, Linux, and Windows.",
-      "Best for showcasing the real toolkit without forcing a fake web deployment."
-    ],
-    sampleScenario: [
-      "Waterloo, Ontario",
-      "600 m2 premium rooftop solar array",
-      "3 Aeolos turbines at 30 m",
-      "800 kWh battery storage scenario"
-    ],
-    demoScreens: [
-      {
-        label: "Inputs",
-        title: "Project setup form",
-        image: "assets/images/vpp-showcase/home.png",
-        text: "The toolkit starts with one intake flow for location, PV array assumptions, turbine sizing, and optional battery storage.",
-        highlights: [
-          "Geocodes the site from city, postal code, and country",
-          "Collects solar, wind, and storage assumptions in one pass"
-        ]
-      },
-      {
-        label: "Solar",
-        title: "Solar system outputs and ROI",
-        image: "assets/images/vpp-showcase/solar-top.png",
-        text: "The solar module estimates system size, yearly generation, installed cost, and payback sensitivity for the chosen buyback assumptions.",
-        highlights: [
-          "Monthly AC/DC generation and irradiance views",
-          "Upfront cost, lifetime revenue, ROI, and payback"
-        ]
-      },
-      {
-        label: "Wind",
-        title: "Wind generation and financials",
-        image: "assets/images/vpp-showcase/wind-top.png",
-        text: "The wind workflow uses archived weather data and turbine height interpolation to estimate production, revenue, and project sensitivity.",
-        highlights: [
-          "Hourly and monthly wind-speed analysis by elevation",
-          "Generation profile, lifetime revenue, ROI, and payback"
-        ]
-      },
-      {
-        label: "Battery",
-        title: "Battery degradation and arbitrage",
-        image: "assets/images/vpp-showcase/battery-top.png",
-        text: "Battery scenarios compare degradation models, capacity fade, and lifetime arbitrage revenue against the required storage size.",
-        highlights: [
-          "Multiple SoC degradation curves and year-one capacity tracking",
-          "Lifetime revenue comparison against upfront battery cost"
-        ]
-      },
-      {
-        label: "Summary",
-        title: "Combined project summary",
-        image: "assets/images/vpp-showcase/summary.png",
-        text: "The final summary rolls solar, wind, and storage into one project view with total cost, revenue, payback, and ROI.",
-        highlights: [
-          "Stacked capital cost view across all systems",
-          "Portfolio-level revenue, profit, ROI, and payback"
-        ]
-      }
+    placeholderLabel: "Hosted App Coming Soon",
+    projectNotes: [
+      "The portfolio now treats VPP as its own standalone software project.",
+      "The tutorial video shows the real workflow, calculations, and interface.",
+      "The live deployment link will be added here once the dedicated Flask host is ready."
     ]
   },
   asteroidLaunch: {

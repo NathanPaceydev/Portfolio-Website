@@ -320,20 +320,6 @@
 
   function renderVppLaunch() {
     const page = data.vppLaunch;
-    const isLocalHost = ["127.0.0.1", "localhost"].includes(window.location.hostname);
-    const bundleUrl = isLocalHost ? page.bundleUrl : (page.hostedBundleUrl || page.bundleUrl);
-    const shots = page.demoScreens.map((screen) => `
-      <article class="card vpp-shot-card">
-        <div class="vpp-shot-media">
-          ${image(screen.image, screen.title, "vpp-shot-image", true)}
-        </div>
-        <div class="vpp-shot-copy">
-          <span>${screen.label}</span>
-          <h3>${screen.title}</h3>
-          <p>${screen.text}</p>
-        </div>
-      </article>
-    `).join("");
     return `
       <section class="page-hero">
         <div class="wrap page-hero-grid vpp-launch-hero">
@@ -343,48 +329,19 @@
             <p class="section-lede">${page.lede}</p>
             <div class="cta-row">
               ${buttonLink({ label: "Watch Demo", href: page.videoUrl, style: "primary" })}
-              ${buttonLink({ label: "Download Local Build", href: bundleUrl, sameTab: true })}
               ${buttonLink({ label: "GitHub", href: page.repoUrl })}
+              <span class="button ghost disabled" aria-disabled="true">${page.placeholderLabel}</span>
             </div>
           </div>
           <div class="hero-media">${image(page.preview, page.title, "", true)}</div>
         </div>
       </section>
       <section class="section compact">
-        <div class="wrap vpp-launch-grid simple">
-          <article class="card vpp-download-card">
-            <span class="playable-badge">Local Build</span>
-            <h2>Download the full toolkit</h2>
-            <p>The cleanest way to showcase this project is to keep the hosted page simple and let the real Flask app run locally with its included data files and launchers.</p>
-            <ul class="vpp-simple-list">
-              ${page.downloadNotes.map((item) => `<li>${item}</li>`).join("")}
-            </ul>
-            <div class="cta-row">
-              ${buttonLink({ label: "Download Local Build", href: bundleUrl, style: "primary", sameTab: true })}
-              ${buttonLink({ label: "Source Code", href: page.repoUrl })}
-            </div>
-            <div class="vpp-meta-list">
-              <div class="vpp-meta-item">
-                <span>Local entry point</span>
-                <strong>run-vpp.command / run-vpp.bat</strong>
-              </div>
-              <div class="vpp-meta-item">
-                <span>Runtime</span>
-                <strong>Python + bundled Flask project files</strong>
-              </div>
-            </div>
-          </article>
+        <div class="wrap vpp-launch-grid">
           <article class="card vpp-video-card">
-            <div class="vpp-preview-head">
-              <div>
-                <span class="playable-badge">Demo Video</span>
-                <h2>See the workflow in action</h2>
-                <p>This keeps the portfolio polished while still showing the real interface, calculations, and analysis flow.</p>
-              </div>
-              <div class="vpp-scenario-pills">
-                ${page.sampleScenario.map((item) => `<span>${item}</span>`).join("")}
-              </div>
-            </div>
+            <span class="playable-badge">Tutorial Video</span>
+            <h2>See the workflow in action</h2>
+            <p>The walkthrough shows the real interface, analysis flow, and output views without forcing the portfolio to host the Flask application itself.</p>
             <div class="vpp-video-shell">
               <iframe
                 src="${page.videoEmbedUrl}"
@@ -395,23 +352,19 @@
               ></iframe>
             </div>
           </article>
-        </div>
-      </section>
-      <section class="section compact">
-        <div class="wrap">
-          <div class="detail-title-wrap vpp-overview-head">
-            <h2>Toolkit Coverage</h2>
-            <p>A quick visual pass through the main parts of the application.</p>
-          </div>
-          <div class="vpp-feature-grid">
-            ${page.featureList.map((item) => `
-              <article class="card vpp-feature-card">
-                <h3>${item}</h3>
-              </article>
-            `).join("")}
-          </div>
-          <div class="vpp-shot-grid">
-            ${shots}
+          <article class="card vpp-summary-card">
+            <span class="playable-badge">Project Links</span>
+            <h2>Standalone project rollout</h2>
+            <p>This keeps the portfolio tidy while the Virtual Power Plant project gets its own proper Flask hosting setup in its own repository.</p>
+            <ul class="vpp-simple-list">
+              ${page.projectNotes.map((item) => `<li>${item}</li>`).join("")}
+            </ul>
+            <div class="cta-row">
+              ${buttonLink({ label: "Open GitHub Repo", href: page.repoUrl, style: "primary" })}
+              ${buttonLink({ label: "Open Tutorial Video", href: page.videoUrl })}
+              <span class="button ghost disabled" aria-disabled="true">${page.placeholderLabel}</span>
+            </div>
+            <p class="vpp-placeholder-note">The live app button will point to the dedicated hosted VPP site once that deployment is ready.</p>
           </div>
         </div>
       </section>
