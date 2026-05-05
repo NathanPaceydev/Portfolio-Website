@@ -417,6 +417,8 @@
               <div class="playable-stats">
                 <span>Score <strong data-asteroid-score>0</strong></span>
                 <span>Best <strong data-asteroid-best>0</strong></span>
+                <span>Hits <strong data-asteroid-kills>0</strong></span>
+                <span>Sector <strong data-asteroid-sector>Launch Corridor</strong></span>
               </div>
             </div>
             <div class="arcade-frame">
@@ -913,6 +915,7 @@
     if (!status || !frame || !placeholder || !shell || !data.vppLaunch) return;
 
     const { appUrl, healthUrl } = data.vppLaunch;
+    const isLocalHost = ["127.0.0.1", "localhost"].includes(window.location.hostname);
 
     function setStatus(state, text) {
       status.className = `vpp-status-badge ${state}`;
@@ -931,6 +934,11 @@
     }
 
     async function checkHealth() {
+      if (!isLocalHost) {
+        setFrameReady(false);
+        setStatus("offline", "The live Flask toolkit is available in the local build only");
+        return;
+      }
       setStatus("checking", "Checking local app status...");
       try {
         const response = await fetch(healthUrl, { mode: "cors", cache: "no-store" });

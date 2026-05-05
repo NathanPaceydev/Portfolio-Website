@@ -572,13 +572,44 @@ def contact():
 
 @app.route('/wind', methods=['GET', 'POST'])
 def wind():
+    def to_float_or_none(value):
+        try:
+            return float(value)
+        except (TypeError, ValueError):
+            return None
+
+    def to_int_or_default(value, default):
+        try:
+            if value in (None, "", "Not provided"):
+                return default
+            return int(value)
+        except (TypeError, ValueError):
+            return default
+
     # fetch user input
-    # Retrieve latitude and longitude from session
-    latitude = session.get('latitude', 'Not provided')
-    longitude = session.get('longitude', 'Not provided')
-    postal_code = session.get('postal_code', 'Not provided')
-    num_turbines = session.get('num_turbines', 'Not provided')
-    turbine_height = session.get('turbineHeight', 'Not provided')
+    postal_code = (session.get('postal_code') or '').strip()
+    latitude = to_float_or_none(session.get('latitude'))
+    longitude = to_float_or_none(session.get('longitude'))
+    num_turbines = to_int_or_default(session.get('num_turbines'), 0)
+    turbine_height = to_int_or_default(session.get('turbineHeight'), 18)
+
+    if latitude is None or longitude is None:
+        city = (session.get('city') or '').strip()
+        country = (session.get('country') or '').strip()
+        if postal_code or city or country:
+            latitude, longitude, location_string = geocode_postal_code(postal_code, city, country)
+            if latitude is not None and longitude is not None:
+                session['latitude'] = latitude
+                session['longitude'] = longitude
+                session['location'] = location_string
+                session.modified = True
+
+        if latitude is None or longitude is None:
+            return redirect(url_for('home'))
+
+    valid_turbine_heights = {10, 18, 24, 30, 36, 55, 80, 100}
+    if turbine_height not in valid_turbine_heights:
+        turbine_height = 18
 
     # Setup the Open-Meteo API client with cache and retry on error
     cache_session = requests_cache.CachedSession('.cache', expire_after = -1)
@@ -857,7 +888,7 @@ def wind():
     total_yearly_generation = hourly_dataframe['total_power_gen'].sum()
 
     # Aggregate this hourly data by month
-    monthly_generation = hourly_dataframe.resample('M').sum()['total_power_gen']
+    monthly_generation = hourly_dataframe.resample('ME').sum(numeric_only=True)['total_power_gen']
 
     # Plot the monthly generation
     wind_month_fig = go.Figure()

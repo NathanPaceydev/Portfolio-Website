@@ -657,7 +657,7 @@ window.SITE_DATA = {
   asteroidLaunch: {
     title: "Asteroid Belt Adventure",
     eyebrow: "SOFTWARE PROJECT",
-    lede: "A browser-native recreation of my original Pygame side scroller. Pilot the rocket, dodge incoming missiles, and survive the randomized asteroid field.",
+    lede: "A browser-native recreation of my original Pygame side scroller. Pilot the rocket, fire back at incoming missiles, and survive sector shifts through the asteroid field.",
     preview: "assets/images/asteroid.jpg",
     repoUrl: "https://github.com/NathanPaceydev/Asteroid-Belt-Adventure",
     demoVideo: "assets/videos/asteroid-belt.mp4",
@@ -665,7 +665,7 @@ window.SITE_DATA = {
     assetPath: "external/asteroid-belt-adventure/",
     controls: [
       "Arrow keys or WASD move the rocket.",
-      "Press Space to start or restart the run.",
+      "Press Space to start or restart the run, then use Space to fire.",
       "P pauses the game and resumes it."
     ]
   },
