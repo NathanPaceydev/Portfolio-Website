@@ -331,7 +331,7 @@
               ${buttonLink({ label: "Watch Demo", href: page.videoUrl, style: "primary" })}
               ${buttonLink({ label: "GitHub", href: page.repoUrl })}
               ${buttonLink({ label: "Web App", href: page.appUrl })}
-            </div>s
+            </div>
           </div>
           <div class="hero-media">${image(page.preview, page.title, "", true)}</div>
         </div>
