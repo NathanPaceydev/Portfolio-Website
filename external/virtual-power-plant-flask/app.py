@@ -22,13 +22,20 @@ from plotly.subplots import make_subplots
 from scipy.interpolate import interp1d
 import glob
 import os
+from pathlib import Path
 
 
 
 app = Flask(__name__)
 
 API_KEY_NREL = os.getenv("NREL_API_KEY", "9iPekv2yf4nAi4py1XY2aHtG54udQ1DhYXKLXHnl")
-app.secret_key = os.urandom(24)  # Generate a random secret key for session management
+app.secret_key = os.getenv("FLASK_SECRET_KEY", "portfolio-vpp-local-secret")
+APP_DIR = Path(__file__).resolve().parent
+STATIC_DIR = APP_DIR / "static"
+
+
+def static_path(*parts):
+    return str(STATIC_DIR.joinpath(*parts))
 
 
 @app.route('/healthz')
@@ -478,7 +485,7 @@ def solar():
     # profit calcs
     # File paths for each year's CSV data
     file_paths = {
-        '2023': './static/Pricing_Data/PUB_PriceHOEPPredispOR_2023_v393.csv'
+        '2023': static_path('Pricing_Data', 'PUB_PriceHOEPPredispOR_2023_v393.csv')
     }
     
     # Combine all years of data into a single DataFrame
@@ -612,7 +619,7 @@ def wind():
         turbine_height = 18
 
     # Setup the Open-Meteo API client with cache and retry on error
-    cache_session = requests_cache.CachedSession('.cache', expire_after = -1)
+    cache_session = requests_cache.CachedSession(str(APP_DIR / '.cache'), expire_after = -1)
     retry_session = retry(cache_session, retries = 5, backoff_factor = 0.2)
     openmeteo = openmeteo_requests.Client(session = retry_session)
 
@@ -1006,7 +1013,7 @@ def wind():
     # profit calcs
     # File paths for each year's CSV data
     file_paths = {
-        '2023': './static/Pricing_Data/PUB_PriceHOEPPredispOR_2023_v393.csv'
+        '2023': static_path('Pricing_Data', 'PUB_PriceHOEPPredispOR_2023_v393.csv')
     }
     
     # Combine all years of data into a single DataFrame
@@ -1110,7 +1117,7 @@ def battery():
     total_upfront_battery_cost = battery_capacity * battery_cost_per_kWh
     
     # The directory where your CSV files are stored
-    folder_path = './static/Battery-cycles'
+    folder_path = static_path('Battery-cycles')
 
     # Get all CSV files in the folder
     file_paths = glob.glob(os.path.join(folder_path, '*.csv'))
@@ -1168,7 +1175,7 @@ def battery():
     # get the HEOP pricing data
     # File paths for each year's CSV data
     file_paths = {
-        '2023': './static/Pricing_Data/PUB_PriceHOEPPredispOR_2023_v393.csv'
+        '2023': static_path('Pricing_Data', 'PUB_PriceHOEPPredispOR_2023_v393.csv')
     }
     
     # Combine all years of data into a single DataFrame
@@ -1189,7 +1196,7 @@ def battery():
     hourly_prices = all_data['HOEP'].values  # Make sure to define 'all_data' with hourly price data
 
     # Directory containing degradation models
-    folder_path = './static/Battery-cycles'
+    folder_path = static_path('Battery-cycles')
     file_paths = glob.glob(os.path.join(folder_path, '*.csv'))
     
     initial_capacity = battery_capacity/1000
@@ -1406,7 +1413,7 @@ def simulate_daily_cycling(capacity_func, prices, initial_capacity, target_capac
 @app.route('/pricing', methods=['GET','POST'])
 def pricing():
     # Load and clean the data
-    file_path = './static/Pricing_Data/PUB_PriceHOEPPredispOR_2023_v393.csv'
+    file_path = static_path('Pricing_Data', 'PUB_PriceHOEPPredispOR_2023_v393.csv')
     data = pd.read_csv(file_path, skiprows=2, header=None)
     data.columns = ['Date', 'Hour', 'HOEP', 'Hour 1 Predispatch', 'Hour 2 Predispatch', 'Hour 3 Predispatch', 'OR 10 Min Sync', 'OR 10 Min non-sync', 'OR 30 Min']
     data_cleaned = data[['Date', 'Hour', 'HOEP']].dropna()
@@ -1428,9 +1435,9 @@ def pricing():
     
     # Define the file paths
     file_paths = {
-        '2021': './static/Pricing_Data/PUB_PriceHOEPPredispOR_2021_v395.csv',
-        '2022': './static/Pricing_Data/PUB_PriceHOEPPredispOR_2022_v396.csv',
-        '2023': './static/Pricing_Data/PUB_PriceHOEPPredispOR_2023_v393.csv'
+        '2021': static_path('Pricing_Data', 'PUB_PriceHOEPPredispOR_2021_v395.csv'),
+        '2022': static_path('Pricing_Data', 'PUB_PriceHOEPPredispOR_2022_v396.csv'),
+        '2023': static_path('Pricing_Data', 'PUB_PriceHOEPPredispOR_2023_v393.csv')
     }
 
     hourly_avg_all_years = []

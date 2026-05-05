@@ -2,10 +2,16 @@
 .codex-artifacts/
 _site/
 _site-test/
+downloads/virtual-power-plant-toolkit.zip
 .nested-repo-backups/
+.cache.sqlite
+.cache
+.cache/
 
 external/virtual-power-plant-flask/.venv/
 external/virtual-power-plant-flask/__pycache__/
+external/virtual-power-plant-flask/.cache
+external/virtual-power-plant-flask/.cache/
 external/game-of-life/files/__pycache__/
 external/game-of-life/Game_of_Life_Installer.exe
 external/game-of-life/game_of_life - Shortcut.lnk

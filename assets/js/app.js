@@ -320,6 +320,25 @@
 
   function renderVppLaunch() {
     const page = data.vppLaunch;
+    const demoTabs = page.demoScreens.map((screen, index) => `
+      <button class="vpp-demo-tab ${index === 0 ? "active" : ""}" type="button" data-vpp-demo-button="${index}">
+        ${screen.label}
+      </button>
+    `).join("");
+    const demoPanels = page.demoScreens.map((screen, index) => `
+      <section class="vpp-demo-panel ${index === 0 ? "active" : ""}" data-vpp-demo-panel="${index}" ${index === 0 ? "" : "hidden"}>
+        <div class="vpp-demo-visual">
+          ${image(screen.image, screen.title, "vpp-demo-image", true)}
+        </div>
+        <div class="vpp-demo-copy">
+          <h3>${screen.title}</h3>
+          <p>${screen.text}</p>
+          <ul class="vpp-demo-highlights">
+            ${screen.highlights.map((item) => `<li>${item}</li>`).join("")}
+          </ul>
+        </div>
+      </section>
+    `).join("");
     return `
       <section class="page-hero">
         <div class="wrap page-hero-grid vpp-launch-hero">
@@ -329,6 +348,7 @@
             <p class="section-lede">${page.lede}</p>
             <div class="cta-row">
               ${buttonLink({ label: "Open Local App", href: page.appUrl, style: "primary", sameTab: true })}
+              ${buttonLink({ label: "Download Toolkit", href: page.bundleUrl, sameTab: true })}
               ${buttonLink({ label: "Video Guide", href: page.videoUrl })}
               ${buttonLink({ label: "GitHub", href: page.repoUrl })}
             </div>
@@ -341,9 +361,10 @@
           <article class="card vpp-status-card">
             <span class="vpp-status-badge checking" data-vpp-status>Checking local app status...</span>
             <h2>Launch the toolkit</h2>
-            <p>If the Flask app is running locally, it will load below and the open button will take you straight into the live tool.</p>
+            <p>If the Flask app is running locally, it will load below. On the hosted portfolio, the space below switches to a guided product tour and a downloadable local bundle.</p>
             <div class="cta-row">
               ${buttonLink({ label: "Open Toolkit", href: page.appUrl, style: "primary", sameTab: true }, "vpp-open-link")}
+              ${buttonLink({ label: "Download Bundle", href: page.bundleUrl, sameTab: true })}
               <button class="button" type="button" data-vpp-retry>Retry Check</button>
             </div>
             <div class="vpp-meta-list">
@@ -358,11 +379,24 @@
             </div>
           </article>
           <article class="card vpp-preview-card">
+            <div class="vpp-preview-head">
+              <div>
+                <h2>Hosted walkthrough</h2>
+                <p>Representative Waterloo sample used for the public demo flow.</p>
+              </div>
+              <div class="vpp-scenario-pills">
+                ${page.sampleScenario.map((item) => `<span>${item}</span>`).join("")}
+              </div>
+            </div>
             <div class="vpp-frame-shell" data-vpp-frame-shell>
               <iframe data-vpp-frame title="Virtual Power Plant Toolkit" loading="lazy"></iframe>
               <div class="vpp-frame-placeholder" data-vpp-placeholder>
                 <strong>Local toolkit preview</strong>
                 <p>Start the Flask app on port 5050 to load the live tool here.</p>
+              </div>
+              <div class="vpp-demo-shell" data-vpp-demo hidden>
+                <div class="vpp-demo-tabs">${demoTabs}</div>
+                <div class="vpp-demo-panels">${demoPanels}</div>
               </div>
             </div>
           </article>
@@ -912,6 +946,9 @@
     const placeholder = document.querySelector("[data-vpp-placeholder]");
     const shell = document.querySelector("[data-vpp-frame-shell]");
     const retry = document.querySelector("[data-vpp-retry]");
+    const demo = document.querySelector("[data-vpp-demo]");
+    const demoButtons = Array.from(document.querySelectorAll("[data-vpp-demo-button]"));
+    const demoPanels = Array.from(document.querySelectorAll("[data-vpp-demo-panel]"));
     if (!status || !frame || !placeholder || !shell || !data.vppLaunch) return;
 
     const { appUrl, healthUrl } = data.vppLaunch;
@@ -922,7 +959,29 @@
       status.textContent = text;
     }
 
+    function setDemoScreen(index) {
+      demoButtons.forEach((button, buttonIndex) => {
+        button.classList.toggle("active", buttonIndex === index);
+      });
+      demoPanels.forEach((panel, panelIndex) => {
+        const active = panelIndex === index;
+        panel.hidden = !active;
+        panel.classList.toggle("active", active);
+      });
+    }
+
+    function setHostedDemo(visible) {
+      if (!demo) return;
+      demo.hidden = !visible;
+      shell.classList.toggle("hosted-demo", visible);
+      if (visible) {
+        placeholder.hidden = true;
+        frame.removeAttribute("src");
+      }
+    }
+
     function setFrameReady(ready) {
+      setHostedDemo(false);
       shell.classList.toggle("ready", ready);
       placeholder.hidden = ready;
       if (ready && !frame.src) {
@@ -935,8 +994,8 @@
 
     async function checkHealth() {
       if (!isLocalHost) {
-        setFrameReady(false);
-        setStatus("offline", "The live Flask toolkit is available in the local build only");
+        setHostedDemo(true);
+        setStatus("offline", "Hosted guided demo loaded below");
         return;
       }
       setStatus("checking", "Checking local app status...");
@@ -949,11 +1008,15 @@
         setFrameReady(true);
         setStatus("online", "Local Flask app is running");
       } catch (error) {
-        setFrameReady(false);
-        setStatus("offline", "Local Flask app is not running yet");
+        setHostedDemo(true);
+        setStatus("offline", "Local Flask app is not running. Guided demo loaded below");
       }
     }
 
+    demoButtons.forEach((button, index) => {
+      button.addEventListener("click", () => setDemoScreen(index));
+    });
+    setDemoScreen(0);
     retry?.addEventListener("click", checkHealth);
     checkHealth();
   }

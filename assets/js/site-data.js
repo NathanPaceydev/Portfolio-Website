@@ -645,14 +645,73 @@ window.SITE_DATA = {
   vppLaunch: {
     title: "Virtual Power Plant Toolkit",
     eyebrow: "SOFTWARE PROJECT",
-    lede: "Open the local Flask app for solar, wind, battery, pricing, and summary analysis from inside the portfolio flow.",
+    lede: "A planning toolkit for comparing solar, wind, battery storage, and long-horizon project economics. On the hosted site it opens as a guided demo; in the local bundle it runs as the full Flask app.",
     preview: "https://static.wixstatic.com/media/d291ee_483ada3291f0429a93747429e964b15c~mv2.png",
     appUrl: "http://127.0.0.1:5050/",
     healthUrl: "http://127.0.0.1:5050/healthz",
     repoUrl: "https://github.com/NathanPaceydev/Virtual-Power-Plant",
     videoUrl: "https://www.youtube.com/watch?v=x4Zi4jsRHSM&t=1s&ab_channel=NathanPacey",
+    bundleUrl: "downloads/virtual-power-plant-toolkit.zip",
     appPath: "external/virtual-power-plant-flask/app.py",
-    requirementsPath: "external/virtual-power-plant-flask/requirements.txt"
+    requirementsPath: "external/virtual-power-plant-flask/requirements.txt",
+    sampleScenario: [
+      "Waterloo, Ontario",
+      "600 m2 premium rooftop solar array",
+      "3 Aeolos turbines at 30 m",
+      "800 kWh battery storage scenario"
+    ],
+    demoScreens: [
+      {
+        label: "Inputs",
+        title: "Project setup form",
+        image: "assets/images/vpp-showcase/home.png",
+        text: "The toolkit starts with one intake flow for location, PV array assumptions, turbine sizing, and optional battery storage.",
+        highlights: [
+          "Geocodes the site from city, postal code, and country",
+          "Collects solar, wind, and storage assumptions in one pass"
+        ]
+      },
+      {
+        label: "Solar",
+        title: "Solar system outputs and ROI",
+        image: "assets/images/vpp-showcase/solar-top.png",
+        text: "The solar module estimates system size, yearly generation, installed cost, and payback sensitivity for the chosen buyback assumptions.",
+        highlights: [
+          "Monthly AC/DC generation and irradiance views",
+          "Upfront cost, lifetime revenue, ROI, and payback"
+        ]
+      },
+      {
+        label: "Wind",
+        title: "Wind generation and financials",
+        image: "assets/images/vpp-showcase/wind-top.png",
+        text: "The wind workflow uses archived weather data and turbine height interpolation to estimate production, revenue, and project sensitivity.",
+        highlights: [
+          "Hourly and monthly wind-speed analysis by elevation",
+          "Generation profile, lifetime revenue, ROI, and payback"
+        ]
+      },
+      {
+        label: "Battery",
+        title: "Battery degradation and arbitrage",
+        image: "assets/images/vpp-showcase/battery-top.png",
+        text: "Battery scenarios compare degradation models, capacity fade, and lifetime arbitrage revenue against the required storage size.",
+        highlights: [
+          "Multiple SoC degradation curves and year-one capacity tracking",
+          "Lifetime revenue comparison against upfront battery cost"
+        ]
+      },
+      {
+        label: "Summary",
+        title: "Combined project summary",
+        image: "assets/images/vpp-showcase/summary.png",
+        text: "The final summary rolls solar, wind, and storage into one project view with total cost, revenue, payback, and ROI.",
+        highlights: [
+          "Stacked capital cost view across all systems",
+          "Portfolio-level revenue, profit, ROI, and payback"
+        ]
+      }
+    ]
   },
   asteroidLaunch: {
     title: "Asteroid Belt Adventure",
