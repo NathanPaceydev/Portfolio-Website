@@ -645,16 +645,24 @@ window.SITE_DATA = {
   vppLaunch: {
     title: "Virtual Power Plant Toolkit",
     eyebrow: "SOFTWARE PROJECT",
-    lede: "A planning toolkit for comparing solar, wind, battery storage, and long-horizon project economics. On the hosted site it opens as a guided demo; in the local bundle it runs as the full Flask app.",
+    lede: "A planning toolkit for comparing solar, wind, battery storage, and long-horizon project economics. Since GitHub Pages cannot host the full Flask stack cleanly, this page focuses on the demo, the source code, and a downloadable local build.",
     preview: "https://static.wixstatic.com/media/d291ee_483ada3291f0429a93747429e964b15c~mv2.png",
-    appUrl: "http://127.0.0.1:5050/",
-    healthUrl: "http://127.0.0.1:5050/healthz",
     repoUrl: "https://github.com/NathanPaceydev/Virtual-Power-Plant",
     videoUrl: "https://www.youtube.com/watch?v=x4Zi4jsRHSM&t=1s&ab_channel=NathanPacey",
+    videoEmbedUrl: "https://www.youtube.com/embed/x4Zi4jsRHSM?rel=0",
     bundleUrl: "downloads/virtual-power-plant-toolkit.zip",
     hostedBundleUrl: "https://raw.githubusercontent.com/NathanPaceydev/Portfolio-Website/main/downloads/virtual-power-plant-toolkit.zip",
-    appPath: "external/virtual-power-plant-flask/app.py",
-    requirementsPath: "external/virtual-power-plant-flask/requirements.txt",
+    featureList: [
+      "Solar sizing, generation, revenue, and ROI analysis",
+      "Wind production modelling with turbine-height sensitivity",
+      "Battery degradation and arbitrage comparisons",
+      "Combined summary view for project-level economics"
+    ],
+    downloadNotes: [
+      "Includes the full Flask app, templates, static datasets, and launchers.",
+      "Works with the included run scripts for macOS, Linux, and Windows.",
+      "Best for showcasing the real toolkit without forcing a fake web deployment."
+    ],
     sampleScenario: [
       "Waterloo, Ontario",
       "600 m2 premium rooftop solar array",
