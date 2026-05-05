@@ -650,7 +650,7 @@ window.SITE_DATA = {
     repoUrl: "https://github.com/NathanPaceydev/Virtual-Power-Plant",
     videoUrl: "https://www.youtube.com/watch?v=x4Zi4jsRHSM&t=1s&ab_channel=NathanPacey",
     videoEmbedUrl: "https://www.youtube.com/embed/x4Zi4jsRHSM?rel=0",
-    placeholderLabel: "Hosted App Coming Soon",
+    appUrl:"https://virtual-power-plant.onrender.com",
     projectNotes: [
       "The portfolio now treats VPP as its own standalone software project.",
       "The tutorial video shows the real workflow, calculations, and interface.",

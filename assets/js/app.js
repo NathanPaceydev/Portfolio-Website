@@ -330,8 +330,8 @@
             <div class="cta-row">
               ${buttonLink({ label: "Watch Demo", href: page.videoUrl, style: "primary" })}
               ${buttonLink({ label: "GitHub", href: page.repoUrl })}
-              <span class="button ghost disabled" aria-disabled="true">${page.placeholderLabel}</span>
-            </div>
+              ${buttonLink({ label: "Web App", href: page.appUrl })}
+            </div>s
           </div>
           <div class="hero-media">${image(page.preview, page.title, "", true)}</div>
         </div>
