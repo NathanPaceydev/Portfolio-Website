@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Pollo Chase: a hidden pixel-platformer set across Switzerland.">
+    <title>Pollo Chase</title>
+    <link rel="stylesheet" href="assets/css/pollo-chase.css">
+    <script src="assets/js/pollo-chase.js" defer></script>
+  </head>
+  <body>
+    <main class="pollo-shell">
+      <section class="pollo-stage">
+        <header class="pollo-topbar">
+          <div>
+            <p class="pollo-kicker">Hidden Game</p>
+            <h1>Pollo Chase</h1>
+          </div>
+          <div class="pollo-stats">
+            <div><span>Level</span><strong data-pollo-level>Grindelwald</strong></div>
+            <div><span>Flowers</span><strong data-pollo-flowers>0 / 12</strong></div>
+            <div><span>Bells</span><strong data-pollo-bells>0 / 4</strong></div>
+            <div><span>Time</span><strong data-pollo-time>00:00.0</strong></div>
+          </div>
+        </header>
+
+        <div class="pollo-canvas-shell">
+          <canvas id="pollo-canvas" width="960" height="540" aria-label="Pollo Chase game area"></canvas>
+          <div class="pollo-overlay" data-pollo-overlay>
+            <div class="pollo-card" data-pollo-card>
+              <p class="pollo-kicker" data-pollo-overlay-kicker>Swiss Pixel Platformer</p>
+              <h2 data-pollo-overlay-title>Pollo Chase</h2>
+              <p data-pollo-overlay-text>
+                Paulette is already halfway up the mountain. Nate has a ring, a reckless amount of devotion, and zero intention of missing the proposal.
+              </p>
+              <div class="pollo-actions" data-pollo-overlay-actions>
+                <button type="button" data-pollo-start>Start Adventure</button>
+                <button type="button" class="secondary" data-pollo-continue hidden>Continue</button>
+                <button type="button" class="secondary" data-pollo-reset-save>Reset Save</button>
+              </div>
+              <div class="pollo-controls">
+                <span>Move: A / D or Arrows</span>
+                <span>Jump: Space / W / Up</span>
+                <span>Dash: Shift</span>
+                <span>Heart Burst: B</span>
+                <span>Pause: P</span>
+                <span>Photo Mode: H</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pollo-bottom">
+          <article class="pollo-panel">
+            <h3>Story Beat</h3>
+            <p data-pollo-story>
+              A ring, a mountain, and a very fast Pollo. Start the run and keep the proposal dream alive.
+            </p>
+          </article>
+          <article class="pollo-panel">
+            <h3>Hidden Mischief</h3>
+            <ul data-pollo-secrets>
+              <li>Four secret cowbells unlock something extra.</li>
+              <li>Typing <code>POLLO</code> changes more than your luck.</li>
+              <li>Every region hides Edelweiss and shortcuts.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+    </main>
+    <noscript>This secret page needs JavaScript to run the platformer.</noscript>
+  </body>
+</html>
