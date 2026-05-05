@@ -362,9 +362,8 @@
             <div class="cta-row">
               ${buttonLink({ label: "Open GitHub Repo", href: page.repoUrl, style: "primary" })}
               ${buttonLink({ label: "Open Tutorial Video", href: page.videoUrl })}
-              <span class="button ghost disabled" aria-disabled="true">${page.placeholderLabel}</span>
+              ${buttonLink({ label: "Web App", href: page.appUrl })}
             </div>
-            <p class="vpp-placeholder-note">The live app button will point to the dedicated hosted VPP site once that deployment is ready.</p>
           </div>
         </div>
       </section>
