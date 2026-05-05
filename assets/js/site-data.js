@@ -652,6 +652,7 @@ window.SITE_DATA = {
     repoUrl: "https://github.com/NathanPaceydev/Virtual-Power-Plant",
     videoUrl: "https://www.youtube.com/watch?v=x4Zi4jsRHSM&t=1s&ab_channel=NathanPacey",
     bundleUrl: "downloads/virtual-power-plant-toolkit.zip",
+    hostedBundleUrl: "https://raw.githubusercontent.com/NathanPaceydev/Portfolio-Website/main/downloads/virtual-power-plant-toolkit.zip",
     appPath: "external/virtual-power-plant-flask/app.py",
     requirementsPath: "external/virtual-power-plant-flask/requirements.txt",
     sampleScenario: [

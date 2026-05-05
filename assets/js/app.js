@@ -320,6 +320,8 @@
 
   function renderVppLaunch() {
     const page = data.vppLaunch;
+    const isLocalHost = ["127.0.0.1", "localhost"].includes(window.location.hostname);
+    const bundleUrl = isLocalHost ? page.bundleUrl : (page.hostedBundleUrl || page.bundleUrl);
     const demoTabs = page.demoScreens.map((screen, index) => `
       <button class="vpp-demo-tab ${index === 0 ? "active" : ""}" type="button" data-vpp-demo-button="${index}">
         ${screen.label}
@@ -348,7 +350,7 @@
             <p class="section-lede">${page.lede}</p>
             <div class="cta-row">
               ${buttonLink({ label: "Open Local App", href: page.appUrl, style: "primary", sameTab: true })}
-              ${buttonLink({ label: "Download Toolkit", href: page.bundleUrl, sameTab: true })}
+              ${buttonLink({ label: "Download Toolkit", href: bundleUrl, sameTab: true })}
               ${buttonLink({ label: "Video Guide", href: page.videoUrl })}
               ${buttonLink({ label: "GitHub", href: page.repoUrl })}
             </div>
@@ -364,7 +366,7 @@
             <p>If the Flask app is running locally, it will load below. On the hosted portfolio, the space below switches to a guided product tour and a downloadable local bundle.</p>
             <div class="cta-row">
               ${buttonLink({ label: "Open Toolkit", href: page.appUrl, style: "primary", sameTab: true }, "vpp-open-link")}
-              ${buttonLink({ label: "Download Bundle", href: page.bundleUrl, sameTab: true })}
+              ${buttonLink({ label: "Download Bundle", href: bundleUrl, sameTab: true })}
               <button class="button" type="button" data-vpp-retry>Retry Check</button>
             </div>
             <div class="vpp-meta-list">

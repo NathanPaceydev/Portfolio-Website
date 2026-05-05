@@ -2,7 +2,6 @@
 .codex-artifacts/
 _site/
 _site-test/
-downloads/virtual-power-plant-toolkit.zip
 .nested-repo-backups/
 .cache.sqlite
 .cache
