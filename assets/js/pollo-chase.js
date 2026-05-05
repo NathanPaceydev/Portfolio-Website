@@ -1540,15 +1540,14 @@
     const goalZone = state.currentLevel.goal;
     const sx = Math.round(goalZone.x - state.cameraX);
     if (sx > VIEW.width + 40 || sx < -140) return;
-    ctx.fillStyle = "#486a9d";
-    ctx.fillRect(sx + 48, goalZone.y + 24, 10, goalZone.height - 24);
-    ctx.fillStyle = "#ff8eb5";
-    ctx.fillRect(sx + 24, goalZone.y + 8, 34, 18);
-    ctx.fillStyle = "#fff0f7";
-    ctx.fillRect(sx + 12, goalZone.y + 42, 32, 42);
-    ctx.fillStyle = "#6b2d3c";
-    ctx.fillRect(sx + 20, goalZone.y + 28, 18, 16);
-    drawHeart(sx + 60, goalZone.y + 12, 1);
+    const flowerY = goalZone.y + goalZone.height - 6;
+    drawGoalFlowers(sx + 4, flowerY, 0.9);
+    drawGoalFlowers(sx + 34, flowerY - 2, 1.1);
+    drawPolloSprite(sx + 24, goalZone.y + goalZone.height - 64, 1.3, true);
+    drawHeart(sx + 16, goalZone.y + 28, 0.8);
+    drawHeart(sx + 74, goalZone.y + 10, 1);
+    ctx.fillStyle = "rgba(255, 242, 247, 0.55)";
+    ctx.fillRect(sx + 28, goalZone.y + goalZone.height - 6, 42, 4);
   }
 
   function drawPolloSpot(spot) {
@@ -1610,15 +1609,92 @@
     }
   }
 
-  function drawPolloSprite(x, y, scale) {
-    ctx.fillStyle = "#fff3f9";
-    ctx.fillRect(x, y, 24 * scale, 30 * scale);
-    ctx.fillRect(x + 6 * scale, y - 10 * scale, 12 * scale, 10 * scale);
-    ctx.fillStyle = "#ff97ba";
-    ctx.fillRect(x + 14 * scale, y - 2 * scale, 6 * scale, 6 * scale);
-    ctx.fillStyle = "#f9d266";
-    ctx.fillRect(x + 10 * scale, y + 30 * scale, 4 * scale, 8 * scale);
-    ctx.fillRect(x + 16 * scale, y + 30 * scale, 4 * scale, 8 * scale);
+  function drawPolloSprite(x, y, scale, holdingFlowers = false) {
+    const s = scale;
+    const px = (value) => Math.round(value * s);
+    const skin = "#f4e6dc";
+    const hair = "#8b5b39";
+    const dress = "#d7ebff";
+    const apron = "#f7fbff";
+    const ribbon = "#ff9cbb";
+
+    ctx.fillStyle = hair;
+    ctx.fillRect(x + px(4), y + px(3), px(16), px(11));
+    ctx.fillRect(x + px(15), y + px(10), px(4), px(14));
+    ctx.fillRect(x + px(17), y + px(22), px(3), px(6));
+
+    ctx.fillStyle = skin;
+    ctx.fillRect(x + px(7), y, px(10), px(10));
+    ctx.fillRect(x + px(5), y + px(12), px(3), px(8));
+    ctx.fillRect(x + px(17), y + px(12), px(3), px(8));
+
+    ctx.fillStyle = dress;
+    ctx.fillRect(x + px(5), y + px(10), px(14), px(18));
+    ctx.fillStyle = apron;
+    ctx.fillRect(x + px(9), y + px(14), px(6), px(10));
+    ctx.fillStyle = ribbon;
+    ctx.fillRect(x + px(5), y + px(10), px(14), px(3));
+    ctx.fillRect(x + px(11), y + px(24), px(2), px(4));
+
+    ctx.fillStyle = ribbon;
+    ctx.fillRect(x + px(6), y + px(1), px(2), px(2));
+    ctx.fillRect(x + px(10), y - px(1), px(2), px(2));
+    ctx.fillRect(x + px(14), y + px(1), px(2), px(2));
+    ctx.fillStyle = "#ffe46f";
+    ctx.fillRect(x + px(8), y, px(2), px(2));
+    ctx.fillRect(x + px(12), y, px(2), px(2));
+
+    ctx.fillStyle = "#f4c85b";
+    ctx.fillRect(x + px(8), y + px(28), px(3), px(8));
+    ctx.fillRect(x + px(14), y + px(28), px(3), px(8));
+
+    if (holdingFlowers) {
+      drawBouquet(x + px(19), y + px(15), s);
+    } else {
+      ctx.fillStyle = skin;
+      ctx.fillRect(x + px(19), y + px(13), px(3), px(7));
+      ctx.fillStyle = ribbon;
+      ctx.fillRect(x + px(20), y + px(12), px(2), px(2));
+    }
+  }
+
+  function drawBouquet(x, y, scale) {
+    const s = scale;
+    const px = (value) => Math.max(1, Math.round(value * s));
+    ctx.fillStyle = "#5d9b53";
+    ctx.fillRect(x + px(1), y + px(5), px(2), px(7));
+    ctx.fillRect(x + px(4), y + px(5), px(2), px(8));
+    ctx.fillRect(x + px(7), y + px(5), px(2), px(7));
+    ctx.fillStyle = "#ff9db7";
+    ctx.fillRect(x, y + px(1), px(4), px(4));
+    ctx.fillStyle = "#f8d86b";
+    ctx.fillRect(x + px(3), y, px(4), px(4));
+    ctx.fillStyle = "#f7fbff";
+    ctx.fillRect(x + px(6), y + px(1), px(4), px(4));
+    ctx.fillStyle = "#86c977";
+    ctx.fillRect(x + px(2), y + px(8), px(6), px(3));
+  }
+
+  function drawGoalFlowers(x, y, scale) {
+    const s = scale;
+    const px = (value) => Math.max(1, Math.round(value * s));
+    const palette = [
+      { blossom: "#ff9db7", center: "#ffe46f", dx: 0 },
+      { blossom: "#f7fbff", center: "#ffd869", dx: 10 },
+      { blossom: "#9ed6ff", center: "#ffe46f", dx: 20 },
+      { blossom: "#ffbdd0", center: "#ffe46f", dx: 31 }
+    ];
+
+    for (const flower of palette) {
+      const fx = x + px(flower.dx);
+      ctx.fillStyle = "#6aac5f";
+      ctx.fillRect(fx + px(3), y - px(10), px(2), px(12));
+      ctx.fillStyle = flower.blossom;
+      ctx.fillRect(fx, y - px(14), px(8), px(4));
+      ctx.fillRect(fx + px(2), y - px(16), px(4), px(8));
+      ctx.fillStyle = flower.center;
+      ctx.fillRect(fx + px(3), y - px(13), px(2), px(2));
+    }
   }
 
   function drawRing(x, y) {
@@ -1769,7 +1845,16 @@
         flowers: totalFlowers(),
         bells: totalBells(),
         chickenMode: save.chickenMode
-      })
+      }),
+      teleportToGoal: () => {
+        if (!state.currentLevel) return;
+        const goalZone = state.currentLevel.goal;
+        state.player.x = goalZone.x - 56;
+        state.player.y = goalZone.y + goalZone.height - state.player.height;
+        state.player.vx = 0;
+        state.player.vy = 0;
+        state.cameraX = clamp(goalZone.x - VIEW.width * 0.58, 0, state.currentLevel.width - VIEW.width);
+      }
     };
   }
 
