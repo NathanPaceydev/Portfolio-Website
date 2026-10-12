@@ -183,10 +183,10 @@
               ${image(home.logos[2].image, home.logos[2].label, "", true)}
             </a>
             <p>${home.body[1]}</p>
-            <p>${home.body[2]}</p>
             <a class="home-queens-logo" href="${home.logos[1].href}"${linkAttrs(home.logos[1].href)}>
               ${image(home.logos[1].image, home.logos[1].label, "", true)}
             </a>
+            <p>${home.body[2]}</p>
             <p>${home.body[3]}</p>
             <div class="home-footer-cta">${buttonLink(home.ctas[2])}</div>
           </div>

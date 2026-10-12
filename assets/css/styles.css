@@ -2947,3 +2947,206 @@ body {
 .category-image {
   display: block;
 }
+
+/* ------------------------------------------------------------------
+   Home + About readability pass
+   Even vertical rhythm, a comfortable line length, and a text card
+   behind the About intro so it no longer sits on top of the photo.
+   ------------------------------------------------------------------ */
+
+/* Home: profile card */
+.home-profile-main p {
+  line-height: 1.55;
+}
+
+/* Home: copy column */
+.home-original-inner {
+  grid-template-columns: 376px minmax(0, 500px);
+  column-gap: 40px;
+}
+
+.home-copy-original {
+  padding-top: 18px;
+}
+
+.home-copy-original h2 {
+  margin-bottom: 16px;
+}
+
+.home-copy-original .tagline {
+  margin-bottom: 30px;
+}
+
+.home-copy-original .cta-row {
+  gap: 24px;
+  margin-bottom: 56px;
+}
+
+.home-copy-original p {
+  max-width: none;
+  margin: 0 0 20px;
+  font-size: 17px;
+  line-height: 1.7;
+  color: #d3dce4;
+}
+
+.home-epfl-logo,
+.home-queens-logo {
+  margin: 8px auto 28px;
+}
+
+.home-epfl-logo {
+  width: 170px;
+}
+
+.home-queens-logo {
+  width: 300px;
+}
+
+.home-footer-cta {
+  margin-top: 8px;
+}
+
+/* About: intro text card (overlaps the photo, sized by its content) */
+.about-hero-stack {
+  min-height: 0;
+}
+
+.about-top-copy {
+  position: relative;
+  top: auto;
+  z-index: 1;
+  margin-top: -212px;
+}
+
+.about-top-copy-inner {
+  min-height: 0;
+}
+
+.about-copy-block {
+  align-self: start;
+  width: 580px;
+  padding: 44px 52px 48px;
+  background: var(--wix-card);
+  box-shadow: 0 22px 32px rgba(0, 0, 0, 0.34);
+}
+
+.about-copy-block h1 {
+  max-width: none;
+  margin: 0;
+  font-size: 52px;
+  line-height: 1.05;
+}
+
+.about-copy-block h1::after {
+  content: "";
+  display: block;
+  width: 51px;
+  height: 3px;
+  margin: 22px 0 20px;
+  background: var(--wix-blue);
+}
+
+.about-copy-block p {
+  max-width: none;
+  font-size: 17px;
+  line-height: 1.75;
+  color: #d3dce4;
+}
+
+/* About: interest cards */
+.about-interests-section {
+  padding-top: 80px;
+}
+
+.about-interest-card p {
+  color: #d3dce4;
+  line-height: 1.75;
+}
+
+@media (max-width: 960px) {
+  .home-original-inner {
+    grid-template-columns: 1fr;
+    row-gap: 44px;
+  }
+
+  .home-copy-original {
+    width: 100%;
+    max-width: 560px;
+    justify-self: center;
+    padding-top: 0;
+  }
+
+  .about-top-band,
+  .about-top-copy,
+  .about-top-copy-inner {
+    width: 100%;
+  }
+
+  .about-top-band {
+    grid-template-columns: 1fr;
+  }
+
+  .about-top-fill {
+    display: none;
+  }
+
+  .about-top-copy {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  .about-copy-spacer {
+    display: none;
+  }
+
+  .about-copy-block {
+    width: auto;
+    margin: -56px 20px 0;
+    padding: 34px 32px 36px;
+  }
+
+  .about-copy-block h1 {
+    font-size: 44px;
+  }
+
+  .about-interests-section {
+    padding-top: 56px;
+  }
+}
+
+@media (max-width: 640px) {
+  .home-original-inner {
+    row-gap: 36px;
+  }
+
+  .home-copy-original .cta-row {
+    gap: 12px;
+    margin-bottom: 40px;
+  }
+
+  .about-copy-block {
+    margin: -40px 12px 0;
+    padding: 28px 22px 30px;
+  }
+
+  .about-copy-block h1 {
+    font-size: 34px;
+  }
+
+  .about-copy-block h1::after {
+    margin: 18px 0 16px;
+  }
+
+  .about-copy-block p {
+    font-size: 16px;
+  }
+
+  .site-footer {
+    padding: 36px 0;
+  }
+
+  .social-row {
+    flex-wrap: wrap;
+  }
+}

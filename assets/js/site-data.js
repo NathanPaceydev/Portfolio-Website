@@ -38,7 +38,7 @@ window.SITE_DATA = {
     title: "Nathan Pacey",
     intro: "Hello",
     tagline: "Here's who I am & what I do",
-    roleLines: ["Research Assitant", "University of Waterloo", "Institute of Quantum Computing"],
+    roleLines: ["Research Assistant", "University of Waterloo", "Institute for Quantum Computing"],
     body: [
       "I am a Master's student in Quantum Science and Engineering at EPFL and a researcher at the Institute for Quantum Computing (IQC). My work bridges theory and simulation; from quantum error correction and noise modelling for Qiskit to optomechanical simulations aimed at fault-tolerant quantum computing.",
       "Graduated with a Bachelor's in Engineering Physics and Computing from Queen's University.",
