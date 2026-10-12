@@ -2959,10 +2959,10 @@ body {
   line-height: 1.55;
 }
 
-/* Home: copy column */
+/* Home: copy column (wide gap so the text doesn't crowd the profile card) */
 .home-original-inner {
-  grid-template-columns: 376px minmax(0, 500px);
-  column-gap: 40px;
+  grid-template-columns: 376px minmax(0, 480px);
+  column-gap: 64px;
 }
 
 .home-copy-original {
