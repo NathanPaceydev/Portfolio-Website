@@ -2519,11 +2519,12 @@ body {
 }
 
 .resume-stage-inner > h2 {
-  width: min(724px, 100%);
-  margin: 0 auto 28px;
-  font-size: 25px;
+  width: 100%;
+  margin: 0 0 28px;
+  font-size: 30px;
   line-height: 1.2;
   font-weight: 400;
+  text-align: left;
 }
 
 .resume-entry-stack {

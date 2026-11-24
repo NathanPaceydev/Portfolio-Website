@@ -144,6 +144,31 @@ window.SITE_DATA = {
     cv: "assets/docs/nathan-pacey-cv.pdf",
     experience: [
       {
+        title: "Quantum Error Correction Researcher",
+        period: "October 2026 - Present",
+        place: "ZuriQ",
+        location: "ETH Zurich, Zurich, Switzerland",
+        bullets: [
+          "Develop novel quantum error correction algorithms for Penning-trap architectures, exploring surface, color, and quantum low-density parity-check (qLDPC) codes.",
+          "Build a custom simulation and benchmarking software suite with realistic noise models for motional heating, laser noise, and magnetic-field fluctuations.",
+          "Integrate error correction protocols into hardware scheduling and compilation workflows, translating code requirements into executable operations.",
+          "Collaborate with experimental and theory teams on hardware-code co-design, optimizing error correction protocols for the capabilities and constraints of Penning-trap hardware."
+        ]
+      },
+      {
+        title: "Quantum Machine Learning Researcher",
+        period: "February 2026 - September 2026",
+        place: "AXA Switzerland",
+        location: "Lausanne, Vaud, Switzerland",
+        bullets: [
+          "Developed Rydberg-atom quantum reservoir computing models for time-series forecasting, using road-collision and casualty data as proxies for insurance risk.",
+          "Benchmarked single-step and multi-step quantum reservoirs against echo state networks, ARIMA, and ETS on synthetic and real-world datasets, evaluating predictive accuracy, memory, and noise sensitivity.",
+          "Optimized reservoir geometry and dynamics using spectral statistics, and investigated finite-shot noise and measurement constraints through experiments on QuEra's Aquila processor via Amazon Braket.",
+          "Research accepted to the 10th International Conference on Quantum Techniques in Machine Learning (QTML 2026), Stellenbosch, South Africa. Manuscript in preparation."
+        ],
+        links: [{ label: "QTML 2026", href: "https://qtml2026.nithecs.ac.za/" }]
+      },
+      {
         title: "Research Assistant",
         period: "May 2024 - Current",
         place: "University of Waterloo Institute for Quantum Computing (IQC)",
@@ -321,7 +346,9 @@ window.SITE_DATA = {
         ],
         links: [
           { label: "EPFL Quantum Science", href: "https://www.epfl.ch/education/master/programs/quantum-science/" },
-          { label: "Surface code research", href: "https://github.com/NathanPaceydev/Noisy-Surface-Code" }
+          { label: "Surface code research", href: "https://github.com/NathanPaceydev/Noisy-Surface-Code" },
+          { label: "Noisy Gates Library", href: "https://pypi.org/project/quantum-gates/" },
+          { label: "Research poster on LinkedIn", href: "https://lnkd.in/p/eCgrP6m3" }
         ]
       },
       {

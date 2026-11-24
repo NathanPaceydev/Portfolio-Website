@@ -622,7 +622,6 @@
           <div class="resume-hero-inner">
             <div class="resume-hero-copy">
               <h1><span></span>${resume.title}</h1>
-              <p class="resume-subtitle">Experience</p>
             </div>
             <a class="button primary" href="${resume.cv}" target="_blank">DOWNLOAD CV</a>
           </div>
