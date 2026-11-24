@@ -148,6 +148,9 @@ window.SITE_DATA = {
         period: "October 2026 - Present",
         place: "ZuriQ",
         location: "ETH Zurich, Zurich, Switzerland",
+        logo: "assets/images/zuriq-logo.svg",
+        logoWidth: 168,
+        logoHeight: 55,
         bullets: [
           "Develop novel quantum error correction algorithms for Penning-trap architectures, exploring surface, color, and quantum low-density parity-check (qLDPC) codes.",
           "Build a custom simulation and benchmarking software suite with realistic noise models for motional heating, laser noise, and magnetic-field fluctuations.",
@@ -160,6 +163,9 @@ window.SITE_DATA = {
         period: "February 2026 - September 2026",
         place: "AXA Switzerland",
         location: "Lausanne, Vaud, Switzerland",
+        logo: "assets/images/axa-logo.svg",
+        logoWidth: 74,
+        logoHeight: 74,
         bullets: [
           "Developed Rydberg-atom quantum reservoir computing models for time-series forecasting, using road-collision and casualty data as proxies for insurance risk.",
           "Benchmarked single-step and multi-step quantum reservoirs against echo state networks, ARIMA, and ETS on synthetic and real-world datasets, evaluating predictive accuracy, memory, and noise sensitivity.",
