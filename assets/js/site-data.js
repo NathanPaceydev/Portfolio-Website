@@ -152,10 +152,10 @@ window.SITE_DATA = {
         logoWidth: 168,
         logoHeight: 55,
         bullets: [
-          "Develop novel quantum error correction algorithms for Penning-trap architectures, exploring surface, color, and quantum low-density parity-check (qLDPC) codes.",
-          "Build a custom simulation and benchmarking software suite with realistic noise models for motional heating, laser noise, and magnetic-field fluctuations.",
-          "Integrate error correction protocols into hardware scheduling and compilation workflows, translating code requirements into executable operations.",
-          "Collaborate with experimental and theory teams on hardware-code co-design, optimizing error correction protocols for the capabilities and constraints of Penning-trap hardware."
+          "Develop novel Penning-trap quantum error correction algorithms using surface, color, and quantum low-density parity-check (qLDPC) codes.",
+          "Build custom simulation and benchmarking software modelling motional heating, laser noise, and magnetic-field fluctuations.",
+          "Integrate error correction into hardware schedulers and compilers, translating protocols into executable operations.",
+          "Co-design hardware and codes with experimental and theory teams to optimize protocols for Penning-trap capabilities and constraints."
         ]
       },
       {
@@ -167,10 +167,10 @@ window.SITE_DATA = {
         logoWidth: 74,
         logoHeight: 74,
         bullets: [
-          "Developed Rydberg-atom quantum reservoir computing models for time-series forecasting, using road-collision and casualty data as proxies for insurance risk.",
-          "Benchmarked single-step and multi-step quantum reservoirs against echo state networks, ARIMA, and ETS on synthetic and real-world datasets, evaluating predictive accuracy, memory, and noise sensitivity.",
-          "Optimized reservoir geometry and dynamics using spectral statistics, and investigated finite-shot noise and measurement constraints through experiments on QuEra's Aquila processor via Amazon Braket.",
-          "Research accepted to the 10th International Conference on Quantum Techniques in Machine Learning (QTML 2026), Stellenbosch, South Africa. Manuscript in preparation."
+          "Built Rydberg-atom quantum reservoirs for time-series forecasting, using collision and casualty data as insurance-risk proxies.",
+          "Benchmarked single- and multi-step reservoirs against echo state networks, ARIMA, and ETS on synthetic and real data for accuracy, memory, and noise sensitivity.",
+          "Optimized geometry and dynamics via spectral statistics; tested finite-shot noise and measurement limits on QuEra Aquila through Amazon Braket.",
+          "Accepted to QTML 2026 (10th International Conference on Quantum Techniques in Machine Learning), Stellenbosch, South Africa; manuscript in preparation."
         ],
         links: [{ label: "QTML 2026", href: "https://qtml2026.nithecs.ac.za/" }]
       },
@@ -183,9 +183,9 @@ window.SITE_DATA = {
         logoWidth: 168,
         logoHeight: 65,
         bullets: [
-          "Researched fault-tolerant quantum computing with optomechanical systems, utilizing noise-biased error correction, long lifetimes, and minimal crosstalk to enhance scalability and stability.",
-          "Established the theoretical framework to realize pair-cat quantum codes in a dissipative system across two mechanical modes by deriving reduced master equations with Schrieffer-Wolff transforms and adiabatic elimination.",
-          "Simulated and validated these models by solving master equations using Python-based QuTiP software and optimized experimental parameters to enhance coherence times and fidelity."
+          "Researched fault-tolerant optomechanical quantum computing using noise-biased error correction, long lifetimes, and low crosstalk for scalability and stability.",
+          "Derived reduced master equations for dissipative pair-cat quantum codes across two mechanical modes using Schrieffer-Wolff transforms and adiabatic elimination.",
+          "Validated models with Python/QuTiP master-equation simulations; optimized experimental parameters for coherence and fidelity."
         ],
         links: [{ label: "Optomechanical systems talk", href: "https://youtu.be/V4Uwel08yMA?si=J2ypyxg4Ye9Bw_FO" }]
       },
@@ -209,10 +209,9 @@ window.SITE_DATA = {
           }
         ],
         bullets: [
-          "Selected as one of 30 worldwide CERN Openlab students, leading the aggregation of computing resources from industry leaders like IBM, Nvidia, and Intel for cutting-edge physics research.",
-          "Demonstrated full-stack development expertise, crafting a Flask-based web portal for data collection and visualization with Jinja, JavaScript, HTML, and CSS.",
-          "Efficiently collected and parsed machine data using Bash scripts, Puppet, Ansible playbooks, and Python backend code.",
-          "Ensured script reliability by rigorous testing on virtual Linux machines before production.",
+          "Selected among 30 CERN openlab students worldwide; aggregated IBM, NVIDIA, and Intel computing resources for physics research.",
+          "Built a Flask data-collection and visualization portal with Jinja, JavaScript, HTML, and CSS.",
+          "Collected and parsed machine data with Bash, Puppet, Ansible, and Python; tested scripts on Linux VMs before production.",
           "Published a peer-reviewed paper and presented findings to senior CERN management and scientists."
         ],
         links: [
@@ -230,12 +229,10 @@ window.SITE_DATA = {
         logoWidth: 368,
         logoHeight: 79,
         bullets: [
-          "Enhanced Linux server installations with Kickstart file updates for 30% faster file compression.",
-          "Applied Agile Methodology with Docker, Jenkins, and SVN for code review and testing.",
-          "Developed Bash scripts and configured files to enhance development tools and backend infrastructures.",
-          "Automated tasks with Gradle and Jenkins; wrote Python scripts for data encoding and decoding.",
-          "Acted as a subject matter expert on Military Standards for Radar, Electro-Optical and Infrared sensor systems.",
-          "Managed project schedules and communicated requirements with stakeholders."
+          "Updated Linux Kickstart installations for 30% faster file compression.",
+          "Used Agile workflows with Docker, Jenkins, and SVN for code review and testing.",
+          "Improved development tools and backend infrastructure with Bash and configuration updates; automated tasks with Gradle/Jenkins and data encoding/decoding with Python.",
+          "Served as a military-standards specialist for radar, electro-optical, and infrared sensors; managed schedules and stakeholder requirements."
         ],
         links: [{ label: "Lockheed Martin CMS 330", href: "https://www.lockheedmartin.com/en-ca/cms330.html" }]
       },
@@ -248,10 +245,10 @@ window.SITE_DATA = {
         logoWidth: 216,
         logoHeight: 52,
         bullets: [
-          "Developed UV laser animations and CAD models for a Quantum Dot lighting project.",
-          "Created an Android Smartwatch app in Java, Kotlin and XML to open and close trunk and doors using sliders or voice activation in 3 different languages.",
-          "Programmed C/C++ and worked on the electrical design for several sensors and embedded devices for large automotive companies.",
-          "Led a team of co-ops utilizing the ROS framework to create robotic systems for occupancy testing and research developments."
+          "Created UV-laser animations and CAD models for quantum-dot lighting.",
+          "Built an Android smartwatch app in Java, Kotlin, and XML for door/trunk control via sliders and voice commands in three languages.",
+          "Developed C/C++ firmware and electrical designs for automotive sensors and embedded devices.",
+          "Led co-op teams building ROS robotic systems for occupancy testing and research."
         ],
         links: [
           { label: "Magna", href: "https://www.magna.com/products/power-vision/mechatronics" },
@@ -267,10 +264,8 @@ window.SITE_DATA = {
         logoWidth: 188,
         logoHeight: 58,
         bullets: [
-          "Created a SolidWorks design of a wall mount and a Smart Home Hub used for commercial application in rental units.",
-          "Utilized simulation tools such as Plastics to aid in mould design.",
-          "Developed working drawings from scratch, including dimension and tolerance requirements, for the Smart-hub.",
-          "3D printed several prototypes to test the quality of each design before producing the final model."
+          "Designed a SolidWorks smart-home hub and wall mount for commercial rental units, including dimensioned and toleranced production drawings.",
+          "Used Plastics simulations for mould design and 3D-printed prototypes to validate designs before final production."
         ],
         links: [
           { label: "Heyyoka", href: "https://www.heyyoka.com/" },
@@ -286,9 +281,9 @@ window.SITE_DATA = {
         logoWidth: 116,
         logoHeight: 65,
         bullets: [
-          "Designed and built a battery system meant to operate at -30 &deg;C, for an outdoor traffic light that uses computer vision to monitor dangerous zones at ski hills.",
-          "Used AutoCAD software to create a compliance mechanism ensuring internal parts of the battery system could withstand major impacts and harsh environmental conditions.",
-          "Produced marketing materials leading to a successful University of Waterloo Concept and Dragons Den pitch."
+          "Built a battery system operating at -30 &deg;C for computer-vision traffic lights monitoring ski-hill hazard zones.",
+          "Designed an AutoCAD compliance mechanism to protect battery components from impacts and harsh conditions.",
+          "Created marketing materials supporting successful University of Waterloo Concept and Dragons Den pitches."
         ],
         links: [
           { label: "Vision Spatial Technologies", href: "https://www.visionspatialtech.com/" },
@@ -315,10 +310,9 @@ window.SITE_DATA = {
           }
         ],
         bullets: [
-          "Developed dynamic insurance and restoration forms to reduce clients' documentation time.",
-          "Managed weekly documentation with reports and pivot tables for accounts receivable and sales funnel on major insurance and restoration companies.",
-          "Reduced the volume of customer queries by creating the customer support page.",
-          "Responsible for lead generation and marketing developments."
+          "Built dynamic insurance/restoration forms to reduce documentation time and a support page to reduce customer queries.",
+          "Produced weekly accounts-receivable and sales-funnel reports with pivot tables for major insurance and restoration companies.",
+          "Supported lead generation and marketing development."
         ],
         links: [{ label: "Encircle Inc.", href: "http://getencircle.com/" }]
       },
@@ -331,9 +325,9 @@ window.SITE_DATA = {
         logoWidth: 247,
         logoHeight: 51,
         bullets: [
-          "Created and revised several online university courses such as Introductory Physics, Microeconomics, Calculus, and General Chemistry.",
-          "Developed the front end of the Customer Care and FAQ pages using HTML, CSS, and JavaScript.",
-          "Involved with graphic design, marketing research, and social media sales projects."
+          "Created and revised online university courses in introductory physics, microeconomics, calculus, and general chemistry.",
+          "Built Customer Care and FAQ pages with HTML, CSS, and JavaScript.",
+          "Contributed to graphic design, market research, and social-media sales."
         ],
         links: [{ label: "Minute School", href: "http://minuteschool.com/" }]
       }
@@ -348,12 +342,14 @@ window.SITE_DATA = {
         bullets: [
           "Specialization in Quantum Information and Computation.",
           "Honours Academic GPA of 5.03 /6.",
-          "Research under Prof. Nicolas Macris on the Effects of Stochastic Noise Models on Surface Codes using IBM Qiskit, in collaboration with CERN's Quantum Technology Initiative noisy-gates library."
+          "Researched stochastic noise effects on surface codes with Prof. Nicolas Macris using IBM Qiskit and CERN Quantum Technology Initiative's Noisy Gates Library.",
+          "Speaker at the Munich Quantum Software Forum (MQSF)."
         ],
         links: [
           { label: "EPFL Quantum Science", href: "https://www.epfl.ch/education/master/programs/quantum-science/" },
           { label: "Surface code research", href: "https://github.com/NathanPaceydev/Noisy-Surface-Code" },
           { label: "Noisy Gates Library", href: "https://pypi.org/project/quantum-gates/" },
+          { label: "Munich Quantum Software Forum", href: "https://mq.sc/mqsf/" },
           { label: "Research poster on LinkedIn", href: "https://lnkd.in/p/eCgrP6m3" }
         ]
       },
@@ -380,9 +376,9 @@ window.SITE_DATA = {
       }
     ],
     technicalBullets: [
+      "Quantum computing in Python using QuTiP and the PennyLane and Qiskit libraries.",
       "Programming in Python, Bash, Shell, Java, Kotlin, C, C++, JavaScript and MatLab, SQL, Mathematica and LabView.",
       "Machine Learning and AI applications using OpenCV, SciKit-Learn, PyTorch and TensorFlow.",
-      "Quantum computing in Python using QuTiP and the PennyLane and Qiskit libraries.",
       "Data-science tools in Python and Jupyter using NumPy, Pandas, MatPlotLib, SeaBorn and IterTools.",
       "Front-end development using XML, HTML, Markdown and CSS.",
       "DevOps tools including Jenkins, Gradle, Docker, Bitbucket, Git, and SVN.",

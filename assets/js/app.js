@@ -643,8 +643,6 @@
             <div class="resume-panel resume-text-panel">
               <h2>Technical Skills</h2>
               <ul class="resume-plain-list">${technical}</ul>
-              <h3>Professional Skillset</h3>
-              <div class="pill-grid">${professional}</div>
             </div>
             <div class="resume-panel resume-icons-panel">
               <div class="skills-grid">${skillTiles}</div>
@@ -652,7 +650,17 @@
             <div class="resume-panel resume-meta-panel">
               <h2>Relevant Courses</h2>
               <div class="pill-grid">${courses}</div>
-              <h3>Personal Interests</h3>
+            </div>
+          </div>
+        </section>
+        <section class="resume-stage">
+          <div class="resume-stage-inner resume-personal-stage">
+            <div class="resume-panel">
+              <h2>Professional Skillset</h2>
+              <div class="pill-grid">${professional}</div>
+            </div>
+            <div class="resume-panel">
+              <h2>Personal Interests</h2>
               <ul class="resume-plain-list">${interests}</ul>
             </div>
           </div>

@@ -2680,6 +2680,14 @@ body {
   border-radius: 0;
 }
 
+.resume-personal-stage {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 48px;
+  padding-top: 36px;
+  border-top: 1px solid rgba(197, 208, 217, 0.12);
+}
+
 .resume-panel h2 {
   margin: 0 0 18px;
   font-size: 25px;
@@ -2772,6 +2780,7 @@ body {
   }
 
   .about-top-copy-inner,
+  .resume-personal-stage,
   .resume-skills-stage {
     grid-template-columns: 1fr;
   }
