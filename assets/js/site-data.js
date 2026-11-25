@@ -338,7 +338,7 @@ window.SITE_DATA = {
         logo: "https://static.wixstatic.com/media/d291ee_871ba9de90bb44c1bff764d099e38e74~mv2.png",
         bullets: [
           "Specialization in Quantum Information and Computation.",
-          "Honours Academic GPA of 5.03 /6.",
+          "Honours Academic GPA of 5.24 /6.",
           "Researched stochastic noise effects on surface codes with Prof. Nicolas Macris using IBM Qiskit and CERN Quantum Technology Initiative's Noisy Gates Library.",
           "Speaker at the Munich Quantum Software Forum (MQSF)."
         ],
