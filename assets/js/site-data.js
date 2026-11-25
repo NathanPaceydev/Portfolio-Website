@@ -152,10 +152,9 @@ window.SITE_DATA = {
         logoWidth: 168,
         logoHeight: 55,
         bullets: [
-          "Develop novel Penning-trap quantum error correction algorithms using surface, color, and quantum low-density parity-check (qLDPC) codes.",
-          "Build custom simulation and benchmarking software modelling motional heating, laser noise, and magnetic-field fluctuations.",
-          "Integrate error correction into hardware schedulers and compilers, translating protocols into executable operations.",
-          "Co-design hardware and codes with experimental and theory teams to optimize protocols for Penning-trap capabilities and constraints."
+          "Develop novel quantum error correction algorithms for Penning traps using surface, color, and quantum low-density parity-check (qLDPC) codes.",
+          "Built a Stim-based simulator generating and benchmarking diverse colour codes and configurations, with a custom ion-trap physical noise model covering motional heating, laser noise, and magnetic-field fluctuations.",
+          "Co-design hardware and codes with experimental and theory teams; integrate optimized protocols into hardware schedulers and compilers."
         ]
       },
       {
@@ -167,10 +166,9 @@ window.SITE_DATA = {
         logoWidth: 74,
         logoHeight: 74,
         bullets: [
-          "Built Rydberg-atom quantum reservoirs for time-series forecasting, using collision and casualty data as insurance-risk proxies.",
-          "Benchmarked single- and multi-step reservoirs against echo state networks, ARIMA, and ETS on synthetic and real data for accuracy, memory, and noise sensitivity.",
-          "Optimized geometry and dynamics via spectral statistics; tested finite-shot noise and measurement limits on QuEra Aquila through Amazon Braket.",
-          "Accepted to QTML 2026 (10th International Conference on Quantum Techniques in Machine Learning), Stellenbosch, South Africa; manuscript in preparation."
+          "Built Rydberg-atom quantum reservoirs for insurance-risk forecasting from collision and casualty data; benchmarked single- and multi-step models against echo state networks, ARIMA, and ETS on synthetic and real data for accuracy, memory, and noise sensitivity.",
+          "Optimized reservoir geometry and dynamics via spectral statistics; tested finite-shot noise and measurement limits on QuEra Aquila through Amazon Braket (AWS).",
+          "Accepted to QTML 2026 (10th International Conference on Quantum Techniques in Machine Learning), Stellenbosch, South Africa; paper pending."
         ],
         links: [{ label: "QTML 2026", href: "https://qtml2026.nithecs.ac.za/" }]
       },
@@ -185,7 +183,7 @@ window.SITE_DATA = {
         bullets: [
           "Researched fault-tolerant optomechanical quantum computing using noise-biased error correction, long lifetimes, and low crosstalk for scalability and stability.",
           "Derived reduced master equations for dissipative pair-cat quantum codes across two mechanical modes using Schrieffer-Wolff transforms and adiabatic elimination.",
-          "Validated models with Python/QuTiP master-equation simulations; optimized experimental parameters for coherence and fidelity."
+          "Validated models with Python/QuTiP master-equation simulations; optimized experimental parameters for coherence and fidelity. Paper pending."
         ],
         links: [{ label: "Optomechanical systems talk", href: "https://youtu.be/V4Uwel08yMA?si=J2ypyxg4Ye9Bw_FO" }]
       },
@@ -210,8 +208,7 @@ window.SITE_DATA = {
         ],
         bullets: [
           "Selected among 30 CERN openlab students worldwide; aggregated IBM, NVIDIA, and Intel computing resources for physics research.",
-          "Built a Flask data-collection and visualization portal with Jinja, JavaScript, HTML, and CSS.",
-          "Collected and parsed machine data with Bash, Puppet, Ansible, and Python; tested scripts on Linux VMs before production.",
+          "Built a Flask/Jinja/JavaScript/HTML/CSS data portal; collected machine data with Python, Bash, Puppet, and Ansible, validating scripts on Linux VMs before production.",
           "Published a peer-reviewed paper and presented findings to senior CERN management and scientists."
         ],
         links: [
@@ -359,6 +356,8 @@ window.SITE_DATA = {
         period: "Graduated May of 2024 with First Class Honours",
         location: "Kingston Ontario, Canada",
         logo: "https://static.wixstatic.com/media/d291ee_df85b4f72a6943d9b53cce5b6b333431~mv2.png",
+        logoWidth: 245,
+        logoHeight: 78,
         bullets: [
           "Stockdale, P. Excellence Award in Physics | 2023.",
           "Dean's Scholar Recipient | 2019 - Current.",
