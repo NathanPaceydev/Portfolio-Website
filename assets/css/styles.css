@@ -1553,6 +1553,7 @@ body {
   height: 206px;
   border-radius: 50%;
   object-fit: cover;
+  object-position: 78% 30%;
 }
 
 .home-profile-main h1 {

@@ -34,13 +34,13 @@ window.SITE_DATA = {
   ],
   home: {
     backgroundImage: "https://static.wixstatic.com/media/74775593da034423bfe374c4172f3351.jpg/v1/fill/w_392,h_996,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/74775593da034423bfe374c4172f3351.jpg",
-    portrait: "https://static.wixstatic.com/media/d291ee_005c1be45d944c82aa2cdc08d11fca2b~mv2.jpg/v1/crop/x_317,y_0,w_1552,h_1552/fill/w_412,h_414,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/_dsc0586-2%20(1)%20(1).jpg",
+    portrait: "assets/images/nathan-cover-2026.jpg",
     title: "Nathan Pacey",
     intro: "Hello",
     tagline: "Here's who I am & what I do",
     roleLines: ["Research Assistant", "University of Waterloo", "Institute for Quantum Computing"],
     body: [
-      "I am a Master's student in Quantum Science and Engineering at EPFL and a researcher at the Institute for Quantum Computing (IQC). My work bridges theory and simulation; from quantum error correction and noise modelling for Qiskit to optomechanical simulations aimed at fault-tolerant quantum computing.",
+      "I am a Master's student in Quantum Science and Engineering at EPFL and a researcher at the Institute for Quantum Computing (IQC). My work bridges theory and simulation; from quantum error correction and noise modelling for Qiskit to optomechanical simulations aimed at fault-tolerant quantum computing. My experience also spans quantum error correction at ZuriQ, quantum machine learning at AXA Switzerland, and surface-code research with CERN / EPFL.",
       "Graduated with a Bachelor's in Engineering Physics and Computing from Queen's University.",
       "I view each experience in life as an opportunity to improve myself, both professionally and personally. I think that by working collaboratively and efficiently, many difficult problems can be solved.",
       "I am looking to use physics and mathematical problem-solving to create innovative designs that help humanity."
@@ -152,7 +152,7 @@ window.SITE_DATA = {
         logoWidth: 168,
         logoHeight: 55,
         bullets: [
-          "Develop novel quantum error correction algorithms for Penning traps using surface, color, and quantum low-density parity-check (qLDPC) codes.",
+          "Developed novel quantum error correction algorithms for 2D Penning trap arrays using surface, color, and quantum low-density parity-check (qLDPC) codes.",
           "Built a Stim-based simulator generating and benchmarking diverse colour codes and configurations, with a custom ion-trap physical noise model covering motional heating, laser noise, and magnetic-field fluctuations.",
           "Co-design hardware and codes with experimental and theory teams; integrate optimized protocols into hardware schedulers and compilers."
         ]
@@ -174,7 +174,7 @@ window.SITE_DATA = {
       },
       {
         title: "Research Assistant",
-        period: "May 2024 - Current",
+        period: "May 2024 - May 2026",
         place: "University of Waterloo Institute for Quantum Computing (IQC)",
         location: "Waterloo Ontario, Canada",
         logo: "https://static.wixstatic.com/media/d291ee_3e75a8024f974d5daae29117c8206358~mv2.png/v1/fill/w_168,h_65,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/d291ee_3e75a8024f974d5daae29117c8206358~mv2.png",
@@ -360,10 +360,10 @@ window.SITE_DATA = {
         logoHeight: 78,
         bullets: [
           "Stockdale, P. Excellence Award in Physics | 2023.",
-          "Dean's Scholar Recipient | 2019 - Current.",
+          "Dean's Scholar Recipient | 2019 - 2024.",
           "Awarded Excellence Scholarship | 2019.",
           "Academic GPA of 3.84 /4.3.",
-          "Student Mentor | 2022 - Current.",
+          "Student Mentor | 2022 - 2024.",
           "Bachelor's Thesis with Distinction: Developing Machine Learning Algorithms for American Style Stock Options.",
           "Capstone: Development of a Web Application for Automated Clean Energy Feasibility Studies Using Global Data Sources."
         ],
