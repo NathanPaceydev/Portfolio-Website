@@ -6,7 +6,9 @@ window.SITE_DATA = {
     email: "npacey01@gmail.com",
     phone: "+1 226-988-3313",
     shortPhone: "226-988-3313",
-    address: "Waterloo, Ontario Canada."
+    address: "Waterloo, Ontario Canada.",
+    swissAddress: "Zurich, Switzerland",
+    swissPhone: "+41 76 823 9332"
   },
   nav: [
     { label: "HOME", page: "home", href: "index.html" },
@@ -38,10 +40,10 @@ window.SITE_DATA = {
     title: "Nathan Pacey",
     intro: "Hello",
     tagline: "Here's who I am & what I do",
-    roleLines: ["Research Assistant", "University of Waterloo", "Institute for Quantum Computing"],
+    roleLines: ["Research Assistant", "ZuriQ, EPFL, CERN &", "University of Waterloo", "Institute for Quantum Computing"],
     body: [
-      "I am a Master's student in Quantum Science and Engineering at EPFL and a researcher at the Institute for Quantum Computing (IQC). My work bridges theory and simulation; from quantum error correction and noise modelling for Qiskit to optomechanical simulations aimed at fault-tolerant quantum computing. My experience also spans quantum error correction at ZuriQ, quantum machine learning at AXA Switzerland, and surface-code research with CERN / EPFL.",
-      "Graduated with a Bachelor's in Engineering Physics and Computing from Queen's University.",
+      "I'm a Master's student in Quantum Science and Engineering at EPFL. I'm interested in quantum information theory and how to apply it to real-world problems. My research spans quantum error correction for ion traps at ZuriQ, quantum and physics-based machine learning at AXA Switzerland, and optomechanical theory at the University of Waterloo's Institute for Quantum Computing (IQC).",
+      "I hold a Bachelor's in Engineering Physics and Computing from Queen's University.",
       "I view each experience in life as an opportunity to improve myself, both professionally and personally. I think that by working collaboratively and efficiently, many difficult problems can be solved.",
       "I am looking to use physics and mathematical problem-solving to create innovative designs that help humanity."
     ],
@@ -56,6 +58,7 @@ window.SITE_DATA = {
       { label: "PROJECTS", href: "projects.html" },
       { label: "More About Me", href: "about.html", style: "primary" }
     ],
+    zuriqLogo: { label: "ZuriQ", href: "https://zuriq.com/", image: "assets/images/zuriq-logo.svg" },
     logos: [
       { label: "Institute for Quantum Computing", href: "https://uwaterloo.ca/institute-for-quantum-computing/", image: "https://static.wixstatic.com/media/d291ee_3e75a8024f974d5daae29117c8206358~mv2.png" },
       { label: "Queen's Engineering", href: "https://engineering.queensu.ca/", image: "https://static.wixstatic.com/media/d291ee_df85b4f72a6943d9b53cce5b6b333431~mv2.png" },
@@ -66,7 +69,7 @@ window.SITE_DATA = {
     title: "Who is Nathan?",
     eyebrow: "ABOUT ME",
     image: "https://static.wixstatic.com/media/d291ee_4b2393b9b12141fca4f17641de315c9e~mv2.jpeg/v1/fill/w_618,h_362,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/d291ee_4b2393b9b12141fca4f17641de315c9e~mv2.jpeg",
-    lede: "I am a jack of all trades. If you know me, you understand that my interests have a far range. Some of my general interests include design, sports, music, math, and physics. Below I have some examples of some of my interests.",
+    lede: "I am a jack of all trades. If you know me, you understand that my interests have a far range. Some of my general interests include travelling, design, sports, music, finance, and photography.",
     interests: [
       {
         title: "Water Sports",

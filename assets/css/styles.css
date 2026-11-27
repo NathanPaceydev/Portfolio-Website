@@ -1163,6 +1163,10 @@ main {
   margin-bottom: 4px;
 }
 
+.footer-block > a {
+  display: block;
+}
+
 .social-row {
   display: flex;
   gap: 10px;
@@ -2206,8 +2210,8 @@ body {
 }
 
 .home-profile-main {
-  min-height: 741px;
-  padding: 43px 30px 0;
+  min-height: 0;
+  padding: 43px 30px 24px;
 }
 
 .home-profile-main h1 {
@@ -2221,6 +2225,21 @@ body {
 
 .home-iqc-logo img {
   width: 171px;
+}
+
+.home-zuriq-logo {
+  display: block;
+  margin-top: 30px;
+}
+
+.home-zuriq-logo img {
+  width: 135px;
+  height: auto;
+}
+
+.home-zuriq-logo + .home-iqc-logo {
+  margin-top: 40px;
+  margin-bottom: 0;
 }
 
 .home-social-strip {

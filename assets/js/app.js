@@ -104,6 +104,7 @@
           <div class="footer-block">
             <span>Call</span>
             <a href="tel:+12269883313">${data.site.shortPhone}</a>
+            <a href="tel:+41768239332">${data.site.swissPhone}</a>
           </div>
           <div class="footer-block">
             <span>Write</span>
@@ -168,6 +169,9 @@
               <h1>${home.title.replace(" ", "<br>")}</h1>
               <div class="home-rule"></div>
               <p>${home.roleLines.join("<br>")}</p>
+              <a class="home-zuriq-logo" href="${home.zuriqLogo.href}"${linkAttrs(home.zuriqLogo.href)}>
+                ${image(home.zuriqLogo.image, home.zuriqLogo.label, "", true)}
+              </a>
               <a class="home-iqc-logo" href="${home.logos[0].href}"${linkAttrs(home.logos[0].href)}>
                 ${image(home.logos[0].image, home.logos[0].label, "", true)}
               </a>
@@ -186,8 +190,7 @@
             <a class="home-queens-logo" href="${home.logos[1].href}"${linkAttrs(home.logos[1].href)}>
               ${image(home.logos[1].image, home.logos[1].label, "", true)}
             </a>
-            <p>${home.body[2]}</p>
-            <p>${home.body[3]}</p>
+            ${home.body.slice(2).map((paragraph) => `<p>${paragraph}</p>`).join("")}
             <div class="home-footer-cta">${buttonLink(home.ctas[2])}</div>
           </div>
         </div>
@@ -762,8 +765,10 @@
         <div class="wrap contact-grid">
           <div class="contact-list">
             <div class="contact-item"><span>Address</span><strong>${site.address}</strong></div>
+            <div class="contact-item"><span>Swiss Address</span><strong>${site.swissAddress}</strong></div>
             <div class="contact-item"><span>Email</span><a href="mailto:${site.email}">${site.email}</a></div>
             <div class="contact-item"><span>Phone</span><a href="tel:+12269883313">${site.phone}</a></div>
+            <div class="contact-item"><span>Swiss Phone</span><a href="tel:+41768239332">${site.swissPhone}</a></div>
             <div class="contact-item"><span>Social Media</span><div class="social-row">${social}</div></div>
           </div>
           <form class="contact-form" data-contact-form>
